@@ -9,7 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+
+    <groupId>com.hzqing.system</groupId>
     <artifactId>system-api</artifactId>
+    <version>0.0.1.RELEASE</version>
+
+
 
 
 </project>
