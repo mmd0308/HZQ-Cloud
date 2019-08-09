@@ -1,10 +1,8 @@
-package com.hzqing.base.service.impl;
+package com.hzqing.base.provider.service;
 
-import com.hzqing.base.entity.UserRole;
-import com.hzqing.base.mapper.UserRoleMapper;
-import com.hzqing.base.service.IUserRoleService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
+import com.hzqing.base.api.service.IUserRoleService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.Service;
 
 /**
  * <p>
@@ -14,7 +12,8 @@ import org.springframework.stereotype.Service;
  * @author hengzhaoqing
  * @since 2019-08-09
  */
+@Slf4j
 @Service
-public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> implements IUserRoleService {
+public class UserRoleServiceImpl  implements IUserRoleService {
 
 }

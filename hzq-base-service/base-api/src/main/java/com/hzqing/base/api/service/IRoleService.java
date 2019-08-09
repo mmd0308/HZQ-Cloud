@@ -1,7 +1,4 @@
-package com.hzqing.base.service;
-
-import com.hzqing.base.entity.Role;
-import com.baomidou.mybatisplus.extension.service.IService;
+package com.hzqing.base.api.service;
 
 /**
  * <p>
@@ -12,6 +9,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author hengzhaoqing
  * @since 2019-08-09
  */
-public interface IRoleService extends IService<Role> {
+public interface IRoleService  {
 
 }

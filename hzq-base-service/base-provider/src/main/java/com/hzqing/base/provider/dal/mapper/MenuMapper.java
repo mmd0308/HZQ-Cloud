@@ -1,7 +1,7 @@
-package com.hzqing.base.mapper;
+package com.hzqing.base.provider.dal.mapper;
 
-import com.hzqing.base.entity.Menu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.hzqing.base.provider.dal.entity.Menu;
 
 /**
  * <p>

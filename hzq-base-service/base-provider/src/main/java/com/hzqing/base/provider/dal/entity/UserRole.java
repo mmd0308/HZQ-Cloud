@@ -2,7 +2,7 @@ package com.hzqing.base.provider.dal.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.hzqing.common.provider.BaseEntity;
+import com.hzqing.common.core.provider.dal.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;

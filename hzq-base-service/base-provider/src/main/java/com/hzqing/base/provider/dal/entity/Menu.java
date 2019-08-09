@@ -1,10 +1,12 @@
 package com.hzqing.base.provider.dal.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.hzqing.common.provider.BaseEntity;
+import com.hzqing.common.core.provider.dal.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -72,5 +74,24 @@ public class Menu extends BaseEntity {
      */
     private Integer sort;
 
+    /**
+     * 创建人id
+     */
+    private int createBy;
+
+    /**
+     * 创建时间
+     */
+    private LocalDateTime createTime;
+
+    /**
+     * 更新人id
+     */
+    private int updateBy;
+
+    /**
+     * 更新时间
+     */
+    private LocalDateTime updateTime;
 
 }

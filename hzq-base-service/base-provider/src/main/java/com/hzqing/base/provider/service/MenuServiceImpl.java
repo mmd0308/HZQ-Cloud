@@ -1,10 +1,8 @@
-package com.hzqing.base.service.impl;
+package com.hzqing.base.provider.service;
 
-import com.hzqing.base.entity.Menu;
-import com.hzqing.base.mapper.MenuMapper;
-import com.hzqing.base.service.IMenuService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
+import com.hzqing.base.api.service.IMenuService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.Service;
 
 /**
  * <p>
@@ -14,7 +12,8 @@ import org.springframework.stereotype.Service;
  * @author hengzhaoqing
  * @since 2019-08-09
  */
+@Slf4j
 @Service
-public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IMenuService {
+public class MenuServiceImpl  implements IMenuService {
 
 }

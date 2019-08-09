@@ -1,10 +1,8 @@
-package com.hzqing.base.service.impl;
+package com.hzqing.base.provider.service;
 
-import com.hzqing.base.entity.Role;
-import com.hzqing.base.mapper.RoleMapper;
-import com.hzqing.base.service.IRoleService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
+import com.hzqing.base.api.service.IRoleService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.Service;
 
 /**
  * <p>
@@ -15,7 +13,8 @@ import org.springframework.stereotype.Service;
  * @author hengzhaoqing
  * @since 2019-08-09
  */
+@Slf4j
 @Service
-public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
+public class RoleServiceImpl implements IRoleService {
 
 }

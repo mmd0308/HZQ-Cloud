@@ -1,18 +1,14 @@
-package com.hzqing.base.api.dto;
+package com.hzqing.base.api.dto.user;
 
-import com.hzqing.base.api.BaseDto;
+import com.hzqing.common.core.result.AbstractRequest;
 import lombok.Data;
 
 /**
  * @author hzqing
- * @date 2019-08-09 15:48
+ * @date 2019-08-10 00:35
  */
 @Data
-public class UserDto extends BaseDto {
-    /**
-     * 用户id
-     */
-    private int id;
+public class AddUserRequest extends AbstractRequest {
 
     /**
      * 用户名
@@ -39,4 +35,11 @@ public class UserDto extends BaseDto {
      */
     private String sex;
 
+    /**
+     * 请求参数进行校验
+     */
+    @Override
+    public void checkParams() {
+        // 如果教师失败，抛出异常
+    }
 }
