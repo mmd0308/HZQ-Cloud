@@ -1,6 +1,7 @@
-package com.hzqing.common.core.exception;
+package com.hzqing.common.core.service.exception;
 
-import com.hzqing.common.core.result.AbstractResponse;
+
+import com.hzqing.common.core.service.response.AbstractResponse;
 
 /**
  * @author hzqing

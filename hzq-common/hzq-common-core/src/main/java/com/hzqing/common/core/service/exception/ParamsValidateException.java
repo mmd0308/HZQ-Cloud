@@ -1,4 +1,4 @@
-package com.hzqing.common.core.exception;
+package com.hzqing.common.core.service.exception;
 
 /**
  * @author hzqing
@@ -6,6 +6,8 @@ package com.hzqing.common.core.exception;
  */
 public class ParamsValidateException extends BaseException {
 
+
+    private static final long serialVersionUID = 770371358256720192L;
 
     public ParamsValidateException(String code, String msg) {
         super(code, msg);

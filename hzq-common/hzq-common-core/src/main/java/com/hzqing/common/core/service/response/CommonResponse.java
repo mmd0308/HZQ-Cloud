@@ -1,4 +1,4 @@
-package com.hzqing.common.core.result;
+package com.hzqing.common.core.service.response;
 
 /**
  * @author hzqing

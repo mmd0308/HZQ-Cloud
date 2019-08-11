@@ -1,4 +1,4 @@
-package com.hzqing.common.core.exception;
+package com.hzqing.common.core.service.exception;
 
 /**
  * 基础异常类

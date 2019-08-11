@@ -1,7 +1,6 @@
-package com.hzqing.common.core.result;
+package com.hzqing.common.core.service.response;
 
-import com.hzqing.common.core.constants.ResponseResultConstants;
-import com.hzqing.common.core.constants.SysRetCodeConstants;
+import com.hzqing.common.core.service.constants.CommonRetCodeConstants;
 
 import java.io.Serializable;
 
@@ -16,12 +15,12 @@ public abstract class AbstractResponse implements Serializable {
     /**
      * 请求响应码 默认是成功
      */
-    private String code = SysRetCodeConstants.SUCCESS.getCode();
+    private String code = CommonRetCodeConstants.SUCCESS.getCode();
 
     /**
      * 返回信息  默认是成功提示
      */
-    private String msg = SysRetCodeConstants.SUCCESS.getMsg();
+    private String msg = CommonRetCodeConstants.SUCCESS.getMsg();
 
 
 

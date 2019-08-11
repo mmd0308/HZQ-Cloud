@@ -1,4 +1,4 @@
-package com.hzqing.common.core.provider.dal;
+package com.hzqing.common.core.service.dal;
 
 import java.io.Serializable;
 
