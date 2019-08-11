@@ -1,6 +1,7 @@
 package com.hzqing.common.core.result;
 
 /**
+ * rest
  * 消费端调用返回的信息格式
  * @author hzqing
  * @date 2019-08-09 23:51

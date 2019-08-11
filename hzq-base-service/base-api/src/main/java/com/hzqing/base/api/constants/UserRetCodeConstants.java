@@ -4,8 +4,10 @@ package com.hzqing.base.api.constants;
  * @author hzqing
  * @date 2019-08-10 00:45
  */
-public enum BaseRetCodeConstants {
+public enum UserRetCodeConstants {
     SUCCESS                             ("000000","成功"),
+
+    INVALID_PARAMETER                   ("INVALID_PARAMETER","请求参数缺失！"),
 
 
     USERNAMEORPASSWORD_ERRROR           ("001001","用户名或密码不正确"),
@@ -32,7 +34,7 @@ public enum BaseRetCodeConstants {
 
     private String msg;
 
-    BaseRetCodeConstants(String code,String msg) {
+    UserRetCodeConstants(String code, String msg) {
         this.code = code;
         this.msg = msg;
     }

@@ -3,6 +3,7 @@ package com.hzqing.common.core.result;
 import com.hzqing.common.core.constants.ResponseResultConstants;
 
 /**
+ * rest
  * ResponseResult 工厂类
  * @author hzqing
  * @date 2019-08-10 00:03
@@ -13,7 +14,7 @@ public class ResponseResultFactory<T> {
 
     public ResponseResultFactory() {
         responseResult = new ResponseResult<T>();
-        responseResult.setCode(ResponseResultConstants.CODE_SUCCESS);
+        responseResult.setCode(200);
         responseResult.setSuccess(true);
         responseResult.setMessage("success");
     }
@@ -46,7 +47,7 @@ public class ResponseResultFactory<T> {
      */
     public ResponseResult<T> resultError(String msg){
         this.responseResult.setSuccess(false);
-        this.responseResult.setCode(ResponseResultConstants.CODE_ERROR);
+        this.responseResult.setCode(500);
         this.responseResult.setMessage(msg);
         return this.responseResult;
     }
