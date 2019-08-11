@@ -1,5 +1,6 @@
 package com.hzqing.base.api.dto.role;
 
+import com.hzqing.common.core.service.dto.BaseDto;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -9,7 +10,7 @@ import java.time.LocalDateTime;
  * @date 2019-08-10 01:20
  */
 @Data
-public class RoleDto {
+public class RoleDto extends BaseDto {
 
     /**
      * 用户id

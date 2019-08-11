@@ -1,12 +1,16 @@
 package com.hzqing.base.api.dto.user;
 
+import com.hzqing.common.core.service.dto.BaseDto;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
 /**
  * @author hzqing
  * @date 2019-08-10 01:20
  */
-public class UserDto {
+@Data
+public class UserDto extends BaseDto {
 
     /**
      * 用户id

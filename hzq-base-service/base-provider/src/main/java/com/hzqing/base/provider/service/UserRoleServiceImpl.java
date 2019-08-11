@@ -1,6 +1,7 @@
 package com.hzqing.base.provider.service;
 
 import com.hzqing.base.api.service.IUserRoleService;
+import com.hzqing.common.core.constants.GlobalConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 
@@ -13,7 +14,7 @@ import org.apache.dubbo.config.annotation.Service;
  * @since 2019-08-09
  */
 @Slf4j
-@Service
+@Service(version = GlobalConstants.VERSION_V1)
 public class UserRoleServiceImpl  implements IUserRoleService {
 
 }

@@ -1,7 +1,7 @@
 package com.hzqing.base.api.service;
 
 import com.hzqing.base.api.dto.menu.*;
-import com.hzqing.common.core.result.CommonResponse;
+import com.hzqing.common.core.service.response.CommonResponse;
 
 import java.util.List;
 

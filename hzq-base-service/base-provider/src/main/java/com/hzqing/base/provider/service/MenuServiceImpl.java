@@ -6,8 +6,9 @@ import com.hzqing.base.api.service.IMenuService;
 import com.hzqing.base.provider.converter.MenuConverter;
 import com.hzqing.base.provider.dal.entity.Menu;
 import com.hzqing.base.provider.dal.mapper.MenuMapper;
-import com.hzqing.common.core.exception.ExceptionProcessUtils;
-import com.hzqing.common.core.result.CommonResponse;
+import com.hzqing.common.core.constants.GlobalConstants;
+import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
+import com.hzqing.common.core.service.response.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ import java.util.List;
  * @since 2019-08-09
  */
 @Slf4j
-@Service
+@Service(version = GlobalConstants.VERSION_V1)
 public class MenuServiceImpl  implements IMenuService {
 
     @Autowired

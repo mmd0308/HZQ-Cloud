@@ -1,9 +1,8 @@
 package com.hzqing.base.provider.converter;
 
-import com.hzqing.base.api.dto.user.AddUserRequest;
-import com.hzqing.base.api.dto.user.DeleteUserRequest;
-import com.hzqing.base.api.dto.user.UserDto;
-import com.hzqing.base.api.dto.user.UserListRequest;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hzqing.base.api.dto.user.*;
 import com.hzqing.base.provider.dal.entity.User;
 import org.mapstruct.Mapper;
 
@@ -31,4 +30,8 @@ public interface UserConverter {
     List<UserDto> users2List(List<User> users);
 
     User req2User(DeleteUserRequest request);
+
+    Page<UserDto> pageUser2PageDto(Page<User> users);
+
+    User req2User(UserPageRequest request);
 }

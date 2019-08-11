@@ -1,16 +1,18 @@
 package com.hzqing.base.provider.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.hzqing.base.api.dto.role.*;
-import com.hzqing.base.api.dto.user.AddUserResponse;
+import com.hzqing.base.api.dto.role.AddRoleRequest;
+import com.hzqing.base.api.dto.role.RoleDetailRequest;
+import com.hzqing.base.api.dto.role.RoleDto;
+import com.hzqing.base.api.dto.role.RoleListRequest;
 import com.hzqing.base.api.dto.user.DeleteUserRequest;
-import com.hzqing.base.api.dto.user.DeleteUserResponse;
 import com.hzqing.base.api.service.IRoleService;
 import com.hzqing.base.provider.converter.RoleConverter;
 import com.hzqing.base.provider.dal.entity.Role;
 import com.hzqing.base.provider.dal.mapper.RoleMapper;
-import com.hzqing.common.core.exception.ExceptionProcessUtils;
-import com.hzqing.common.core.result.CommonResponse;
+import com.hzqing.common.core.constants.GlobalConstants;
+import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
+import com.hzqing.common.core.service.response.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,7 @@ import java.util.List;
  * @since 2019-08-09
  */
 @Slf4j
-@Service
+@Service(version = GlobalConstants.VERSION_V1)
 public class RoleServiceImpl implements IRoleService {
 
     @Autowired

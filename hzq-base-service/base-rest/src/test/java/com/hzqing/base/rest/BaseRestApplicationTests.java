@@ -1,7 +1,5 @@
 package com.hzqing.base.rest;
 
-import com.hzqing.base.api.dto.user.AddUserRequest;
-import com.hzqing.base.api.dto.user.AddUserResponse;
 import com.hzqing.base.api.service.IUserService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.junit.Test;
@@ -18,12 +16,6 @@ public class BaseRestApplicationTests {
 
     @Test
     public void contextLoads() {
-
-        AddUserRequest request = new AddUserRequest();
-        request.setEmail("mmd0308@126.com");
-        request.setUsername("张莉萨");
-        AddUserResponse user = userService.createUser(request);
-        System.out.println(user);
 
 
 //

@@ -1,6 +1,5 @@
-package com.cnpc.admin.config;
+package com.hzqing.base.rest.config;
 
-import com.cnpc.common.constant.CommonConstant;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
@@ -17,42 +16,45 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * 返回数据格式化
+ * 传入或传出数据，
+ * 如果是时间类型，根据要求格式化
  * @author hzqing
- * @date 2018/11/22 07:55
+ * @date 2019-08-11 12:12
  */
 @Configuration
 public class LocalDateTimeConfig {
-
+    public static final String DEFAULT_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
+    public static final String DEFAULT_TIME_FORMAT = "HH:mm:ss";
     @Bean
     public LocalDateTimeSerializer localDateTimeSerializer() {
-        return new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(CommonConstant.DEFAULT_DATE_TIME_FORMAT));
+        return new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_TIME_FORMAT));
     }
 
     @Bean
     public LocalDateTimeDeserializer localDateTimeDeserializer() {
-        return new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(CommonConstant.DEFAULT_DATE_TIME_FORMAT));
+        return new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_TIME_FORMAT));
     }
 
 
     @Bean
     public LocalDateSerializer localDateSerializer(){
-        return new LocalDateSerializer(DateTimeFormatter.ofPattern(CommonConstant.DEFAULT_DATE_FORMAT));
+        return new LocalDateSerializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_FORMAT));
     }
 
     @Bean
     public LocalDateDeserializer localDateDeserializer() {
-        return new LocalDateDeserializer(DateTimeFormatter.ofPattern(CommonConstant.DEFAULT_DATE_FORMAT));
+        return new LocalDateDeserializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_FORMAT));
     }
 
     @Bean
     public LocalTimeSerializer localTimeSerializer(){
-        return new LocalTimeSerializer(DateTimeFormatter.ofPattern(CommonConstant.DEFAULT_TIME_FORMAT));
+        return new LocalTimeSerializer(DateTimeFormatter.ofPattern(DEFAULT_TIME_FORMAT));
     }
 
     @Bean
     public LocalTimeDeserializer localTimeDeserializer() {
-        return new LocalTimeDeserializer(DateTimeFormatter.ofPattern(CommonConstant.DEFAULT_TIME_FORMAT));
+        return new LocalTimeDeserializer(DateTimeFormatter.ofPattern(DEFAULT_TIME_FORMAT));
     }
 
     @Bean

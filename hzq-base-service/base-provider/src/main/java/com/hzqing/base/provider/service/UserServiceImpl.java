@@ -1,24 +1,25 @@
 package com.hzqing.base.provider.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.user.*;
 import com.hzqing.base.api.service.IUserService;
 import com.hzqing.base.provider.converter.UserConverter;
 import com.hzqing.base.provider.dal.entity.User;
 import com.hzqing.base.provider.dal.mapper.UserMapper;
-import com.hzqing.common.core.exception.ExceptionProcessUtils;
+import com.hzqing.common.core.constants.GlobalConstants;
+import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
+import com.hzqing.common.core.service.response.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 /**
  * @author hzqing
  * @date 2019-08-09 14:57
  */
 @Slf4j
-@Service
+@Service(version = GlobalConstants.VERSION_V1)
 public class UserServiceImpl implements IUserService {
 
     @Autowired
@@ -28,9 +29,9 @@ public class UserServiceImpl implements IUserService {
     private UserConverter userConverter;
 
     @Override
-    public AddUserResponse createUser(AddUserRequest request) {
+    public CommonResponse createUser(AddUserRequest request) {
         log.info("UserServiceImpl.createUser request: " + request);
-        AddUserResponse response = new AddUserResponse();
+        CommonResponse response = new CommonResponse();
         try {
             // 参数校验
             request.checkParams();
@@ -46,14 +47,14 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserDetailResponse userDetail(UserDetailRequest request) {
+    public CommonResponse<UserDto> userDetail(UserDetailRequest request) {
         log.info("UserServiceImpl.userDetail request: " + request);
-        UserDetailResponse response = new UserDetailResponse();
+        CommonResponse<UserDto> response = new CommonResponse<UserDto>();
         try {
             request.checkParams();
             User user = userMapper.selectById(request.getId());
             UserDto userDto = userConverter.user2Dto(user);
-            response.setUserDto(userDto);
+            response.setData(userDto);
         }catch (Exception e){
             log.error("UserServiceImpl.userDetail occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
@@ -62,14 +63,17 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserListResponse userLists(UserListRequest request) {
+    public CommonResponse<Page<UserDto>> userPage(UserPageRequest request) {
         log.info("UserServiceImpl.userLists request: " + request);
-        UserListResponse response = new UserListResponse();
+        CommonResponse<Page<UserDto>>  response = new CommonResponse<Page<UserDto>>();
         try {
             request.checkParams();
             User user = userConverter.req2User(request);
-            List users = userMapper.selectList(new QueryWrapper(user));
-            response.setUserDtoList(userConverter.users2List(users));
+            Page<User> userPage = (Page<User>) userMapper.selectPage(
+                    new Page<>(request.getPageNum(),request.getPageSize()),
+                    new QueryWrapper<>(user));
+            Page<UserDto> userDtoPage = userConverter.pageUser2PageDto(userPage);
+            response.setData(userDtoPage);
         }catch (Exception e){
             log.error("UserServiceImpl.userLists occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
@@ -78,9 +82,9 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public DeleteUserResponse deleteUser(DeleteUserRequest request) {
+    public CommonResponse deleteUser(DeleteUserRequest request) {
         log.info("UserServiceImpl.deleteUser request: " + request);
-        DeleteUserResponse response = new DeleteUserResponse();
+        CommonResponse response = new CommonResponse();
         try {
             request.checkParams();
             int row = userMapper.deleteById(request.getId());

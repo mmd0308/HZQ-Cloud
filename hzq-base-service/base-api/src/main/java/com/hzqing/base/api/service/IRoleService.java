@@ -1,8 +1,11 @@
 package com.hzqing.base.api.service;
 
-import com.hzqing.base.api.dto.role.*;
-import com.hzqing.base.api.dto.user.*;
-import com.hzqing.common.core.result.CommonResponse;
+import com.hzqing.base.api.dto.role.AddRoleRequest;
+import com.hzqing.base.api.dto.role.RoleDetailRequest;
+import com.hzqing.base.api.dto.role.RoleDto;
+import com.hzqing.base.api.dto.role.RoleListRequest;
+import com.hzqing.base.api.dto.user.DeleteUserRequest;
+import com.hzqing.common.core.service.response.CommonResponse;
 
 import java.util.List;
 

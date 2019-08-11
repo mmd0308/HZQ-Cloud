@@ -1,6 +1,6 @@
 package com.hzqing.base.api.dto.user;
 
-import com.hzqing.common.core.result.AbstractRequest;
+import com.hzqing.common.core.service.request.AbstractRequest;
 import lombok.Data;
 
 /**

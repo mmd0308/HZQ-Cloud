@@ -1,8 +1,8 @@
 package com.hzqing.base.api.dto.menu;
 
 import com.hzqing.base.api.constants.UserRetCodeConstants;
-import com.hzqing.common.core.exception.ParamsValidateException;
-import com.hzqing.common.core.result.AbstractRequest;
+import com.hzqing.common.core.service.exception.ParamsValidateException;
+import com.hzqing.common.core.service.request.AbstractRequest;
 import lombok.Data;
 
 /**

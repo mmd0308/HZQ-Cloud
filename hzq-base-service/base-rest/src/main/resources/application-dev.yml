@@ -11,3 +11,14 @@ dubbo:
     port: 29106
   application:
     name: base-rest
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: base-rest
+
+
+  jackson:
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
