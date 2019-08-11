@@ -1,4 +1,4 @@
-package com.hzqing.base.api.dto.role;
+package com.hzqing.base.api.dto.menu;
 
 import com.hzqing.base.api.constants.UserRetCodeConstants;
 import com.hzqing.common.core.exception.ParamsValidateException;
@@ -10,7 +10,7 @@ import lombok.Data;
  * @date 2019-08-10 00:35
  */
 @Data
-public class AddRoleRequest extends AbstractRequest {
+public class AddMenuRequest extends AbstractRequest {
 
     /**
      * 用户名

@@ -1,6 +1,8 @@
 package com.hzqing.base.provider.dal.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hzqing.common.core.provider.dal.BaseEntity;
 import lombok.Data;
@@ -21,11 +23,16 @@ import lombok.experimental.Accessors;
 @TableName("base_user_role")
 public class UserRole extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
+    /**
+     * 主键
+     */
+    @TableId(type = IdType.AUTO)
+    private Integer id;
 
     /**
      * 用户id
      */
+    @TableId("user_id")
     private Integer userId;
 
     /**

@@ -1,5 +1,6 @@
 package com.hzqing.base.provider.dal.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -27,8 +28,8 @@ public class User extends BaseEntity {
     /**
      * 用户id
      */
-    @TableId
-    private int id;
+    @TableId(type = IdType.AUTO)
+    private Integer id;
 
     /**
      * 用户名

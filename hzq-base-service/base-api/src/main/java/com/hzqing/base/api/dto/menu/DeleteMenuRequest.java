@@ -1,4 +1,4 @@
-package com.hzqing.base.api.dto.role;
+package com.hzqing.base.api.dto.menu;
 
 import com.hzqing.common.core.result.AbstractRequest;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2019-08-10 00:59
  */
 @Data
-public class DeleteRoleRequest extends AbstractRequest {
+public class DeleteMenuRequest extends AbstractRequest {
 
     private int id;
 

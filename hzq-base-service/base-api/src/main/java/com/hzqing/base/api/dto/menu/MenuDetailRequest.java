@@ -1,4 +1,4 @@
-package com.hzqing.base.api.dto.role;
+package com.hzqing.base.api.dto.menu;
 
 import com.hzqing.common.core.result.AbstractRequest;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2019-08-10 00:35
  */
 @Data
-public class RoleDetailRequest extends AbstractRequest {
+public class MenuDetailRequest extends AbstractRequest {
 
     private int id;
 

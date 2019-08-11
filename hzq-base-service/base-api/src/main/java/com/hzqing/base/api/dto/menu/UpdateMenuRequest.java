@@ -10,7 +10,7 @@ import lombok.Data;
  * @date 2019-08-10 00:35
  */
 @Data
-public class AddMenuRequest extends AbstractRequest {
+public class UpdateMenuRequest extends AbstractRequest {
 
     /**
      * 用户名

@@ -1,14 +1,12 @@
 package com.hzqing.base.provider.converter;
 
+import com.hzqing.base.api.dto.menu.*;
 import com.hzqing.base.api.dto.role.AddRoleRequest;
 import com.hzqing.base.api.dto.role.RoleDto;
 import com.hzqing.base.api.dto.role.RoleListRequest;
-import com.hzqing.base.api.dto.user.AddUserRequest;
 import com.hzqing.base.api.dto.user.DeleteUserRequest;
-import com.hzqing.base.api.dto.user.UserDto;
-import com.hzqing.base.api.dto.user.UserListRequest;
+import com.hzqing.base.provider.dal.entity.Menu;
 import com.hzqing.base.provider.dal.entity.Role;
-import com.hzqing.base.provider.dal.entity.User;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -18,15 +16,17 @@ import java.util.List;
  * @date 2019-08-09 17:04
  */
 @Mapper(componentModel = "spring")
-public interface RoleConverter {
+public interface MenuConverter {
 
-    Role req2Role(AddRoleRequest request);
+    Menu req2Menu(AddMenuRequest request);
 
-    Role req2Role(RoleListRequest request);
+    Menu req2Menu(MenuListRequest request);
 
-    Role req2Role(DeleteUserRequest request);
+    Menu req2Menu(DeleteMenuRequest request);
 
-    RoleDto req2Dto(Role role);
+    MenuDto req2Dto(Menu menu);
 
-    List<RoleDto> listRole2ListDto(List<Role> roles);
+    List<MenuDto> listMenu2ListDto(List<Menu> menus);
+
+    Menu req2Menu(UpdateMenuRequest request);
 }

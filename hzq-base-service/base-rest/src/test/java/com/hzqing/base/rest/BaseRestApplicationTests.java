@@ -1,7 +1,7 @@
 package com.hzqing.base.rest;
 
 import com.hzqing.base.api.dto.user.AddUserRequest;
-import com.hzqing.base.api.dto.user.DeleteUserRequest;
+import com.hzqing.base.api.dto.user.AddUserResponse;
 import com.hzqing.base.api.service.IUserService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.junit.Test;
@@ -15,17 +15,21 @@ public class BaseRestApplicationTests {
 
     @Reference
     IUserService userService;
+
     @Test
     public void contextLoads() {
 
-//        AddUserRequest request = new AddUserRequest();
-//        request.setUsername("list");
-//        request.setEmail("mmd0308@126.com");
-//        userService.createUser(request);
+        AddUserRequest request = new AddUserRequest();
+        request.setEmail("mmd0308@126.com");
+        request.setUsername("张莉萨");
+        AddUserResponse user = userService.createUser(request);
+        System.out.println(user);
 
-        DeleteUserRequest request = new DeleteUserRequest();
-        request.setId(2);
-        userService.deleteUser(request);
+
+//
+//        DeleteMenuRequest request = new DeleteMenuRequest();
+//        request.setId(2);
+//        userService.deleteUser(request);
     }
 
 }

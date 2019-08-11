@@ -1,5 +1,7 @@
 package com.hzqing.base.api.dto.user;
 
+import com.hzqing.base.api.constants.UserRetCodeConstants;
+import com.hzqing.common.core.exception.ParamsValidateException;
 import com.hzqing.common.core.result.AbstractRequest;
 import lombok.Data;
 
@@ -26,7 +28,7 @@ public class AddUserRequest extends AbstractRequest {
     private String phone;
 
     /**
-     * 注册邮箱
+     * 注册邮箱dd
      */
     private String email;
 
@@ -40,6 +42,10 @@ public class AddUserRequest extends AbstractRequest {
      */
     @Override
     public void checkParams() {
-        // 如果教师失败，抛出异常
+        if (username == null || "".equals(username)){
+            throw new ParamsValidateException(
+                    UserRetCodeConstants.INVALID_PARAMETER.getCode(),
+                    UserRetCodeConstants.INVALID_PARAMETER.getMsg());
+        }
     }
 }

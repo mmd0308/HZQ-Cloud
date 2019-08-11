@@ -1,4 +1,4 @@
-package com.hzqing.base.api.dto.role;
+package com.hzqing.base.api.dto.menu;
 
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  * @date 2019-08-10 01:20
  */
 @Data
-public class RoleDto {
+public class MenuDto {
 
     /**
      * 用户id

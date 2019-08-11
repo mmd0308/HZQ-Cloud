@@ -1,12 +1,12 @@
 package com.hzqing.base.provider.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.hzqing.base.api.constants.BaseRetCodeConstants;
 import com.hzqing.base.api.dto.user.*;
 import com.hzqing.base.api.service.IUserService;
 import com.hzqing.base.provider.converter.UserConverter;
 import com.hzqing.base.provider.dal.entity.User;
 import com.hzqing.base.provider.dal.mapper.UserMapper;
+import com.hzqing.common.core.exception.ExceptionProcessUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +40,7 @@ public class UserServiceImpl implements IUserService {
         }catch (Exception e) {
             // 抛出异常
             log.error("UserServiceImpl.createUser occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;
     }
@@ -53,10 +54,9 @@ public class UserServiceImpl implements IUserService {
             User user = userMapper.selectById(request.getId());
             UserDto userDto = userConverter.user2Dto(user);
             response.setUserDto(userDto);
-            response.setCode(BaseRetCodeConstants.SUCCESS.getCode());
-            response.setMsg(BaseRetCodeConstants.SUCCESS.getMsg());
         }catch (Exception e){
             log.error("UserServiceImpl.userDetail occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;
     }
@@ -70,10 +70,9 @@ public class UserServiceImpl implements IUserService {
             User user = userConverter.req2User(request);
             List users = userMapper.selectList(new QueryWrapper(user));
             response.setUserDtoList(userConverter.users2List(users));
-            response.setCode(BaseRetCodeConstants.SUCCESS.getCode());
-            response.setMsg(BaseRetCodeConstants.SUCCESS.getMsg());
         }catch (Exception e){
             log.error("UserServiceImpl.userLists occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;
     }
@@ -88,6 +87,7 @@ public class UserServiceImpl implements IUserService {
             log.info("UserServiceImpl.deleteUser effect: " + row);
         } catch (Exception e){
             log.error("UserServiceImpl.deleteUser occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;
     }

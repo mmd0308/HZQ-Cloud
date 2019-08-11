@@ -1,5 +1,8 @@
 package com.hzqing.base.provider.dal.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hzqing.common.core.provider.dal.BaseEntity;
 import lombok.Data;
@@ -25,6 +28,12 @@ public class Role extends BaseEntity {
 
 
     /**
+     * 主键
+     */
+    @TableId(type = IdType.AUTO)
+    private Integer id;
+
+    /**
      * 数据值
      */
     private String name;
@@ -37,31 +46,37 @@ public class Role extends BaseEntity {
     /**
      * 删除标记删除标记 ‘0’ 没有删除, ‘1’ 删除
      */
+    @TableField("del_flag")
     private String delFlag;
 
     /**
      * 系统角色标记 ‘0’ 不是 ‘1’是
      */
+    @TableField("sys_flag")
     private String sysFlag;
 
     /**
      * 创建人id
      */
+    @TableField("create_by")
     private int createBy;
 
     /**
      * 创建时间
      */
+    @TableField("create_time")
     private LocalDateTime createTime;
 
     /**
      * 更新人id
      */
+    @TableField("update_by")
     private int updateBy;
 
     /**
      * 更新时间
      */
+    @TableField("update_time")
     private LocalDateTime updateTime;
 
 
