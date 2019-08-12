@@ -21,6 +21,14 @@ public class PageRequest extends AbstractRequest {
      */
     private int pageSize = 10;
 
+    public PageRequest() {
+    }
+
+    public PageRequest(int pageNum, int pageSize) {
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
+    }
+
     @Override
     public void checkParams() {
         if (pageNum == 0){

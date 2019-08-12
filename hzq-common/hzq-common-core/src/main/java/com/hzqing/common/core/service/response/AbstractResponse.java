@@ -1,6 +1,7 @@
 package com.hzqing.common.core.service.response;
 
 import com.hzqing.common.core.service.constants.CommonRetCodeConstants;
+import lombok.Data;
 
 import java.io.Serializable;
 
@@ -9,6 +10,7 @@ import java.io.Serializable;
  * @author hzqing
  * @date 2019-08-09 23:49
  */
+@Data
 public abstract class AbstractResponse implements Serializable {
     private static final long serialVersionUID = -8506800861153222507L;
 
@@ -23,28 +25,4 @@ public abstract class AbstractResponse implements Serializable {
     private String msg = CommonRetCodeConstants.SUCCESS.getMsg();
 
 
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    @Override
-    public String toString() {
-        return "AbstractResponse{" +
-                "code='" + code + '\'' +
-                ", msg='" + msg + '\'' +
-                '}';
-    }
 }
