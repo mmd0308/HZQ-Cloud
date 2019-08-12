@@ -41,4 +41,9 @@ public class UserServiceImplV2 implements IUserService {
     public CommonResponse deleteUser(DeleteUserRequest request) {
         return null;
     }
+
+    @Override
+    public CommonResponse updateUser(UpdateUserRequest request) {
+        return null;
+    }
 }

@@ -3,6 +3,7 @@ package com.hzqing.base.provider.converter;
 import com.hzqing.base.api.dto.role.AddRoleRequest;
 import com.hzqing.base.api.dto.role.RoleDto;
 import com.hzqing.base.api.dto.role.RoleListRequest;
+import com.hzqing.base.api.dto.role.UpdateRoleRequest;
 import com.hzqing.base.api.dto.user.AddUserRequest;
 import com.hzqing.base.api.dto.user.DeleteUserRequest;
 import com.hzqing.base.api.dto.user.UserDto;
@@ -29,4 +30,7 @@ public interface RoleConverter {
     RoleDto req2Dto(Role role);
 
     List<RoleDto> listRole2ListDto(List<Role> roles);
+
+    Role req2Role(UpdateRoleRequest request);
+
 }

@@ -1,10 +1,7 @@
 package com.hzqing.base.provider.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.hzqing.base.api.dto.role.AddRoleRequest;
-import com.hzqing.base.api.dto.role.RoleDetailRequest;
-import com.hzqing.base.api.dto.role.RoleDto;
-import com.hzqing.base.api.dto.role.RoleListRequest;
+import com.hzqing.base.api.dto.role.*;
 import com.hzqing.base.api.dto.user.DeleteUserRequest;
 import com.hzqing.base.api.service.IRoleService;
 import com.hzqing.base.provider.converter.RoleConverter;
@@ -87,7 +84,7 @@ public class RoleServiceImpl implements IRoleService {
     }
 
     @Override
-    public CommonResponse deleteRole(DeleteUserRequest request) {
+    public CommonResponse deleteRole(DeleteRoleRequest request) {
         log.info("RoleServiceImpl.deleteRole request: " + request);
         CommonResponse response = new CommonResponse();
         try{
@@ -101,4 +98,18 @@ public class RoleServiceImpl implements IRoleService {
         return response;
     }
 
+    @Override
+    public CommonResponse updateRole(UpdateRoleRequest request) {
+        log.info("RoleServiceImpl.updateRole request: " + request);
+        CommonResponse response = new CommonResponse();
+        try {
+            Role role = roleConverter.req2Role(request);
+            int row = roleMapper.updateById(role);
+            log.info("RoleServiceImpl.updateRole effect row: " + row);
+        } catch (Exception e){
+            log.error("RoleServiceImpl.updateRole occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
+        }
+        return response;
+    }
 }

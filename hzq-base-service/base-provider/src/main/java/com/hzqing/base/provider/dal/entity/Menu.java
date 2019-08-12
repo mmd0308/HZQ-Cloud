@@ -25,6 +25,11 @@ public class Menu extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
+     * 主键
+     */
+    private int id;
+
+    /**
      * 菜单名称
      */
     private String name;

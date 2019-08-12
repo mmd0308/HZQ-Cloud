@@ -34,4 +34,6 @@ public interface UserConverter {
     Page<UserDto> pageUser2PageDto(Page<User> users);
 
     User req2User(UserPageRequest request);
+
+    User req2User(UpdateUserRequest request);
 }

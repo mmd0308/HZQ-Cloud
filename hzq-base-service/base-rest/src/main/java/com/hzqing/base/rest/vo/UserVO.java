@@ -1,5 +1,6 @@
 package com.hzqing.base.rest.vo;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -45,11 +46,13 @@ public class UserVO implements Serializable {
     /**
      * 创建时间
      */
+    @ApiModelProperty(name = "create_time")
     private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
+    @ApiModelProperty(name = "update_time")
     private LocalDateTime updateTime;
 
 }

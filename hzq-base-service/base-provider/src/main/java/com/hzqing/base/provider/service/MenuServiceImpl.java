@@ -1,6 +1,8 @@
 package com.hzqing.base.provider.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.menu.*;
 import com.hzqing.base.api.service.IMenuService;
 import com.hzqing.base.provider.converter.MenuConverter;
@@ -98,6 +100,23 @@ public class MenuServiceImpl  implements IMenuService {
             response.setData(menuConverter.req2Dto(menu));
         } catch (Exception e){
             log.error("MenuServiceImpl.menuDetail occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
+        }
+        return response;
+    }
+
+    @Override
+    public CommonResponse<Page<MenuDto>> menuPage(MenuPageRequest request) {
+        log.info("MenuServiceImpl.menuPage request: " + request);
+        CommonResponse<Page<MenuDto>> response = new CommonResponse<>();
+        try {
+            Menu menu = menuConverter.req2Menu(request);
+            IPage<Menu> menuIPage = menuMapper.selectPage(new Page<Menu>(request.getPageNum(),
+                    request.getPageSize()), new QueryWrapper<Menu>(menu));
+            response.setData(menuConverter.pageMenu2PageDto(menuIPage));
+            log.info("MenuServiceImpl.menuPage result: " + response);
+        }catch (Exception e) {
+            log.error("MenuServiceImpl.menuPage occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;

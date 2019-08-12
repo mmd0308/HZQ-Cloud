@@ -95,4 +95,20 @@ public class UserServiceImpl implements IUserService {
         }
         return response;
     }
+
+    @Override
+    public CommonResponse updateUser(UpdateUserRequest request) {
+        log.info("UserServiceImpl.updateUser request: " + request);
+        CommonResponse response = new CommonResponse();
+        try {
+            request.checkParams();
+            User user = userConverter.req2User(request);
+            int row = userMapper.updateById(user);
+            log.info("UserServiceImpl.updateUser effec row: " + row);
+        }catch (Exception e) {
+            log.error("UserServiceImpl.updateUser occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
+        }
+        return null;
+    }
 }

@@ -1,5 +1,7 @@
 package com.hzqing.base.provider.converter;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.menu.*;
 import com.hzqing.base.api.dto.role.AddRoleRequest;
 import com.hzqing.base.api.dto.role.RoleDto;
@@ -29,4 +31,8 @@ public interface MenuConverter {
     List<MenuDto> listMenu2ListDto(List<Menu> menus);
 
     Menu req2Menu(UpdateMenuRequest request);
+
+    Menu req2Menu(MenuPageRequest request);
+
+    Page<MenuDto> pageMenu2PageDto(IPage<Menu> menuIPage);
 }

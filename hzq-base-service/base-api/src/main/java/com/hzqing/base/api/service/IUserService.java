@@ -40,11 +40,18 @@ public interface IUserService {
     CommonResponse<Page<UserDto>> userPage(UserPageRequest request);
 
 
-
     /**
      * 根据条件删除用户
      * @param request
      * @return
      */
     CommonResponse deleteUser(DeleteUserRequest request);
+
+    /**
+     * 根据id，更新用户
+     * @param request
+     * @return
+     */
+    CommonResponse updateUser(UpdateUserRequest request);
+
 }

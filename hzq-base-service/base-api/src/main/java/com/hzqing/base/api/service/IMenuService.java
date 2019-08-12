@@ -1,5 +1,6 @@
 package com.hzqing.base.api.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.menu.*;
 import com.hzqing.common.core.service.response.CommonResponse;
 
@@ -49,4 +50,11 @@ public interface IMenuService  {
      * @return
      */
     CommonResponse<MenuDto> menuDetail(MenuDetailRequest request);
+
+    /**
+     * 分页条件查询
+     * @param request
+     * @return
+     */
+    CommonResponse<Page<MenuDto>> menuPage(MenuPageRequest request);
 }

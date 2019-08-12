@@ -21,7 +21,6 @@ import java.time.format.DateTimeFormatter;
  * @author hzqing
  * @date 2019-08-11 12:12
  */
-@Configuration
 public class LocalDateTimeConfig {
     public static final String DEFAULT_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";

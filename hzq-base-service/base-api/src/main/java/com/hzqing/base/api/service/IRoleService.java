@@ -1,9 +1,7 @@
 package com.hzqing.base.api.service;
 
-import com.hzqing.base.api.dto.role.AddRoleRequest;
-import com.hzqing.base.api.dto.role.RoleDetailRequest;
-import com.hzqing.base.api.dto.role.RoleDto;
-import com.hzqing.base.api.dto.role.RoleListRequest;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hzqing.base.api.dto.role.*;
 import com.hzqing.base.api.dto.user.DeleteUserRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 
@@ -46,5 +44,12 @@ public interface IRoleService  {
      * @param request
      * @return
      */
-    CommonResponse deleteRole(DeleteUserRequest request);
+    CommonResponse deleteRole(DeleteRoleRequest request);
+
+    /**
+     * 根据id，更新角色
+     * @param request
+     * @return
+     */
+    CommonResponse updateRole(UpdateRoleRequest request);
 }
