@@ -3,6 +3,8 @@ package com.hzqing.common.core.rest.result;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 定义返回的data数据格式
  * @author hzqing
@@ -10,8 +12,9 @@ import lombok.Data;
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RestResultData<T> {
+public class RestResultData<T> implements Serializable {
 
+    private static final long serialVersionUID = 536936609427044626L;
     /**
      * 描述数据的类型
      */

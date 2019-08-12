@@ -3,11 +3,17 @@ package com.hzqing.common.core.rest.result;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import lombok.ToString;
 
+import java.io.Serializable;
+
+/**
+ * 结果响应
+ * @author hzq
+ */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RestResult<T> {
+public class RestResult<T> implements Serializable {
+    private static final long serialVersionUID = -450599376115985279L;
     /**
      * 请求响应码
      */

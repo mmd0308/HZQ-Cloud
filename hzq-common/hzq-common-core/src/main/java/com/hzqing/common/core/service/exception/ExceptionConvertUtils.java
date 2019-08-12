@@ -8,7 +8,7 @@ import com.hzqing.common.core.service.response.AbstractResponse;
  * @date 2019-08-11 09:00
  */
 public class ExceptionConvertUtils {
-    public static AbstractResponse convertException2Biz(AbstractResponse response, Exception e) {
+    public static AbstractResponse convertException2Biz(AbstractResponse response, Exception e) throws Exception {
         if (!(e instanceof Exception)){
             return null;
         }
@@ -17,6 +17,9 @@ public class ExceptionConvertUtils {
         if (e instanceof ParamsValidateException){
             response.setCode(((ParamsValidateException) e).getCode());
             response.setMsg(((ParamsValidateException) e).getMsg());
+        } else if (e instanceof Exception) {
+            // 该异常服务端处理不了，扔给服务调用者
+            throw e;
         }
 
         return response;
