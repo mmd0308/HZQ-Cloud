@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
  * @author hzqing
  * @date 2019-08-11 12:12
  */
-@Api(tags = "角色管理模块")
+@Api(tags = "菜单管理模块")
 @RestController
 @RequestMapping("/" + GlobalConstants.VERSION_V1 + "/menus")
 public class MenuController extends BaseController {
