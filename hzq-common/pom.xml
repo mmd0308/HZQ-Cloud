@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.hzqing.cloud</groupId>
+        <artifactId>hzq-cloud-dependencies</artifactId>
+        <version>1.0.0.RELEASE</version>
+    </parent>
+
     <groupId>com.hzqing.common</groupId>
     <artifactId>hzq-common</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -11,13 +17,7 @@
     <modules>
         <module>hzq-common-core</module>
     </modules>
-
     <packaging>pom</packaging>
-
-
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
 
     <build>
