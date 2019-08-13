@@ -13,55 +13,35 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 菜单表
+ * 按钮资源表
  * </p>
  *
- * @author hengzhaoqing
- * @since 2019-08-09
+ * @author hzqing
+ * @since 2019-08-13
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("base_menu")
-public class Menu extends BaseEntity {
+@TableName("base_button")
+public class Button extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 主键
+     *  自增主键
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 菜单名称
+     * 菜单id,按钮属于哪个菜单下面的
+     */
+    private Integer menuId;
+
+    /**
+     * 按钮名称
      */
     private String name;
-
-    /**
-     * 上级菜单id 顶级菜单父级id为0
-     */
-    private Integer parentId;
-
-    /**
-     * 所有父级id,用“,”顺序分隔
-     */
-    private String parentIds;
-
-    /**
-     * 链接
-     */
-    private String href;
-
-    /**
-     * 图标名称
-     */
-    private String icon;
-
-    /**
-     * 是否在菜单显示 0 否 1 是 默认是1
-     */
-    private String showFlag;
 
     /**
      * 权限标示
@@ -69,19 +49,9 @@ public class Menu extends BaseEntity {
     private String permission;
 
     /**
-     * 删除标记 0 否 1是
+     * 链接
      */
-    private String delFlag;
-
-    /**
-     * 备注信息
-     */
-    private String remarks;
-
-    /**
-     * 排序
-     */
-    private Integer sort;
+    private String href;
 
     /**
      * 创建人id

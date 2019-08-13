@@ -1,7 +1,7 @@
 package com.hzqing.base.provider.dal.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hzqing.base.provider.dal.entity.RoleServeMenuPermission;
+import com.hzqing.base.provider.dal.entity.RoleServeMenuButton;
 
 /**
  * <p>
@@ -13,6 +13,6 @@ import com.hzqing.base.provider.dal.entity.RoleServeMenuPermission;
  * @author hengzhaoqing
  * @since 2019-08-09
  */
-public interface RoleServeMenuPermissionMapper extends BaseMapper<RoleServeMenuPermission> {
+public interface RoleServeMenuPermissionMapper extends BaseMapper<RoleServeMenuButton> {
 
 }

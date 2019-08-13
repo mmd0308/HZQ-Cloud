@@ -1,5 +1,8 @@
 package com.hzqing.base.provider.dal.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hzqing.common.core.service.dal.BaseEntity;
 import lombok.Data;
@@ -19,30 +22,40 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("base_role_serve_menu_permission")
-public class RoleServeMenuPermission extends BaseEntity {
+@TableName("base_role_serve_menu_button")
+public class RoleServeMenuButton extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
     /**
+     * 主键
+     */
+    @TableId(type = IdType.AUTO)
+    private Integer id;
+
+    /**
      * 角色id
      */
+    @TableField("role_id")
     private Integer roleId;
 
     /**
      * 服务id
      */
+    @TableField("serve_id")
     private Integer serveId;
 
     /**
      * 菜单id
      */
+    @TableField("menu_id")
     private Integer menuId;
 
     /**
      * 资源id
      */
-    private Integer permissionId;
+    @TableField("button_id")
+    private Integer buttonId;
 
 
 }

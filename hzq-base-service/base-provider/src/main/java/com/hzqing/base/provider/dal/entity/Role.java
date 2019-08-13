@@ -26,7 +26,6 @@ import java.time.LocalDateTime;
 @TableName("base_role")
 public class Role extends BaseEntity {
 
-
     /**
      * 主键
      */
@@ -59,7 +58,7 @@ public class Role extends BaseEntity {
      * 创建人id
      */
     @TableField("create_by")
-    private int createBy;
+    private Integer createBy;
 
     /**
      * 创建时间
@@ -71,7 +70,7 @@ public class Role extends BaseEntity {
      * 更新人id
      */
     @TableField("update_by")
-    private int updateBy;
+    private Integer updateBy;
 
     /**
      * 更新时间

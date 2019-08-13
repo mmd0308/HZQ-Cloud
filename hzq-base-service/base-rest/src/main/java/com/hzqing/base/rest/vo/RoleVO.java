@@ -1,6 +1,7 @@
 package com.hzqing.base.rest.vo;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
  * @author hzqing
  * @date 2019-08-12 22:56
  */
+@Data
 public class RoleVO implements Serializable {
     private static final long serialVersionUID = 4347835058611314772L;
 

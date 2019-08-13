@@ -15,6 +15,7 @@ dubbo:
 server:
   port: 10600
 
+
 spring:
   application:
     name: base-rest
@@ -22,3 +23,4 @@ spring:
     property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
     default-property-inclusion: non_null
 debug: true
+

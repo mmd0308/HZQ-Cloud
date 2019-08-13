@@ -40,7 +40,7 @@ public class RoleDto extends BaseDto {
     /**
      * 创建人id
      */
-    private int createBy;
+    private Integer createBy;
 
     /**
      * 创建时间
@@ -50,7 +50,7 @@ public class RoleDto extends BaseDto {
     /**
      * 更新人id
      */
-    private int updateBy;
+    private Integer updateBy;
 
     /**
      * 更新时间

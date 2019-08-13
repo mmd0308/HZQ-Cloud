@@ -1,7 +1,6 @@
 package com.hzqing.base.rest.controller.v1;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hzqing.base.api.dto.menu.DeleteMenuRequest;
 import com.hzqing.base.api.dto.user.*;
 import com.hzqing.base.api.service.IUserService;
 import com.hzqing.base.rest.converter.UserConverter;
@@ -26,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(tags = "用户管理模块")
 @RestController
-@RequestMapping("/"+ GlobalConstants.VERSION_V1 +"/users")
+@RequestMapping("/base/"+ GlobalConstants.VERSION_V1 +"/users")
 public class UserController extends BaseController {
 
     @Reference(version = GlobalConstants.VERSION_V1)

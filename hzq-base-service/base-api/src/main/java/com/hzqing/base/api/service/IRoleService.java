@@ -52,4 +52,11 @@ public interface IRoleService  {
      * @return
      */
     CommonResponse updateRole(UpdateRoleRequest request);
+
+    /**
+     * 分页查询角色信息
+     * @param request
+     * @return
+     */
+    CommonResponse<Page<RoleDto>> rolePage(RolePageRequest request);
 }

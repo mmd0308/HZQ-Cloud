@@ -1,10 +1,10 @@
 package com.hzqing.base.rest.controller.v1;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hzqing.base.api.dto.role.*;
-import com.hzqing.base.api.service.IRoleService;
-import com.hzqing.base.rest.converter.RoleConverter;
-import com.hzqing.base.rest.vo.RoleVO;
+import com.hzqing.base.api.dto.button.*;
+import com.hzqing.base.api.service.IButtonService;
+import com.hzqing.base.rest.converter.ButtonConverter;
+import com.hzqing.base.rest.vo.ButtonVO;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.rest.controller.BaseController;
 import com.hzqing.common.core.rest.result.RestResult;
@@ -15,79 +15,81 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 角色管理模块
+ * 按钮管理模块
  * @author hzqing
  * @date 2019-08-11 12:12
  */
-@Api(tags = "角色管理模块")
+@Api(tags="按钮模块模块管理")
 @RestController
-@RequestMapping("/base/" + GlobalConstants.VERSION_V1 + "/roles")
-public class RoleController extends BaseController {
+@RequestMapping("/base/" + GlobalConstants.VERSION_V1 + "/buttons")
+public class ButtonController extends BaseController {
 
 
     @Reference(version = GlobalConstants.VERSION_V1)
-    IRoleService roleService;
+    IButtonService buttonService;
 
     @Autowired
-    RoleConverter roleConverter;
+    ButtonConverter buttonConverter;
 
     @ApiOperation(value = "根据id获取菜单")
     @GetMapping("/{id}")
-    public RestResult<RoleVO> get(@PathVariable int id) {
-        RoleDetailRequest request = new RoleDetailRequest();
+    public RestResult<ButtonVO> get(@PathVariable int id) {
+        ButtonDetailRequest request = new ButtonDetailRequest();
         request.setId(id);
-        CommonResponse<RoleDto> response = roleService.roleDetail(request);
+        CommonResponse<ButtonDto> response = buttonService.buttonDetail(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
-            RoleVO res = roleConverter.dto2vo(response.getData());
+            ButtonVO res = buttonConverter.dto2vo(response.getData());
             return RestResultFactory.getInstance().success(res);
         }
         return RestResultFactory.getInstance().error();
     }
 
-    @ApiOperation(value = "角色分页查询")
+    @ApiOperation(value = "按钮分页查询")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "num", value = "页码", required = true, paramType = "path", dataType = "int"),
             @ApiImplicitParam(name = "size", value = "每页展示数量", required = true, paramType = "path", dataType = "int")
     })
     @GetMapping("/page/{num}/{size}")
-    public RestResult<Page<RoleVO>> page(@PathVariable int num, @PathVariable int size, RoleVO roleVO){
-        RolePageRequest request = new RolePageRequest();
+    public RestResult<Page<ButtonVO>> page(@PathVariable int num, @PathVariable int size, ButtonVO buttonVO){
+        ButtonPageRequest request = new ButtonPageRequest();
         request.setPageNum(num);
         request.setPageSize(size);
-        CommonResponse<Page<RoleDto>> response = roleService.rolePage(request);
+        CommonResponse<Page<ButtonDto>> response = buttonService.buttonPage(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
-            Page<RoleVO> res = roleConverter.dto2Vo(response.getData());
+            Page<ButtonVO> res = buttonConverter.dto2Vo(response.getData());
             return RestResultFactory.getInstance().success(res);
         }
         return RestResultFactory.getInstance().error();
     }
-    @ApiOperation(value = "创建角色")
+    @ApiOperation(value = "创建按钮")
     @PostMapping
-    public RestResult create(@RequestBody RoleVO RoleVO){
-        AddRoleRequest request = roleConverter.vo2Dto(RoleVO);
-        CommonResponse response = roleService.createRole(request);
+    public RestResult create(@RequestBody ButtonVO ButtonVO){
+        AddButtonRequest request = buttonConverter.vo2Dto(ButtonVO);
+        CommonResponse response = buttonService.createButton(request);
         return result(response);
     }
 
-    @ApiOperation(value = "根据id，更新角色")
+    @ApiOperation(value = "根据id，更新按钮")
     @PutMapping("/{id}")
-    public RestResult update(@PathVariable int id, @RequestBody RoleVO RoleVO) {
-        UpdateRoleRequest request = roleConverter.vo2UpdateDto(RoleVO);
-        CommonResponse response = roleService.updateRole(request);
+    public RestResult update(@PathVariable int id, @RequestBody ButtonVO ButtonVO) {
+        UpdateButtonRequest request = buttonConverter.vo2UpdateDto(ButtonVO);
+        request.setId(id);
+        CommonResponse response = buttonService.updateButton(request);
         return result(response);
     }
 
     @ApiOperation(value = "根据id，删除删除")
     @DeleteMapping("/{id}")
     public RestResult deleted(@PathVariable int id){
-        DeleteRoleRequest request = new DeleteRoleRequest();
+        DeleteButtonRequest request = new DeleteButtonRequest();
         request.setId(id);
-        CommonResponse response = roleService.deleteRole(request);
+        CommonResponse response = buttonService.deleteButton(request);
         return result(response);
     }
 }

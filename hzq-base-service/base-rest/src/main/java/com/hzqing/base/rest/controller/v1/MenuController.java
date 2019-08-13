@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(tags = "菜单管理模块")
 @RestController
-@RequestMapping("/" + GlobalConstants.VERSION_V1 + "/menus")
+@RequestMapping("/base/" + GlobalConstants.VERSION_V1 + "/menus")
 public class MenuController extends BaseController {
 
     @Reference(version = GlobalConstants.VERSION_V1)

@@ -1,6 +1,8 @@
 package com.hzqing.base.provider.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.role.*;
 import com.hzqing.base.api.dto.user.DeleteUserRequest;
 import com.hzqing.base.api.service.IRoleService;
@@ -34,6 +36,7 @@ public class RoleServiceImpl implements IRoleService {
 
     @Autowired
     private RoleConverter roleConverter;
+
 
     @Override
     public CommonResponse createRole(AddRoleRequest request) {
@@ -108,6 +111,24 @@ public class RoleServiceImpl implements IRoleService {
             log.info("RoleServiceImpl.updateRole effect row: " + row);
         } catch (Exception e){
             log.error("RoleServiceImpl.updateRole occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
+        }
+        return response;
+    }
+
+    @Override
+    public CommonResponse<Page<RoleDto>> rolePage(RolePageRequest request) {
+        log.info("RoleServiceImpl.rolePage request: " + request);
+        CommonResponse<Page<RoleDto>> response = new CommonResponse<>();
+        try {
+            request.checkParams();
+            Role role = roleConverter.req2Role(request);
+            IPage<Role> roleIPage = roleMapper.selectPage(
+                    new Page<Role>(request.getPageNum(), request.getPageSize()),
+                    new QueryWrapper<>(role));
+            response.setData(roleConverter.pageRole2PageDto(roleIPage));
+        }catch (Exception e) {
+            log.error("RoleServiceImpl.rolePage occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;

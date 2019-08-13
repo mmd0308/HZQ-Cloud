@@ -1,15 +1,10 @@
 package com.hzqing.base.provider.converter;
 
-import com.hzqing.base.api.dto.role.AddRoleRequest;
-import com.hzqing.base.api.dto.role.RoleDto;
-import com.hzqing.base.api.dto.role.RoleListRequest;
-import com.hzqing.base.api.dto.role.UpdateRoleRequest;
-import com.hzqing.base.api.dto.user.AddUserRequest;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hzqing.base.api.dto.role.*;
 import com.hzqing.base.api.dto.user.DeleteUserRequest;
-import com.hzqing.base.api.dto.user.UserDto;
-import com.hzqing.base.api.dto.user.UserListRequest;
 import com.hzqing.base.provider.dal.entity.Role;
-import com.hzqing.base.provider.dal.entity.User;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -33,4 +28,7 @@ public interface RoleConverter {
 
     Role req2Role(UpdateRoleRequest request);
 
+    Role req2Role(RolePageRequest request);
+
+    Page<RoleDto> pageRole2PageDto(IPage<Role> roleIPage);
 }

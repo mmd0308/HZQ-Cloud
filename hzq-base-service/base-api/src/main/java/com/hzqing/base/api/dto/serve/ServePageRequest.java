@@ -1,4 +1,4 @@
-package com.hzqing.base.api.dto.role;
+package com.hzqing.base.api.dto.serve;
 
 import com.hzqing.common.core.service.request.PageRequest;
 import lombok.Data;
@@ -10,12 +10,13 @@ import lombok.ToString;
  */
 @Data
 @ToString(callSuper = true)
-public class RolePageRequest extends PageRequest {
-    public RolePageRequest() {
+public class ServePageRequest extends PageRequest {
+    public ServePageRequest() {
     }
 
-    public RolePageRequest(int pageNum, int pageSize) {
+    public ServePageRequest(int pageNum, int pageSize) {
         super(pageNum, pageSize);
     }
+
 
 }

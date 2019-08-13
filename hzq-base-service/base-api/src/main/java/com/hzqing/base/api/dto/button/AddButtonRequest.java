@@ -1,4 +1,4 @@
-package com.hzqing.base.api.dto.role;
+package com.hzqing.base.api.dto.button;
 
 import com.hzqing.base.api.constants.UserRetCodeConstants;
 import com.hzqing.common.core.service.exception.ParamsValidateException;
@@ -12,49 +12,41 @@ import java.time.LocalDateTime;
  * @date 2019-08-10 00:35
  */
 @Data
-public class AddRoleRequest extends AbstractRequest {
+public class AddButtonRequest extends AbstractRequest {
 
+    /**
+     * 主键
+     */
     private Integer id;
 
     /**
-     * 数据值
+     * 菜单id,按钮属于哪个菜单下面的
+     */
+    private Integer menuId;
+
+    /**
+     * 按钮名称
      */
     private String name;
 
     /**
-     * 备注信息
+     * 权限标示
      */
-    private String remarks;
+    private String permission;
 
     /**
-     * 删除标记删除标记 ‘0’ 没有删除, ‘1’ 删除
+     * 链接
      */
-    private String delFlag;
+    private String href;
 
-    /**
-     * 系统角色标记 ‘0’ 不是 ‘1’是
-     */
-    private String sysFlag;
-
-    /**
-     * 创建人id
-     */
     private Integer createBy;
 
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
+    private LocalDateTime ceateTime;
 
-    /**
-     * 更新人id
-     */
     private Integer updateBy;
 
-    /**
-     * 更新时间
-     */
     private LocalDateTime updateTime;
+
     /**
      * 请求参数进行校验
      */
