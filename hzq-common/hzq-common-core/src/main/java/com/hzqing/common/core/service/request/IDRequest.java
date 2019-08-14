@@ -12,13 +12,20 @@ import lombok.ToString;
  */
 @Data
 @ToString(callSuper = true)
-public class CheckIdRequest extends AbstractRequest {
+public class IDRequest extends AbstractRequest {
 
     private static final long serialVersionUID = 4085265036094778483L;
     /**
      * 主键
      */
     private Integer id;
+
+    public IDRequest() {
+    }
+
+    public IDRequest(Integer id) {
+        this.id = id;
+    }
 
     @Override
     public void checkParams() {

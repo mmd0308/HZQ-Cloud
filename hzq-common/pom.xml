@@ -16,6 +16,7 @@
 
     <modules>
         <module>hzq-common-core</module>
+        <module>hzq-common-tools</module>
     </modules>
     <packaging>pom</packaging>
 
