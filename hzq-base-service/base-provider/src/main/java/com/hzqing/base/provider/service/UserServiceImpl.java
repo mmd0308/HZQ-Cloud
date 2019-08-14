@@ -2,13 +2,17 @@ package com.hzqing.base.provider.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hzqing.base.api.dto.user.*;
+import com.hzqing.base.api.dto.user.AddUserRequest;
+import com.hzqing.base.api.dto.user.UpdateUserRequest;
+import com.hzqing.base.api.dto.user.UserDto;
+import com.hzqing.base.api.dto.user.UserPageRequest;
 import com.hzqing.base.api.service.IUserService;
 import com.hzqing.base.provider.converter.UserConverter;
 import com.hzqing.base.provider.dal.entity.User;
 import com.hzqing.base.provider.dal.mapper.UserMapper;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
@@ -29,7 +33,7 @@ public class UserServiceImpl implements IUserService {
     private UserConverter userConverter;
 
     @Override
-    public CommonResponse createUser(AddUserRequest request) {
+    public CommonResponse save(AddUserRequest request) {
         log.info("UserServiceImpl.createUser request: " + request);
         CommonResponse response = new CommonResponse();
         try {
@@ -47,7 +51,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public CommonResponse<UserDto> userDetail(UserDetailRequest request) {
+    public CommonResponse<UserDto> getById(IDRequest request) {
         log.info("UserServiceImpl.userDetail request: " + request);
         CommonResponse<UserDto> response = new CommonResponse<UserDto>();
         try {
@@ -63,7 +67,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public CommonResponse<Page<UserDto>> userPage(UserPageRequest request) {
+    public CommonResponse<Page<UserDto>> page(UserPageRequest request) {
         log.info("UserServiceImpl.userLists request: " + request);
         CommonResponse<Page<UserDto>>  response = new CommonResponse<Page<UserDto>>();
         try {
@@ -82,7 +86,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public CommonResponse deleteUser(DeleteUserRequest request) {
+    public CommonResponse removeById(IDRequest request) {
         log.info("UserServiceImpl.deleteUser request: " + request);
         CommonResponse response = new CommonResponse();
         try {
@@ -97,7 +101,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public CommonResponse updateUser(UpdateUserRequest request) {
+    public CommonResponse updateById(UpdateUserRequest request) {
         log.info("UserServiceImpl.updateUser request: " + request);
         CommonResponse response = new CommonResponse();
         try {

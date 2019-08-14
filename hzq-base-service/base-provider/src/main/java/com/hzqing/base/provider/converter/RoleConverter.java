@@ -3,7 +3,6 @@ package com.hzqing.base.provider.converter;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.role.*;
-import com.hzqing.base.api.dto.user.DeleteUserRequest;
 import com.hzqing.base.provider.dal.entity.Role;
 import org.mapstruct.Mapper;
 
@@ -19,8 +18,6 @@ public interface RoleConverter {
     Role req2Role(AddRoleRequest request);
 
     Role req2Role(RoleListRequest request);
-
-    Role req2Role(DeleteUserRequest request);
 
     RoleDto req2Dto(Role role);
 

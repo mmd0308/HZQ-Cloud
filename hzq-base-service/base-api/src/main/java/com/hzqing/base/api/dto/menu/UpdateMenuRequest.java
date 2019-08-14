@@ -3,6 +3,7 @@ package com.hzqing.base.api.dto.menu;
 import com.hzqing.base.api.constants.UserRetCodeConstants;
 import com.hzqing.common.core.service.exception.ParamsValidateException;
 import com.hzqing.common.core.service.request.AbstractRequest;
+import com.hzqing.common.core.service.request.IDRequest;
 import lombok.Data;
 
 /**
@@ -10,7 +11,7 @@ import lombok.Data;
  * @date 2019-08-10 00:35
  */
 @Data
-public class UpdateMenuRequest extends AbstractRequest {
+public class UpdateMenuRequest extends IDRequest {
 
     /**
      * 用户名
@@ -42,6 +43,7 @@ public class UpdateMenuRequest extends AbstractRequest {
      */
     @Override
     public void checkParams() {
+        super.checkParams();
         if (username == null || "".equals(username)){
             throw new ParamsValidateException(
                     UserRetCodeConstants.INVALID_PARAMETER.getCode(),

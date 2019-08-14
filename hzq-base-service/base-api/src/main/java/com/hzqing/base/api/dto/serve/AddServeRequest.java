@@ -3,7 +3,6 @@ package com.hzqing.base.api.dto.serve;
 import com.hzqing.common.core.service.constants.CommonRetCodeConstants;
 import com.hzqing.common.core.service.exception.ParamsValidateException;
 import com.hzqing.common.core.service.request.AbstractRequest;
-import com.hzqing.common.core.service.request.CheckIdRequest;
 import lombok.Data;
 
 /**

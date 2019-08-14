@@ -67,7 +67,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.hzqing.common</groupId>
+            <artifactId>hzq-common-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!-- Swagger2 Begin -->
         <dependency>
             <groupId>io.springfox</groupId>

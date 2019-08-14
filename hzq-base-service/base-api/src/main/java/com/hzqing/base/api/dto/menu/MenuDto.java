@@ -23,6 +23,11 @@ public class MenuDto extends BaseDto {
     private String name;
 
     /**
+     * 服务id
+     */
+    private Integer serveId;
+
+    /**
      * 上级菜单id 顶级菜单父级id为0
      */
     private Integer parentId;

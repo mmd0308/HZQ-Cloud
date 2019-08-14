@@ -1,6 +1,5 @@
 package com.hzqing.base.provider.converter;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.user.*;
 import com.hzqing.base.provider.dal.entity.User;
@@ -28,8 +27,6 @@ public interface UserConverter {
     UserDto user2Dto(User user);
 
     List<UserDto> users2List(List<User> users);
-
-    User req2User(DeleteUserRequest request);
 
     Page<UserDto> pageUser2PageDto(Page<User> users);
 

@@ -2,6 +2,7 @@ package com.hzqing.base.rest.config;
 
 import com.google.common.base.Predicate;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +21,7 @@ public class Swagger2Configuration {
             @Override
             public boolean apply(RequestHandler input) {
                 //只有添加了ApiOperation注解的method才在API中显示
-                if (input.isAnnotatedWith(ApiOperation.class) || input.isAnnotatedWith(Api.class)){
+                if (input.isAnnotatedWith(ApiOperation.class) || input.isAnnotatedWith(Api.class) || input.isAnnotatedWith(ApiModelProperty.class)){
                     return true;
                 }
                 return false;

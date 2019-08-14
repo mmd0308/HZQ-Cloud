@@ -10,7 +10,9 @@ import com.hzqing.base.provider.dal.entity.Menu;
 import com.hzqing.base.provider.dal.mapper.MenuMapper;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
+import com.hzqing.common.tools.tree.TreeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,8 @@ import java.util.List;
 @Service(version = GlobalConstants.VERSION_V1)
 public class MenuServiceImpl  implements IMenuService {
 
+    private final static Integer PARENT_ID = 0;
+
     @Autowired
     private MenuMapper menuMapper;
 
@@ -36,7 +40,7 @@ public class MenuServiceImpl  implements IMenuService {
     private MenuConverter menuConverter;
 
     @Override
-    public CommonResponse createMenu(AddMenuRequest request) {
+    public CommonResponse save(AddMenuRequest request) {
         CommonResponse response = new CommonResponse();
         try {
             request.checkParams();
@@ -51,7 +55,7 @@ public class MenuServiceImpl  implements IMenuService {
     }
 
     @Override
-    public CommonResponse<List<MenuDto>> menuLists(MenuListRequest request) {
+    public CommonResponse<List<MenuDto>> list(MenuListRequest request) {
         CommonResponse<List<MenuDto>> response = new CommonResponse<>();
         try {
             Menu menu = menuConverter.req2Menu(request);
@@ -65,7 +69,7 @@ public class MenuServiceImpl  implements IMenuService {
     }
 
     @Override
-    public CommonResponse deleteMenu(DeleteMenuRequest request) {
+    public CommonResponse removeById(IDRequest request) {
         CommonResponse response = new CommonResponse();
         log.info("MenuServiceImpl.deleteMenu request: " + request);
         try {
@@ -79,7 +83,7 @@ public class MenuServiceImpl  implements IMenuService {
     }
 
     @Override
-    public CommonResponse updateMenu(UpdateMenuRequest request) {
+    public CommonResponse updateById(UpdateMenuRequest request) {
         CommonResponse response = new CommonResponse();
         log.info("MenuServiceImpl.updateMenu request: " + request);
         try{
@@ -92,7 +96,7 @@ public class MenuServiceImpl  implements IMenuService {
     }
 
     @Override
-    public CommonResponse<MenuDto> menuDetail(MenuDetailRequest request) {
+    public CommonResponse<MenuDto> getById(IDRequest request) {
         log.info("MenuServiceImpl.menuDetail request: " + request);
         CommonResponse<MenuDto> response = new CommonResponse<>();
         try {
@@ -106,7 +110,7 @@ public class MenuServiceImpl  implements IMenuService {
     }
 
     @Override
-    public CommonResponse<Page<MenuDto>> menuPage(MenuPageRequest request) {
+    public CommonResponse<Page<MenuDto>> page(MenuPageRequest request) {
         log.info("MenuServiceImpl.menuPage request: " + request);
         CommonResponse<Page<MenuDto>> response = new CommonResponse<>();
         try {
@@ -121,4 +125,27 @@ public class MenuServiceImpl  implements IMenuService {
         }
         return response;
     }
+
+    @Override
+    public CommonResponse<List<MenuTreeDto>> tree(MenuTreeRequest request) {
+        log.info("MenuServiceImpl.tree request: " + request);
+        CommonResponse<List<MenuTreeDto>> response = new CommonResponse<>();
+        try {
+            request.checkParams();
+            Menu menu = menuConverter.req2Menu(request);
+            List<Menu> menus = menuMapper.selectList(new QueryWrapper<>(menu));
+            List<MenuTreeDto> listDtos = menuConverter.listMenu2ListTreeDto(menus);
+            log.info("MenuServiceImpl.tree 组装属性结果，查询数据数量是： " + listDtos.size());
+            List<MenuTreeDto> treeDtos = TreeUtils.buildTree(PARENT_ID, listDtos);
+
+            response.setData(treeDtos);
+        } catch (Exception e) {
+            log.error("MenuServiceImpl.tree occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
+        }
+        return response;
+    }
+
+
+
 }

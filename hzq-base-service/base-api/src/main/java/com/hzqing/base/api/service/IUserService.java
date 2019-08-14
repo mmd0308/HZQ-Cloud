@@ -1,11 +1,12 @@
 package com.hzqing.base.api.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hzqing.base.api.dto.user.*;
+import com.hzqing.base.api.dto.user.AddUserRequest;
+import com.hzqing.base.api.dto.user.UpdateUserRequest;
+import com.hzqing.base.api.dto.user.UserDto;
+import com.hzqing.base.api.dto.user.UserPageRequest;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
-
-import java.util.List;
 
 /**
  * <p>
@@ -22,14 +23,14 @@ public interface IUserService {
      * @param request
      * @return›
      */
-    CommonResponse createUser(AddUserRequest request);
+    CommonResponse save(AddUserRequest request);
 
     /**
-     * 根据条件获取用户的信息
+     * 根据id获取用户的信息
      * @param request
      * @return
      */
-    CommonResponse<UserDto> userDetail(UserDetailRequest request);
+    CommonResponse<UserDto> getById(IDRequest request);
 
 
     /**
@@ -37,21 +38,21 @@ public interface IUserService {
      * @param request
      * @return
      */
-    CommonResponse<Page<UserDto>> userPage(UserPageRequest request);
+    CommonResponse<Page<UserDto>> page(UserPageRequest request);
 
 
     /**
-     * 根据条件删除用户
+     * 根据id删除用户
      * @param request
      * @return
      */
-    CommonResponse deleteUser(DeleteUserRequest request);
+    CommonResponse removeById(IDRequest request);
 
     /**
      * 根据id，更新用户
      * @param request
      * @return
      */
-    CommonResponse updateUser(UpdateUserRequest request);
+    CommonResponse updateById(UpdateUserRequest request);
 
 }

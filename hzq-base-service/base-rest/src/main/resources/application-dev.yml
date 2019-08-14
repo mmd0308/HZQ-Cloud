@@ -20,7 +20,7 @@ spring:
   application:
     name: base-rest
   jackson:
-    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+#    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
     default-property-inclusion: non_null
 debug: true
 

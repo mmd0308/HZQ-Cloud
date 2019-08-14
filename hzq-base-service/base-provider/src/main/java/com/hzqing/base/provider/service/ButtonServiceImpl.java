@@ -10,6 +10,7 @@ import com.hzqing.base.provider.dal.entity.Button;
 import com.hzqing.base.provider.dal.mapper.ButtonMapper;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
@@ -38,7 +39,7 @@ public class ButtonServiceImpl implements IButtonService {
 
 
     @Override
-    public CommonResponse createButton(AddButtonRequest request) {
+    public CommonResponse save(AddButtonRequest request) {
         log.info("ButtonServiceImpl.createButton request: " + request);
         CommonResponse response = new CommonResponse();
         try {
@@ -54,7 +55,7 @@ public class ButtonServiceImpl implements IButtonService {
     }
 
     @Override
-    public CommonResponse<ButtonDto> buttonDetail(ButtonDetailRequest request) {
+    public CommonResponse<ButtonDto> getById(IDRequest request) {
         log.info("ButtonServiceImpl.buttonDetail request: " + request);
         CommonResponse<ButtonDto> response = new CommonResponse<>();
         try {
@@ -70,7 +71,7 @@ public class ButtonServiceImpl implements IButtonService {
     }
 
     @Override
-    public CommonResponse<List<ButtonDto>> buttonLists(ButtonListRequest request) {
+    public CommonResponse<List<ButtonDto>> list(ButtonListRequest request) {
         CommonResponse<List<ButtonDto>> response = new CommonResponse<>();
         log.info("ButtonServiceImpl.buttonLists request: " + request);
         try {
@@ -86,7 +87,7 @@ public class ButtonServiceImpl implements IButtonService {
     }
 
     @Override
-    public CommonResponse deleteButton(DeleteButtonRequest request) {
+    public CommonResponse removeById(IDRequest request) {
         log.info("ButtonServiceImpl.deleteButton request: " + request);
         CommonResponse response = new CommonResponse();
         try{
@@ -101,7 +102,7 @@ public class ButtonServiceImpl implements IButtonService {
     }
 
     @Override
-    public CommonResponse updateButton(UpdateButtonRequest request) {
+    public CommonResponse updateById(UpdateButtonRequest request) {
         log.info("ButtonServiceImpl.updateButton request: " + request);
         CommonResponse response = new CommonResponse();
         try {
@@ -116,7 +117,7 @@ public class ButtonServiceImpl implements IButtonService {
     }
 
     @Override
-    public CommonResponse<Page<ButtonDto>> buttonPage(ButtonPageRequest request) {
+    public CommonResponse<Page<ButtonDto>> page(ButtonPageRequest request) {
         log.info("ButtonServiceImpl.buttonPage request: " + request);
         CommonResponse<Page<ButtonDto>> response = new CommonResponse<>();
         try {

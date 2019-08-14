@@ -2,7 +2,7 @@ package com.hzqing.base.api.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.role.*;
-import com.hzqing.base.api.dto.user.DeleteUserRequest;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 
 import java.util.List;
@@ -22,14 +22,14 @@ public interface IRoleService  {
      * @param request
      * @return
      */
-    CommonResponse createRole(AddRoleRequest request);
+    CommonResponse save(AddRoleRequest request);
 
     /**
-     * 根据条件获取角色的信息
+     * 根据id获取角色的信息
      * @param request
      * @return
      */
-    CommonResponse<RoleDto> roleDetail(RoleDetailRequest request);
+    CommonResponse<RoleDto> getById(IDRequest request);
 
 
     /**
@@ -37,26 +37,26 @@ public interface IRoleService  {
      * @param request
      * @return
      */
-    CommonResponse<List<RoleDto>> roleLists(RoleListRequest request);
+    CommonResponse<List<RoleDto>> list(RoleListRequest request);
 
     /**
      * 根据条件删除角色
      * @param request
      * @return
      */
-    CommonResponse deleteRole(DeleteRoleRequest request);
+    CommonResponse removeById(IDRequest request);
 
     /**
      * 根据id，更新角色
      * @param request
      * @return
      */
-    CommonResponse updateRole(UpdateRoleRequest request);
+    CommonResponse updateById(UpdateRoleRequest request);
 
     /**
      * 分页查询角色信息
      * @param request
      * @return
      */
-    CommonResponse<Page<RoleDto>> rolePage(RolePageRequest request);
+    CommonResponse<Page<RoleDto>> page(RolePageRequest request);
 }

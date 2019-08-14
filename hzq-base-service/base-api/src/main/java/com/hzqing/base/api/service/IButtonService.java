@@ -2,6 +2,7 @@ package com.hzqing.base.api.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.button.*;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 
 import java.util.List;
@@ -20,14 +21,14 @@ public interface IButtonService {
      * @param request
      * @return
      */
-    CommonResponse createButton(AddButtonRequest request);
+    CommonResponse save(AddButtonRequest request);
 
     /**
-     * 根据条件获取按钮的信息
+     * 根据id获取按钮的信息
      * @param request
      * @return
      */
-    CommonResponse<ButtonDto> buttonDetail(ButtonDetailRequest request);
+    CommonResponse<ButtonDto> getById(IDRequest request);
 
 
     /**
@@ -35,26 +36,26 @@ public interface IButtonService {
      * @param request
      * @return
      */
-    CommonResponse<List<ButtonDto>> buttonLists(ButtonListRequest request);
+    CommonResponse<List<ButtonDto>> list(ButtonListRequest request);
 
     /**
-     * 根据条件删除按钮
+     * 根据id删除按钮
      * @param request
      * @return
      */
-    CommonResponse deleteButton(DeleteButtonRequest request);
+    CommonResponse removeById(IDRequest request);
 
     /**
      * 根据id，更新按钮
      * @param request
      * @return
      */
-    CommonResponse updateButton(UpdateButtonRequest request);
+    CommonResponse updateById(UpdateButtonRequest request);
 
     /**
      * 分页查询按钮信息
      * @param request
      * @return
      */
-    CommonResponse<Page<ButtonDto>> buttonPage(ButtonPageRequest request);
+    CommonResponse<Page<ButtonDto>> page(ButtonPageRequest request);
 }

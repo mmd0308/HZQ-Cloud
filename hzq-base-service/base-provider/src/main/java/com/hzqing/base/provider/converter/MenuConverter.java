@@ -3,12 +3,7 @@ package com.hzqing.base.provider.converter;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.menu.*;
-import com.hzqing.base.api.dto.role.AddRoleRequest;
-import com.hzqing.base.api.dto.role.RoleDto;
-import com.hzqing.base.api.dto.role.RoleListRequest;
-import com.hzqing.base.api.dto.user.DeleteUserRequest;
 import com.hzqing.base.provider.dal.entity.Menu;
-import com.hzqing.base.provider.dal.entity.Role;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -24,7 +19,6 @@ public interface MenuConverter {
 
     Menu req2Menu(MenuListRequest request);
 
-    Menu req2Menu(DeleteMenuRequest request);
 
     MenuDto req2Dto(Menu menu);
 
@@ -35,4 +29,8 @@ public interface MenuConverter {
     Menu req2Menu(MenuPageRequest request);
 
     Page<MenuDto> pageMenu2PageDto(IPage<Menu> menuIPage);
+
+    Menu req2Menu(MenuTreeRequest request);
+
+    List<MenuTreeDto> listMenu2ListTreeDto(List<Menu> menus);
 }

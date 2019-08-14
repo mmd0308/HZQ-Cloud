@@ -2,6 +2,7 @@ package com.hzqing.base.api.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.menu.*;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 
 import java.util.List;
@@ -21,40 +22,48 @@ public interface IMenuService  {
      * @param request
      * @return
      */
-    CommonResponse createMenu(AddMenuRequest request);
+    CommonResponse save(AddMenuRequest request);
 
     /**
      * 获取菜单列表
      * @param request
      * @return
      */
-    CommonResponse<List<MenuDto>> menuLists(MenuListRequest request);
+    CommonResponse<List<MenuDto>> list(MenuListRequest request);
 
     /**
-     * 根据条件删除菜单
+     * 根据id删除菜单
      * @param request
      * @return
      */
-    CommonResponse deleteMenu(DeleteMenuRequest request);
+    CommonResponse removeById(IDRequest request);
 
     /**
-     * 根据条件更新菜单
+     * 根据ID更新菜单
      * @param request
      * @return
      */
-    CommonResponse updateMenu(UpdateMenuRequest request);
+    CommonResponse updateById(UpdateMenuRequest request);
 
     /**
-     * 根据条件，返回菜单详情
+     * 根据id，返回菜单详情
      * @param request
      * @return
      */
-    CommonResponse<MenuDto> menuDetail(MenuDetailRequest request);
+    CommonResponse<MenuDto> getById(IDRequest request);
 
     /**
      * 分页条件查询
      * @param request
      * @return
      */
-    CommonResponse<Page<MenuDto>> menuPage(MenuPageRequest request);
+    CommonResponse<Page<MenuDto>> page(MenuPageRequest request);
+
+    /**
+     * 根据条件获取所有树行结果
+     * @param request
+     * @return
+     */
+    CommonResponse<List<MenuTreeDto>> tree(MenuTreeRequest request);
+
 }

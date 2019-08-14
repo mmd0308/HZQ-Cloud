@@ -4,13 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.role.*;
-import com.hzqing.base.api.dto.user.DeleteUserRequest;
 import com.hzqing.base.api.service.IRoleService;
 import com.hzqing.base.provider.converter.RoleConverter;
 import com.hzqing.base.provider.dal.entity.Role;
 import com.hzqing.base.provider.dal.mapper.RoleMapper;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
@@ -39,7 +39,7 @@ public class RoleServiceImpl implements IRoleService {
 
 
     @Override
-    public CommonResponse createRole(AddRoleRequest request) {
+    public CommonResponse save(AddRoleRequest request) {
         log.info("RoleServiceImpl.createRole request: " + request);
         CommonResponse response = new CommonResponse();
         try {
@@ -55,7 +55,7 @@ public class RoleServiceImpl implements IRoleService {
     }
 
     @Override
-    public CommonResponse<RoleDto> roleDetail(RoleDetailRequest request) {
+    public CommonResponse<RoleDto> getById(IDRequest request) {
         log.info("RoleServiceImpl.roleDetail request: " + request);
         CommonResponse<RoleDto> response = new CommonResponse<>();
         try {
@@ -71,7 +71,7 @@ public class RoleServiceImpl implements IRoleService {
     }
 
     @Override
-    public CommonResponse<List<RoleDto>> roleLists(RoleListRequest request) {
+    public CommonResponse<List<RoleDto>> list(RoleListRequest request) {
         CommonResponse<List<RoleDto>> response = new CommonResponse<>();
         log.info("RoleServiceImpl.roleLists request: " + request);
         try {
@@ -87,7 +87,7 @@ public class RoleServiceImpl implements IRoleService {
     }
 
     @Override
-    public CommonResponse deleteRole(DeleteRoleRequest request) {
+    public CommonResponse removeById(IDRequest request) {
         log.info("RoleServiceImpl.deleteRole request: " + request);
         CommonResponse response = new CommonResponse();
         try{
@@ -102,7 +102,7 @@ public class RoleServiceImpl implements IRoleService {
     }
 
     @Override
-    public CommonResponse updateRole(UpdateRoleRequest request) {
+    public CommonResponse updateById(UpdateRoleRequest request) {
         log.info("RoleServiceImpl.updateRole request: " + request);
         CommonResponse response = new CommonResponse();
         try {
@@ -117,7 +117,7 @@ public class RoleServiceImpl implements IRoleService {
     }
 
     @Override
-    public CommonResponse<Page<RoleDto>> rolePage(RolePageRequest request) {
+    public CommonResponse<Page<RoleDto>> page(RolePageRequest request) {
         log.info("RoleServiceImpl.rolePage request: " + request);
         CommonResponse<Page<RoleDto>> response = new CommonResponse<>();
         try {

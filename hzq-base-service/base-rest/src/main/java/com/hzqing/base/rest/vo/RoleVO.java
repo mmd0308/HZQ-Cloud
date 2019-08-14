@@ -37,13 +37,11 @@ public class RoleVO implements Serializable {
     /**
      * 系统角色标记 ‘0’ 不是 ‘1’是
      */
-    @ApiModelProperty(name = "sys_flag")
     private String sysFlag;
 
     /**
      * 创建人id
      */
-    @ApiModelProperty(name = "create_by")
     private int createBy;
 
     /**

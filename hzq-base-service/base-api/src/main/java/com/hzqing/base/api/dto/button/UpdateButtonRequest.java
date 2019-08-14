@@ -1,6 +1,6 @@
 package com.hzqing.base.api.dto.button;
 
-import com.hzqing.common.core.service.request.CheckIdRequest;
+import com.hzqing.common.core.service.request.IDRequest;
 import lombok.Data;
 import lombok.ToString;
 
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @ToString(callSuper = true)
-public class UpdateButtonRequest extends CheckIdRequest {
+public class UpdateButtonRequest extends IDRequest {
 
 
     /**
@@ -43,5 +43,8 @@ public class UpdateButtonRequest extends CheckIdRequest {
 
     private LocalDateTime updateTime;
 
-
+    @Override
+    public void checkParams() {
+        super.checkParams();
+    }
 }

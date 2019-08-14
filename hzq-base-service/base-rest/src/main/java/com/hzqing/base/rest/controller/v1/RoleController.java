@@ -10,6 +10,7 @@ import com.hzqing.common.core.rest.controller.BaseController;
 import com.hzqing.common.core.rest.result.RestResult;
 import com.hzqing.common.core.rest.result.RestResultFactory;
 import com.hzqing.common.core.service.constants.CommonRetCodeConstants;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -39,9 +40,7 @@ public class RoleController extends BaseController {
     @ApiOperation(value = "根据id获取菜单")
     @GetMapping("/{id}")
     public RestResult<RoleVO> get(@PathVariable int id) {
-        RoleDetailRequest request = new RoleDetailRequest();
-        request.setId(id);
-        CommonResponse<RoleDto> response = roleService.roleDetail(request);
+        CommonResponse<RoleDto> response = roleService.getById(new IDRequest(id));
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             RoleVO res = roleConverter.dto2vo(response.getData());
             return RestResultFactory.getInstance().success(res);
@@ -59,7 +58,7 @@ public class RoleController extends BaseController {
         RolePageRequest request = new RolePageRequest();
         request.setPageNum(num);
         request.setPageSize(size);
-        CommonResponse<Page<RoleDto>> response = roleService.rolePage(request);
+        CommonResponse<Page<RoleDto>> response = roleService.page(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             Page<RoleVO> res = roleConverter.dto2Vo(response.getData());
             return RestResultFactory.getInstance().success(res);
@@ -70,7 +69,7 @@ public class RoleController extends BaseController {
     @PostMapping
     public RestResult create(@RequestBody RoleVO RoleVO){
         AddRoleRequest request = roleConverter.vo2Dto(RoleVO);
-        CommonResponse response = roleService.createRole(request);
+        CommonResponse response = roleService.save(request);
         return result(response);
     }
 
@@ -78,16 +77,14 @@ public class RoleController extends BaseController {
     @PutMapping("/{id}")
     public RestResult update(@PathVariable int id, @RequestBody RoleVO RoleVO) {
         UpdateRoleRequest request = roleConverter.vo2UpdateDto(RoleVO);
-        CommonResponse response = roleService.updateRole(request);
+        CommonResponse response = roleService.updateById(request);
         return result(response);
     }
 
     @ApiOperation(value = "根据id，删除删除")
     @DeleteMapping("/{id}")
     public RestResult deleted(@PathVariable int id){
-        DeleteRoleRequest request = new DeleteRoleRequest();
-        request.setId(id);
-        CommonResponse response = roleService.deleteRole(request);
+        CommonResponse response = roleService.removeById(new IDRequest(id));
         return result(response);
     }
 }

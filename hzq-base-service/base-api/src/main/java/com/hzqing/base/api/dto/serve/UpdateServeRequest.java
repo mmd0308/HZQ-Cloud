@@ -1,9 +1,6 @@
 package com.hzqing.base.api.dto.serve;
 
-import com.hzqing.common.core.service.constants.CommonRetCodeConstants;
-import com.hzqing.common.core.service.exception.ParamsValidateException;
-import com.hzqing.common.core.service.request.AbstractRequest;
-import com.hzqing.common.core.service.request.CheckIdRequest;
+import com.hzqing.common.core.service.request.IDRequest;
 import lombok.Data;
 import lombok.ToString;
 
@@ -15,7 +12,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @ToString(callSuper = true)
-public class UpdateServeRequest extends CheckIdRequest {
+public class UpdateServeRequest extends IDRequest {
 
 
     /**

@@ -10,6 +10,7 @@ import com.hzqing.common.core.rest.controller.BaseController;
 import com.hzqing.common.core.rest.result.RestResult;
 import com.hzqing.common.core.rest.result.RestResultFactory;
 import com.hzqing.common.core.service.constants.CommonRetCodeConstants;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -37,9 +38,9 @@ public class UserController extends BaseController {
     @ApiOperation(value = "根据id获取用户信息")
     @GetMapping("/{id}")
     public RestResult<UserVO> get(@PathVariable int id){
-        UserDetailRequest request = new UserDetailRequest();
+        IDRequest request = new IDRequest();
         request.setId(id);
-        CommonResponse<UserDto> response = userService.userDetail(request);
+        CommonResponse<UserDto> response = userService.getById(request);
         if (response.getCode().equals(CommonRetCodeConstants.SUCCESS.getCode())){
             UserVO res = userConverter.dto2Vo(response.getData());
             return RestResultFactory.getInstance().success(res);
@@ -57,7 +58,7 @@ public class UserController extends BaseController {
         UserPageRequest request = new UserPageRequest();
         request.setPageNum(num);
         request.setPageSize(size);
-        CommonResponse<Page<UserDto>> response = userService.userPage(request);
+        CommonResponse<Page<UserDto>> response = userService.page(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
                 Page<UserVO> res = userConverter.dto2Vo(response.getData());
             return RestResultFactory.getInstance().success(res);
@@ -70,7 +71,7 @@ public class UserController extends BaseController {
     @PostMapping
     public RestResult create(@RequestBody UserVO userVO){
         AddUserRequest request = userConverter.vo2Dto(userVO);
-        CommonResponse response = userService.createUser(request);
+        CommonResponse response = userService.save(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             return RestResultFactory.getInstance().success();
         }
@@ -81,7 +82,7 @@ public class UserController extends BaseController {
     @PutMapping("/{id}")
     public RestResult update(@PathVariable int id, @RequestBody UserVO userVO) {
         UpdateUserRequest request = userConverter.vo2UpdateDto(userVO);
-        CommonResponse response = userService.updateUser(request);
+        CommonResponse response = userService.updateById(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             return RestResultFactory.getInstance().success(response);
         }
@@ -91,9 +92,7 @@ public class UserController extends BaseController {
     @ApiOperation(value = "根据id，删除用户")
     @DeleteMapping("/{id}")
     public RestResult deleted(@PathVariable int id){
-        DeleteUserRequest request = new DeleteUserRequest();
-        request.setId(id);
-        CommonResponse response = userService.deleteUser(request);
+        CommonResponse response = userService.removeById(new IDRequest(id));
         return result(response);
     }
 

@@ -10,6 +10,7 @@ import com.hzqing.common.core.rest.controller.BaseController;
 import com.hzqing.common.core.rest.result.RestResult;
 import com.hzqing.common.core.rest.result.RestResultFactory;
 import com.hzqing.common.core.service.constants.CommonRetCodeConstants;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -18,6 +19,8 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 服务管理模块
@@ -39,9 +42,7 @@ public class ServeController extends BaseController {
     @ApiOperation(value = "根据id获取菜单")
     @GetMapping("/{id}")
     public RestResult<ServeVO> get(@PathVariable int id) {
-        ServeDetailRequest request = new ServeDetailRequest();
-        request.setId(id);
-        CommonResponse<ServeDto> response = serveService.serveDetail(request);
+        CommonResponse<ServeDto> response = serveService.getById(new IDRequest(id));
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             ServeVO res = serveConverter.dto2vo(response.getData());
             return RestResultFactory.getInstance().success(res);
@@ -59,7 +60,7 @@ public class ServeController extends BaseController {
         ServePageRequest request = new ServePageRequest();
         request.setPageNum(num);
         request.setPageSize(size);
-        CommonResponse<Page<ServeDto>> response = serveService.servePage(request);
+        CommonResponse<Page<ServeDto>> response = serveService.page(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             Page<ServeVO> res = serveConverter.dto2Vo(response.getData());
             return RestResultFactory.getInstance().success(res);
@@ -68,27 +69,36 @@ public class ServeController extends BaseController {
     }
     @ApiOperation(value = "创建服务")
     @PostMapping
-    public RestResult create(@RequestBody ServeVO ServeVO){
-        AddServeRequest request = serveConverter.vo2Dto(ServeVO);
-        CommonResponse response = serveService.createServe(request);
+    public RestResult create(@RequestBody ServeVO serveVO){
+        AddServeRequest request = serveConverter.vo2Dto(serveVO);
+        CommonResponse response = serveService.save(request);
         return result(response);
     }
 
     @ApiOperation(value = "根据id，更新服务")
     @PutMapping("/{id}")
-    public RestResult update(@PathVariable int id, @RequestBody ServeVO ServeVO) {
-        UpdateServeRequest request = serveConverter.vo2UpdateDto(ServeVO);
+    public RestResult update(@PathVariable int id, @RequestBody ServeVO serveVO) {
+        UpdateServeRequest request = serveConverter.vo2UpdateDto(serveVO);
         request.setId(id);
-        CommonResponse response = serveService.updateServe(request);
+        CommonResponse response = serveService.updateById(request);
         return result(response);
     }
 
     @ApiOperation(value = "根据id，删除删除")
     @DeleteMapping("/{id}")
     public RestResult deleted(@PathVariable int id){
-        DeleteServeRequest request = new DeleteServeRequest();
-        request.setId(id);
-        CommonResponse response = serveService.deleteServe(request);
+        CommonResponse response = serveService.removeById(new IDRequest(id));
         return result(response);
+    }
+    @ApiOperation(value = "根据条件，获取所有的数据")
+    @GetMapping
+    public RestResult<ServeVO> list(ServeVO serveVO){
+        ServeListRequest request = serveConverter.vo2ListDto(serveVO);
+        CommonResponse<List<ServeDto>> response = serveService.list(request);
+        if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
+            List<ServeVO> res = serveConverter.dto2Vo(response.getData());
+            return RestResultFactory.getInstance().success(res);
+        }
+        return RestResultFactory.getInstance().error();
     }
 }

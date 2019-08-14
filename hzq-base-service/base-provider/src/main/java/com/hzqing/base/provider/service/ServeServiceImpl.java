@@ -10,6 +10,7 @@ import com.hzqing.base.provider.dal.entity.Serve;
 import com.hzqing.base.provider.dal.mapper.ServeMapper;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
+import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
@@ -38,7 +39,7 @@ public class ServeServiceImpl implements IServeService {
 
 
     @Override
-    public CommonResponse createServe(AddServeRequest request) {
+    public CommonResponse save(AddServeRequest request) {
         log.info("ServeServiceImpl.createServe request: " + request);
         CommonResponse response = new CommonResponse();
         try {
@@ -54,7 +55,7 @@ public class ServeServiceImpl implements IServeService {
     }
 
     @Override
-    public CommonResponse<ServeDto> serveDetail(ServeDetailRequest request) {
+    public CommonResponse<ServeDto> getById(IDRequest request) {
         log.info("ServeServiceImpl.serveDetail request: " + request);
         CommonResponse<ServeDto> response = new CommonResponse<>();
         try {
@@ -70,7 +71,7 @@ public class ServeServiceImpl implements IServeService {
     }
 
     @Override
-    public CommonResponse<List<ServeDto>> serveLists(ServeListRequest request) {
+    public CommonResponse<List<ServeDto>> list(ServeListRequest request) {
         CommonResponse<List<ServeDto>> response = new CommonResponse<>();
         log.info("ServeServiceImpl.serveLists request: " + request);
         try {
@@ -86,7 +87,7 @@ public class ServeServiceImpl implements IServeService {
     }
 
     @Override
-    public CommonResponse deleteServe(DeleteServeRequest request) {
+    public CommonResponse removeById(IDRequest request) {
         log.info("ServeServiceImpl.deleteServe request: " + request);
         CommonResponse response = new CommonResponse();
         try{
@@ -101,7 +102,7 @@ public class ServeServiceImpl implements IServeService {
     }
 
     @Override
-    public CommonResponse updateServe(UpdateServeRequest request) {
+    public CommonResponse updateById(UpdateServeRequest request) {
         log.info("ServeServiceImpl.updateServe request: " + request);
         CommonResponse response = new CommonResponse();
         try {
@@ -117,7 +118,7 @@ public class ServeServiceImpl implements IServeService {
     }
 
     @Override
-    public CommonResponse<Page<ServeDto>> servePage(ServePageRequest request) {
+    public CommonResponse<Page<ServeDto>> page(ServePageRequest request) {
         log.info("ServeServiceImpl.servePage request: " + request);
         CommonResponse<Page<ServeDto>> response = new CommonResponse<>();
         try {

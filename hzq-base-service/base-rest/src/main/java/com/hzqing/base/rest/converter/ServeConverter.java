@@ -3,9 +3,12 @@ package com.hzqing.base.rest.converter;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.serve.AddServeRequest;
 import com.hzqing.base.api.dto.serve.ServeDto;
+import com.hzqing.base.api.dto.serve.ServeListRequest;
 import com.hzqing.base.api.dto.serve.UpdateServeRequest;
 import com.hzqing.base.rest.vo.ServeVO;
 import org.mapstruct.Mapper;
+
+import java.util.List;
 
 /**
  * @author hzqing
@@ -20,4 +23,8 @@ public interface ServeConverter {
     AddServeRequest vo2Dto(ServeVO serveVO);
 
     UpdateServeRequest vo2UpdateDto(ServeVO serveVO);
+
+    ServeListRequest vo2ListDto(ServeVO serveVO);
+
+    List<ServeVO> dto2Vo(List<ServeDto> data);
 }

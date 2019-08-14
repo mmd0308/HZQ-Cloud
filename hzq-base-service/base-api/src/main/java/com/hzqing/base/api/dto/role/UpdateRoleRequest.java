@@ -1,6 +1,6 @@
 package com.hzqing.base.api.dto.role;
 
-import com.hzqing.common.core.service.request.CheckIdRequest;
+import com.hzqing.common.core.service.request.IDRequest;
 import lombok.Data;
 import lombok.ToString;
 
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @ToString(callSuper = true)
-public class UpdateRoleRequest extends CheckIdRequest {
+public class UpdateRoleRequest extends IDRequest {
 
     /**
      * 数据值
