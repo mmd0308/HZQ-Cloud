@@ -1,7 +1,7 @@
 package com.hzqing.base.provider.dal.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hzqing.base.provider.dal.entity.Button;
+import com.hzqing.base.provider.dal.entity.Element;
 
 /**
  * <p>
@@ -11,7 +11,7 @@ import com.hzqing.base.provider.dal.entity.Button;
  * @author hzqing
  * @since 2019-08-13
  */
-public interface ButtonMapper extends BaseMapper<Button> {
+public interface ElementMapper extends BaseMapper<Element> {
 
 
 }

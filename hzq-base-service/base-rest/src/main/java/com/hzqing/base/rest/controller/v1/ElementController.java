@@ -1,13 +1,13 @@
 package com.hzqing.base.rest.controller.v1;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hzqing.base.api.dto.button.AddButtonRequest;
-import com.hzqing.base.api.dto.button.ButtonDto;
-import com.hzqing.base.api.dto.button.ButtonPageRequest;
-import com.hzqing.base.api.dto.button.UpdateButtonRequest;
-import com.hzqing.base.api.service.IButtonService;
-import com.hzqing.base.rest.converter.ButtonConverter;
-import com.hzqing.base.rest.vo.ButtonVO;
+import com.hzqing.base.api.dto.button.AddElementRequest;
+import com.hzqing.base.api.dto.button.ElementDto;
+import com.hzqing.base.api.dto.button.ElementPageRequest;
+import com.hzqing.base.api.dto.button.UpdateElementRequest;
+import com.hzqing.base.api.service.IElementService;
+import com.hzqing.base.rest.converter.ElementConverter;
+import com.hzqing.base.rest.vo.ElementVO;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.rest.controller.BaseController;
 import com.hzqing.common.core.rest.result.RestResult;
@@ -32,22 +32,22 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags="按钮模块模块管理")
 @Slf4j
 @RestController
-@RequestMapping("/base/" + GlobalConstants.VERSION_V1 + "/buttons")
-public class ButtonController extends BaseController {
+@RequestMapping("/base/" + GlobalConstants.VERSION_V1 + "/elements")
+public class ElementController extends BaseController {
 
 
     @Reference(version = GlobalConstants.VERSION_V1)
-    IButtonService buttonService;
+    IElementService buttonService;
 
     @Autowired
-    ButtonConverter buttonConverter;
+    ElementConverter elementConverter;
 
     @ApiOperation(value = "根据id获取菜单")
     @GetMapping("/{id}")
-    public RestResult<ButtonVO> get(@PathVariable int id) {
-        CommonResponse<ButtonDto> response = buttonService.getById(new IDRequest(id));
+    public RestResult<ElementVO> get(@PathVariable String id) {
+        CommonResponse<ElementDto> response = buttonService.getById(new IDRequest(id));
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
-            ButtonVO res = buttonConverter.dto2vo(response.getData());
+            ElementVO res = elementConverter.dto2vo(response.getData());
             return RestResultFactory.getInstance().success(res);
         }
         return RestResultFactory.getInstance().error();
@@ -59,30 +59,30 @@ public class ButtonController extends BaseController {
             @ApiImplicitParam(name = "size", value = "每页展示数量", required = true, paramType = "path", dataType = "int")
     })
     @GetMapping("/page/{num}/{size}")
-    public RestResult<Page<ButtonVO>> page(@PathVariable int num, @PathVariable int size, ButtonVO buttonVO){
-        ButtonPageRequest request = new ButtonPageRequest();
+    public RestResult<Page<ElementVO>> page(@PathVariable int num, @PathVariable int size, ElementVO buttonVO){
+        ElementPageRequest request = new ElementPageRequest();
         request.setPageNum(num);
         request.setPageSize(size);
-        CommonResponse<Page<ButtonDto>> response = buttonService.page(request);
+        CommonResponse<Page<ElementDto>> response = buttonService.page(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
-            Page<ButtonVO> res = buttonConverter.dto2Vo(response.getData());
+            Page<ElementVO> res = elementConverter.dto2Vo(response.getData());
             return RestResultFactory.getInstance().success(res);
         }
         return RestResultFactory.getInstance().error();
     }
     @ApiOperation(value = "创建按钮")
     @PostMapping
-    public RestResult create(@RequestBody ButtonVO buttonVO){
+    public RestResult create(@RequestBody ElementVO buttonVO){
         log.info("ButtonController.create request vo : " + buttonVO);
-        AddButtonRequest request = buttonConverter.vo2Dto(buttonVO);
+        AddElementRequest request = elementConverter.vo2Dto(buttonVO);
         CommonResponse response = buttonService.save(request);
         return result(response);
     }
 
     @ApiOperation(value = "根据id，更新按钮")
     @PutMapping("/{id}")
-    public RestResult update(@PathVariable int id, @RequestBody ButtonVO ButtonVO) {
-        UpdateButtonRequest request = buttonConverter.vo2UpdateDto(ButtonVO);
+    public RestResult update(@PathVariable String id, @RequestBody ElementVO ButtonVO) {
+        UpdateElementRequest request = elementConverter.vo2UpdateDto(ButtonVO);
         request.setId(id);
         CommonResponse response = buttonService.updateById(request);
         return result(response);
@@ -90,7 +90,7 @@ public class ButtonController extends BaseController {
 
     @ApiOperation(value = "根据id，删除删除")
     @DeleteMapping("/{id}")
-    public RestResult deleted(@PathVariable int id){
+    public RestResult deleted(@PathVariable String id){
         CommonResponse response = buttonService.removeById(new IDRequest(id));
         return result(response);
     }

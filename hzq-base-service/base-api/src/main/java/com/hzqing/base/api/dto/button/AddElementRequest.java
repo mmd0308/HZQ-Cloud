@@ -12,17 +12,14 @@ import java.time.LocalDateTime;
  * @date 2019-08-10 00:35
  */
 @Data
-public class AddButtonRequest extends AbstractRequest {
+public class AddElementRequest extends AbstractRequest {
 
-    /**
-     * 主键
-     */
-    private Integer id;
+
 
     /**
      * 菜单id,按钮属于哪个菜单下面的
      */
-    private Integer menuId;
+    private String menuId;
 
     /**
      * 按钮名称
@@ -39,13 +36,23 @@ public class AddButtonRequest extends AbstractRequest {
      */
     private String href;
 
-    private Integer createBy;
+    private String createBy;
 
     private LocalDateTime ceateTime;
 
-    private Integer updateBy;
+    private String updateBy;
 
     private LocalDateTime updateTime;
+    /**
+     * 元素类型 button，url等
+     */
+    private String elementType;
+    /**
+     * 请求方法，post，get,put等
+     */
+    private String method;
+
+    private String description;
 
     /**
      * 请求参数进行校验

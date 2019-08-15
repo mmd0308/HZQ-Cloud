@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2019-08-10 00:57
  */
 @Data
-public class ButtonListRequest extends AbstractRequest {
+public class ElementListRequest extends AbstractRequest {
 
 
     @Override

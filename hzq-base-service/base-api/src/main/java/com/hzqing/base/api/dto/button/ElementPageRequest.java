@@ -10,11 +10,11 @@ import lombok.ToString;
  */
 @Data
 @ToString(callSuper = true)
-public class ButtonPageRequest extends PageRequest {
-    public ButtonPageRequest() {
+public class ElementPageRequest extends PageRequest {
+    public ElementPageRequest() {
     }
 
-    public ButtonPageRequest(int pageNum, int pageSize) {
+    public ElementPageRequest(int pageNum, int pageSize) {
         super(pageNum, pageSize);
     }
 

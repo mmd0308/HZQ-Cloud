@@ -18,18 +18,18 @@ public class IDRequest extends AbstractRequest {
     /**
      * 主键
      */
-    private Integer id;
+    private String id;
 
     public IDRequest() {
     }
 
-    public IDRequest(Integer id) {
+    public IDRequest(String id) {
         this.id = id;
     }
 
     @Override
     public void checkParams() {
-        if (id == null || id == 0){
+        if (null == id || id.equals("") || id == ""){
             throw new ParamsValidateException(
                     CommonRetCodeConstants.INVALID_PARAMETER.getCode(),
                     "主键ID,不能为空"

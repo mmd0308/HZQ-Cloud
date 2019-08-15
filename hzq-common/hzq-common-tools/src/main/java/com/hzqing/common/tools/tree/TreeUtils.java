@@ -1,7 +1,5 @@
 package com.hzqing.common.tools.tree;
 
-import com.hzqing.common.core.service.dto.TreeNode;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +18,7 @@ public class TreeUtils {
      * @param list
      * @return
      */
-    public static <T extends TreeNode> List<T> buildTree(Integer parentId , List<T> list){
+    public static <T extends TreeNode> List<T> buildTree(String parentId , List<T> list){
         List<T> res = new ArrayList<>(list.size());
         list.forEach(item -> {
             if (parentId.equals(item.getParentId())) { // 表示是父节点

@@ -12,13 +12,12 @@ import java.time.LocalDateTime;
  */
 @Data
 @ToString(callSuper = true)
-public class UpdateButtonRequest extends IDRequest {
-
+public class UpdateElementRequest extends IDRequest {
 
     /**
      * 菜单id,按钮属于哪个菜单下面的
      */
-    private Integer menuId;
+    private String menuId;
 
     /**
      * 按钮名称
@@ -35,13 +34,23 @@ public class UpdateButtonRequest extends IDRequest {
      */
     private String href;
 
-    private Integer createBy;
+    private String createBy;
 
     private LocalDateTime ceateTime;
 
-    private Integer updateBy;
+    private String updateBy;
 
     private LocalDateTime updateTime;
+    /**
+     * 元素类型 button，url等
+     */
+    private String elementType;
+    /**
+     * 请求方法，post，get,put等
+     */
+    private String method;
+
+    private String description;
 
     @Override
     public void checkParams() {

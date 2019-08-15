@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * @date 2019-08-13 21:36
  */
 @Data
-public class ButtonVO implements Serializable {
+public class ElementVO implements Serializable {
 
     private static final long serialVersionUID = -8983925217800750512L;
 

@@ -4,10 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.button.*;
-import com.hzqing.base.api.service.IButtonService;
-import com.hzqing.base.provider.converter.ButtonConverter;
-import com.hzqing.base.provider.dal.entity.Button;
-import com.hzqing.base.provider.dal.mapper.ButtonMapper;
+import com.hzqing.base.api.service.IElementService;
+import com.hzqing.base.provider.converter.ElementConverter;
+import com.hzqing.base.provider.dal.entity.Element;
+import com.hzqing.base.provider.dal.mapper.ElementMapper;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
 import com.hzqing.common.core.service.request.IDRequest;
@@ -29,58 +29,58 @@ import java.util.List;
  */
 @Slf4j
 @Service(version = GlobalConstants.VERSION_V1)
-public class ButtonServiceImpl implements IButtonService {
+public class ElementServiceImpl implements IElementService {
 
     @Autowired
-    private ButtonMapper buttonMapper;
+    private ElementMapper buttonMapper;
 
     @Autowired
-    private ButtonConverter buttonConverter;
+    private ElementConverter buttonConverter;
 
 
     @Override
-    public CommonResponse save(AddButtonRequest request) {
-        log.info("ButtonServiceImpl.createButton request: " + request);
+    public CommonResponse save(AddElementRequest request) {
+        log.info("ElementServiceImpl.createButton request: " + request);
         CommonResponse response = new CommonResponse();
         try {
             request.checkParams();
-            Button button = buttonConverter.req2Button(request);
+            Element button = buttonConverter.req2Button(request);
             int row = buttonMapper.insert(button);
-            log.info("ButtonServiceImpl.createButton effect row: " + row);
+            log.info("ElementServiceImpl.createButton effect row: " + row);
         }catch (Exception e){
-            log.error("ButtonServiceImpl.createButton occur Exception: ", e);
+            log.error("ElementServiceImpl.createButton occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;
     }
 
     @Override
-    public CommonResponse<ButtonDto> getById(IDRequest request) {
-        log.info("ButtonServiceImpl.buttonDetail request: " + request);
-        CommonResponse<ButtonDto> response = new CommonResponse<>();
+    public CommonResponse<ElementDto> getById(IDRequest request) {
+        log.info("ElementServiceImpl.buttonDetail request: " + request);
+        CommonResponse<ElementDto> response = new CommonResponse<>();
         try {
             request.checkParams();
-            Button button = buttonMapper.selectById(request.getId());
-            ButtonDto buttonDto = buttonConverter.req2Dto(button);
+            Element button = buttonMapper.selectById(request.getId());
+            ElementDto buttonDto = buttonConverter.req2Dto(button);
             response.setData(buttonDto);
         }catch (Exception e){
-            log.error("ButtonServiceImpl.buttonDetail occur Exception: ", e);
+            log.error("ElementServiceImpl.buttonDetail occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;
     }
 
     @Override
-    public CommonResponse<List<ButtonDto>> list(ButtonListRequest request) {
-        CommonResponse<List<ButtonDto>> response = new CommonResponse<>();
-        log.info("ButtonServiceImpl.buttonLists request: " + request);
+    public CommonResponse<List<ElementDto>> list(ElementListRequest request) {
+        CommonResponse<List<ElementDto>> response = new CommonResponse<>();
+        log.info("ElementServiceImpl.buttonLists request: " + request);
         try {
             request.checkParams();
-            Button button = buttonConverter.req2Button(request);
-            List<Button> buttons = buttonMapper.selectList(new QueryWrapper<>(button));
+            Element button = buttonConverter.req2Button(request);
+            List<Element> buttons = buttonMapper.selectList(new QueryWrapper<>(button));
             response.setData(buttonConverter.listButton2ListDto(buttons));
         }catch (Exception e){
-            log.error("ButtonServiceImpl.buttonLists occur Exception: ", e);
+            log.error("ElementServiceImpl.buttonLists occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;
@@ -88,47 +88,47 @@ public class ButtonServiceImpl implements IButtonService {
 
     @Override
     public CommonResponse removeById(IDRequest request) {
-        log.info("ButtonServiceImpl.deleteButton request: " + request);
+        log.info("ElementServiceImpl.deleteButton request: " + request);
         CommonResponse response = new CommonResponse();
         try{
             request.checkParams();
             int row = buttonMapper.deleteById(request.getId());
-            log.info("ButtonServiceImpl.deleteButton effect row: " + row);
+            log.info("ElementServiceImpl.deleteButton effect row: " + row);
         }catch (Exception e){
-            log.error("ButtonServiceImpl.deleteButton occur Exception: ", e);
+            log.error("ElementServiceImpl.deleteButton occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;
     }
 
     @Override
-    public CommonResponse updateById(UpdateButtonRequest request) {
-        log.info("ButtonServiceImpl.updateButton request: " + request);
+    public CommonResponse updateById(UpdateElementRequest request) {
+        log.info("ElementServiceImpl.updateButton request: " + request);
         CommonResponse response = new CommonResponse();
         try {
-            Button button = buttonConverter.req2Button(request);
+            Element button = buttonConverter.req2Button(request);
             int row = buttonMapper.updateById(button);
-            log.info("ButtonServiceImpl.updateButton effect row: " + row);
+            log.info("ElementServiceImpl.updateButton effect row: " + row);
         } catch (Exception e){
-            log.error("ButtonServiceImpl.updateButton occur Exception: ", e);
+            log.error("ElementServiceImpl.updateButton occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;
     }
 
     @Override
-    public CommonResponse<Page<ButtonDto>> page(ButtonPageRequest request) {
-        log.info("ButtonServiceImpl.buttonPage request: " + request);
-        CommonResponse<Page<ButtonDto>> response = new CommonResponse<>();
+    public CommonResponse<Page<ElementDto>> page(ElementPageRequest request) {
+        log.info("ElementServiceImpl.buttonPage request: " + request);
+        CommonResponse<Page<ElementDto>> response = new CommonResponse<>();
         try {
             request.checkParams();
-            Button button = buttonConverter.req2Button(request);
-            IPage<Button> buttonIPage = buttonMapper.selectPage(
-                    new Page<Button>(request.getPageNum(), request.getPageSize()),
+            Element button = buttonConverter.req2Button(request);
+            IPage<Element> buttonIPage = buttonMapper.selectPage(
+                    new Page<Element>(request.getPageNum(), request.getPageSize()),
                     new QueryWrapper<>(button));
             response.setData(buttonConverter.pageButton2PageDto(buttonIPage));
         }catch (Exception e) {
-            log.error("ButtonServiceImpl.buttonPage occur Exception: ", e);
+            log.error("ElementServiceImpl.buttonPage occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;

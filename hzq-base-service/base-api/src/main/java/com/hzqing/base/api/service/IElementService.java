@@ -15,20 +15,20 @@ import java.util.List;
  * @author hzqing
  * @since 2019-08-13
  */
-public interface IButtonService {
+public interface IElementService {
     /**
      * 创建按钮
      * @param request
      * @return
      */
-    CommonResponse save(AddButtonRequest request);
+    CommonResponse save(AddElementRequest request);
 
     /**
      * 根据id获取按钮的信息
      * @param request
      * @return
      */
-    CommonResponse<ButtonDto> getById(IDRequest request);
+    CommonResponse<ElementDto> getById(IDRequest request);
 
 
     /**
@@ -36,7 +36,7 @@ public interface IButtonService {
      * @param request
      * @return
      */
-    CommonResponse<List<ButtonDto>> list(ButtonListRequest request);
+    CommonResponse<List<ElementDto>> list(ElementListRequest request);
 
     /**
      * 根据id删除按钮
@@ -50,12 +50,12 @@ public interface IButtonService {
      * @param request
      * @return
      */
-    CommonResponse updateById(UpdateButtonRequest request);
+    CommonResponse updateById(UpdateElementRequest request);
 
     /**
      * 分页查询按钮信息
      * @param request
      * @return
      */
-    CommonResponse<Page<ButtonDto>> page(ButtonPageRequest request);
+    CommonResponse<Page<ElementDto>> page(ElementPageRequest request);
 }
