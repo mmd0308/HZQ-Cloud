@@ -1,8 +1,6 @@
 package com.hzqing.base.api.dto.user;
 
-import com.hzqing.common.core.service.constants.CommonRetCodeConstants;
-import com.hzqing.common.core.service.exception.ParamsValidateException;
-import com.hzqing.common.core.service.request.AbstractRequest;
+import com.hzqing.common.core.service.request.IDRequest;
 import lombok.Data;
 
 /**
@@ -10,12 +8,7 @@ import lombok.Data;
  * @date 2019-08-12 21:35
  */
 @Data
-public class UpdateUserRequest extends AbstractRequest {
-
-    /**
-     * 主键
-     */
-    private int id;
+public class UpdateUserRequest extends IDRequest {
 
     /**
      * 用户名
@@ -44,11 +37,6 @@ public class UpdateUserRequest extends AbstractRequest {
 
     @Override
     public void checkParams() {
-        if (id == 0){
-            throw new ParamsValidateException(
-                    CommonRetCodeConstants.INVALID_PARAMETER.getCode(),
-                    CommonRetCodeConstants.INVALID_PARAMETER.getMsg()
-            );
-        }
+        super.checkParams();
     }
 }

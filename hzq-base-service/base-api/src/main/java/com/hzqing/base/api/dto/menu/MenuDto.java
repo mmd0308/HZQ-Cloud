@@ -15,7 +15,7 @@ public class MenuDto extends BaseDto {
     /**
      * 主键
      */
-    private int id;
+    private String id;
 
     /**
      * 菜单名称
@@ -30,7 +30,7 @@ public class MenuDto extends BaseDto {
     /**
      * 上级菜单id 顶级菜单父级id为0
      */
-    private Integer parentId;
+    private String parentId;
 
     /**
      * 所有父级id,用“,”顺序分隔
@@ -65,7 +65,7 @@ public class MenuDto extends BaseDto {
     /**
      * 备注信息
      */
-    private String remarks;
+    private String description;
 
     /**
      * 排序
@@ -75,7 +75,7 @@ public class MenuDto extends BaseDto {
     /**
      * 创建人id
      */
-    private int createBy;
+    private String createBy;
 
     /**
      * 创建时间
@@ -85,7 +85,7 @@ public class MenuDto extends BaseDto {
     /**
      * 更新人id
      */
-    private int updateBy;
+    private String updateBy;
 
     /**
      * 更新时间

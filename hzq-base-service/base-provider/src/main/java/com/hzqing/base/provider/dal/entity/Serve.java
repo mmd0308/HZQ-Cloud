@@ -27,8 +27,8 @@ public class Serve extends BaseEntity {
     /**
      * 主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id", type = IdType.UUID)
+    private String id;
 
     /**
      * 服务名称

@@ -1,6 +1,5 @@
 package com.hzqing.base.rest.vo;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,7 +15,7 @@ public class UserVO implements Serializable {
     /**
      * 用户id
      */
-    private int id;
+    private String id;
 
     /**
      * 用户名

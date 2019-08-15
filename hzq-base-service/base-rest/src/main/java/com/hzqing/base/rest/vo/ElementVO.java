@@ -14,12 +14,12 @@ public class ElementVO implements Serializable {
 
     private static final long serialVersionUID = -8983925217800750512L;
 
-    private Integer id;
+    private String id;
 
     /**
      * 菜单id,按钮属于哪个菜单下面的
      */
-    private Integer menuId;
+    private String menuId;
 
     /**
      * 按钮名称
@@ -36,11 +36,11 @@ public class ElementVO implements Serializable {
      */
     private String href;
 
-    private Integer createBy;
+    private String createBy;
 
     private LocalDateTime ceateTime;
 
-    private Integer updateBy;
+    private String updateBy;
 
     private LocalDateTime updateTime;
 

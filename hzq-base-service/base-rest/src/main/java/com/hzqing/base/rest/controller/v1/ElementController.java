@@ -25,11 +25,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 按钮管理模块
+ * 元素资源模块模块管理，包括按钮，连接等
  * @author hzqing
  * @date 2019-08-11 12:12
  */
-@Api(tags="按钮模块模块管理")
+@Api(tags="元素资源模块模块管理，包括按钮，连接等")
 @Slf4j
 @RestController
 @RequestMapping("/base/" + GlobalConstants.VERSION_V1 + "/elements")
@@ -37,7 +37,7 @@ public class ElementController extends BaseController {
 
 
     @Reference(version = GlobalConstants.VERSION_V1)
-    IElementService buttonService;
+    IElementService elementService;
 
     @Autowired
     ElementConverter elementConverter;
@@ -45,7 +45,7 @@ public class ElementController extends BaseController {
     @ApiOperation(value = "根据id获取菜单")
     @GetMapping("/{id}")
     public RestResult<ElementVO> get(@PathVariable String id) {
-        CommonResponse<ElementDto> response = buttonService.getById(new IDRequest(id));
+        CommonResponse<ElementDto> response = elementService.getById(new IDRequest(id));
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             ElementVO res = elementConverter.dto2vo(response.getData());
             return RestResultFactory.getInstance().success(res);
@@ -59,11 +59,13 @@ public class ElementController extends BaseController {
             @ApiImplicitParam(name = "size", value = "每页展示数量", required = true, paramType = "path", dataType = "int")
     })
     @GetMapping("/page/{num}/{size}")
-    public RestResult<Page<ElementVO>> page(@PathVariable int num, @PathVariable int size, ElementVO buttonVO){
+    public RestResult<Page<ElementVO>> page(@PathVariable int num, @PathVariable int size, ElementVO elementVO){
+        log.info("ElementController.page request: " + elementVO);
         ElementPageRequest request = new ElementPageRequest();
         request.setPageNum(num);
         request.setPageSize(size);
-        CommonResponse<Page<ElementDto>> response = buttonService.page(request);
+        request.setMenuId(elementVO.getMenuId());
+        CommonResponse<Page<ElementDto>> response = elementService.page(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             Page<ElementVO> res = elementConverter.dto2Vo(response.getData());
             return RestResultFactory.getInstance().success(res);
@@ -73,9 +75,9 @@ public class ElementController extends BaseController {
     @ApiOperation(value = "创建按钮")
     @PostMapping
     public RestResult create(@RequestBody ElementVO buttonVO){
-        log.info("ButtonController.create request vo : " + buttonVO);
+        log.info("ElementController.create request vo : " + buttonVO);
         AddElementRequest request = elementConverter.vo2Dto(buttonVO);
-        CommonResponse response = buttonService.save(request);
+        CommonResponse response = elementService.save(request);
         return result(response);
     }
 
@@ -84,14 +86,14 @@ public class ElementController extends BaseController {
     public RestResult update(@PathVariable String id, @RequestBody ElementVO ButtonVO) {
         UpdateElementRequest request = elementConverter.vo2UpdateDto(ButtonVO);
         request.setId(id);
-        CommonResponse response = buttonService.updateById(request);
+        CommonResponse response = elementService.updateById(request);
         return result(response);
     }
 
     @ApiOperation(value = "根据id，删除删除")
     @DeleteMapping("/{id}")
     public RestResult deleted(@PathVariable String id){
-        CommonResponse response = buttonService.removeById(new IDRequest(id));
+        CommonResponse response = elementService.removeById(new IDRequest(id));
         return result(response);
     }
 }

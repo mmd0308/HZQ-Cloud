@@ -1,6 +1,5 @@
 package com.hzqing.base.rest.vo;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -17,7 +16,7 @@ public class RoleVO implements Serializable {
     /**
      * 主键
      */
-    private Integer id;
+    private String id;
 
     /**
      * 数据值
@@ -42,7 +41,7 @@ public class RoleVO implements Serializable {
     /**
      * 创建人id
      */
-    private int createBy;
+    private String createBy;
 
     /**
      * 创建时间
@@ -52,7 +51,7 @@ public class RoleVO implements Serializable {
     /**
      * 更新人id
      */
-    private int updateBy;
+    private String updateBy;
 
     /**
      * 更新时间

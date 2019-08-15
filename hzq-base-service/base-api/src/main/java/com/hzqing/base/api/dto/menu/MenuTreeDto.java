@@ -1,16 +1,17 @@
 package com.hzqing.base.api.dto.menu;
 
-import com.hzqing.common.core.service.dto.TreeNode;
+import com.hzqing.common.tools.tree.TreeNode;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author hzqing
  * @date 2019-08-14 11:40
  */
 @Data
+@ToString(callSuper = true)
 public class MenuTreeDto extends TreeNode<MenuTreeDto> {
 
     /**
@@ -22,6 +23,11 @@ public class MenuTreeDto extends TreeNode<MenuTreeDto> {
      * 所有父级id,用“,”顺序分隔
      */
     private String parentIds;
+
+    /**
+     * 服务id
+     */
+    private String serveId;
 
     /**
      * 链接
@@ -51,7 +57,7 @@ public class MenuTreeDto extends TreeNode<MenuTreeDto> {
     /**
      * 备注信息
      */
-    private String remarks;
+    private String description;
 
     /**
      * 排序
@@ -61,7 +67,7 @@ public class MenuTreeDto extends TreeNode<MenuTreeDto> {
     /**
      * 创建人id
      */
-    private int createBy;
+    private String createBy;
 
     /**
      * 创建时间
@@ -71,7 +77,7 @@ public class MenuTreeDto extends TreeNode<MenuTreeDto> {
     /**
      * 更新人id
      */
-    private int updateBy;
+    private String updateBy;
 
     /**
      * 更新时间

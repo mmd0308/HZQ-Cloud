@@ -39,7 +39,7 @@ public class RoleController extends BaseController {
 
     @ApiOperation(value = "根据id获取菜单")
     @GetMapping("/{id}")
-    public RestResult<RoleVO> get(@PathVariable int id) {
+    public RestResult<RoleVO> get(@PathVariable String id) {
         CommonResponse<RoleDto> response = roleService.getById(new IDRequest(id));
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             RoleVO res = roleConverter.dto2vo(response.getData());
@@ -75,7 +75,7 @@ public class RoleController extends BaseController {
 
     @ApiOperation(value = "根据id，更新角色")
     @PutMapping("/{id}")
-    public RestResult update(@PathVariable int id, @RequestBody RoleVO RoleVO) {
+    public RestResult update(@PathVariable String id, @RequestBody RoleVO RoleVO) {
         UpdateRoleRequest request = roleConverter.vo2UpdateDto(RoleVO);
         CommonResponse response = roleService.updateById(request);
         return result(response);
@@ -83,7 +83,7 @@ public class RoleController extends BaseController {
 
     @ApiOperation(value = "根据id，删除删除")
     @DeleteMapping("/{id}")
-    public RestResult deleted(@PathVariable int id){
+    public RestResult deleted(@PathVariable String id){
         CommonResponse response = roleService.removeById(new IDRequest(id));
         return result(response);
     }

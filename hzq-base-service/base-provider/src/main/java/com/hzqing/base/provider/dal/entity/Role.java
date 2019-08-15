@@ -29,8 +29,8 @@ public class Role extends BaseEntity {
     /**
      * 主键
      */
-    @TableId(type = IdType.AUTO)
-    private Integer id;
+    @TableId(type = IdType.UUID)
+    private String id;
 
     /**
      * 数据值
@@ -58,7 +58,7 @@ public class Role extends BaseEntity {
      * 创建人id
      */
     @TableField("create_by")
-    private Integer createBy;
+    private String createBy;
 
     /**
      * 创建时间
@@ -70,7 +70,7 @@ public class Role extends BaseEntity {
      * 更新人id
      */
     @TableField("update_by")
-    private Integer updateBy;
+    private String updateBy;
 
     /**
      * 更新时间
@@ -78,5 +78,10 @@ public class Role extends BaseEntity {
     @TableField("update_time")
     private LocalDateTime updateTime;
 
+    @TableField("parent_id")
+    private String parentId;
+
+    @TableField("parent_ids")
+    private String parentIds;
 
 }

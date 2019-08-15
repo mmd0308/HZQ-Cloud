@@ -14,7 +14,7 @@ public class ServeVO implements Serializable {
     /**
      * 主键
      */
-    private Integer id;
+    private String id;
 
     /**
      * 服务名称

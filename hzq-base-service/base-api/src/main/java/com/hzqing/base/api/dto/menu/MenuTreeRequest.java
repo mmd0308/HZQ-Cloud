@@ -12,7 +12,7 @@ public class MenuTreeRequest extends AbstractRequest {
 
     private static final long serialVersionUID = -1609037018837103022L;
 
-    private Integer serveId;
+    private String serveId;
 
 
     @Override

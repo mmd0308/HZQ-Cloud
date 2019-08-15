@@ -15,7 +15,7 @@ public class RoleDto extends BaseDto {
     /**
      * 主键
      */
-    private Integer id;
+    private String id;
 
     /**
      * 数据值
@@ -40,7 +40,7 @@ public class RoleDto extends BaseDto {
     /**
      * 创建人id
      */
-    private Integer createBy;
+    private String createBy;
 
     /**
      * 创建时间
@@ -50,11 +50,15 @@ public class RoleDto extends BaseDto {
     /**
      * 更新人id
      */
-    private Integer updateBy;
+    private String updateBy;
 
     /**
      * 更新时间
      */
     private LocalDateTime updateTime;
 
+
+    private String parentId;
+
+    private String parentIds;
 }

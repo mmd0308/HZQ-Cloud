@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Data
 public class AddRoleRequest extends AbstractRequest {
 
-    private Integer id;
+    private String id;
 
     /**
      * 数据值
@@ -39,7 +39,7 @@ public class AddRoleRequest extends AbstractRequest {
     /**
      * 创建人id
      */
-    private Integer createBy;
+    private String createBy;
 
     /**
      * 创建时间
@@ -49,7 +49,7 @@ public class AddRoleRequest extends AbstractRequest {
     /**
      * 更新人id
      */
-    private Integer updateBy;
+    private String updateBy;
 
     /**
      * 更新时间

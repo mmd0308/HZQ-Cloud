@@ -1,8 +1,5 @@
 package com.hzqing.base.api.dto.menu;
 
-import com.hzqing.base.api.constants.UserRetCodeConstants;
-import com.hzqing.common.core.service.exception.ParamsValidateException;
-import com.hzqing.common.core.service.request.AbstractRequest;
 import com.hzqing.common.core.service.request.IDRequest;
 import lombok.Data;
 
@@ -14,29 +11,46 @@ import lombok.Data;
 public class UpdateMenuRequest extends IDRequest {
 
     /**
-     * 用户名
+     * 菜单名称
      */
-    private String username;
+    private String name;
 
     /**
-     * 密码
+     * 服务id
      */
-    private String password;
+    private Integer serveId;
 
     /**
-     * 注册手机号
+     * 链接
      */
-    private String phone;
+    private String href;
 
     /**
-     * 注册邮箱dd
+     * 图标名称
      */
-    private String email;
+    private String icon;
 
     /**
-     * 0 男 1 女
+     * 是否在菜单显示 0 否 1 是 默认是1
      */
-    private String sex;
+    private String showFlag;
+
+    /**
+     * 权限标示
+     */
+    private String permission;
+
+
+    /**
+     * 备注信息
+     */
+    private String description;
+
+    /**
+     * 排序
+     */
+    private Integer sort;
+
 
     /**
      * 请求参数进行校验
@@ -44,10 +58,5 @@ public class UpdateMenuRequest extends IDRequest {
     @Override
     public void checkParams() {
         super.checkParams();
-        if (username == null || "".equals(username)){
-            throw new ParamsValidateException(
-                    UserRetCodeConstants.INVALID_PARAMETER.getCode(),
-                    UserRetCodeConstants.INVALID_PARAMETER.getMsg());
-        }
     }
 }

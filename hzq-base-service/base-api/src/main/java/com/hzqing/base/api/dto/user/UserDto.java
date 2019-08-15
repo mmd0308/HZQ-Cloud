@@ -15,7 +15,7 @@ public class UserDto extends BaseDto {
     /**
      * 用户id
      */
-    private int id;
+    private String id;
 
     /**
      * 用户名

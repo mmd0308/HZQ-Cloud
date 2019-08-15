@@ -11,11 +11,6 @@ import lombok.Data;
 @Data
 public class UserListRequest extends AbstractRequest {
 
-
-    private int pageNum;
-
-    private int pageSize;
-
     @Override
     public void checkParams() {
 

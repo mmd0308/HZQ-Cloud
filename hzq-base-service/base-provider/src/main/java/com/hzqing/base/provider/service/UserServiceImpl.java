@@ -1,6 +1,7 @@
 package com.hzqing.base.provider.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.user.AddUserRequest;
 import com.hzqing.base.api.dto.user.UpdateUserRequest;
@@ -69,14 +70,14 @@ public class UserServiceImpl implements IUserService {
     @Override
     public CommonResponse<Page<UserDto>> page(UserPageRequest request) {
         log.info("UserServiceImpl.userLists request: " + request);
-        CommonResponse<Page<UserDto>>  response = new CommonResponse<Page<UserDto>>();
+        CommonResponse<Page<UserDto>>  response = new CommonResponse<>();
         try {
             request.checkParams();
             User user = userConverter.req2User(request);
-            Page<User> userPage = (Page<User>) userMapper.selectPage(
-                    new Page<>(request.getPageNum(),request.getPageSize()),
+            IPage<User> userIPage = userMapper.selectPage(
+                    new Page<User>(request.getPageNum(), request.getPageSize()),
                     new QueryWrapper<>(user));
-            Page<UserDto> userDtoPage = userConverter.pageUser2PageDto(userPage);
+            Page<UserDto> userDtoPage = userConverter.pageUser2PageDto(userIPage);
             response.setData(userDtoPage);
         }catch (Exception e){
             log.error("UserServiceImpl.userLists occur Exception: ", e);
@@ -113,6 +114,6 @@ public class UserServiceImpl implements IUserService {
             log.error("UserServiceImpl.updateUser occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
-        return null;
+        return response;
     }
 }

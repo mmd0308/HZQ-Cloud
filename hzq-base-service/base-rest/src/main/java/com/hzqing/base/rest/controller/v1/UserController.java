@@ -1,5 +1,6 @@
 package com.hzqing.base.rest.controller.v1;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.user.*;
 import com.hzqing.base.api.service.IUserService;
@@ -37,7 +38,7 @@ public class UserController extends BaseController {
 
     @ApiOperation(value = "根据id获取用户信息")
     @GetMapping("/{id}")
-    public RestResult<UserVO> get(@PathVariable int id){
+    public RestResult<UserVO> get(@PathVariable String id){
         IDRequest request = new IDRequest();
         request.setId(id);
         CommonResponse<UserDto> response = userService.getById(request);
@@ -80,7 +81,7 @@ public class UserController extends BaseController {
 
     @ApiOperation(value = "根据id，更新用户")
     @PutMapping("/{id}")
-    public RestResult update(@PathVariable int id, @RequestBody UserVO userVO) {
+    public RestResult update(@PathVariable String id, @RequestBody UserVO userVO) {
         UpdateUserRequest request = userConverter.vo2UpdateDto(userVO);
         CommonResponse response = userService.updateById(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
@@ -91,7 +92,7 @@ public class UserController extends BaseController {
 
     @ApiOperation(value = "根据id，删除用户")
     @DeleteMapping("/{id}")
-    public RestResult deleted(@PathVariable int id){
+    public RestResult deleted(@PathVariable String id){
         CommonResponse response = userService.removeById(new IDRequest(id));
         return result(response);
     }

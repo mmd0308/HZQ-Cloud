@@ -1,7 +1,5 @@
 package com.hzqing.base.rest.vo;
 
-import com.fasterxml.jackson.annotation.JacksonInject;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -20,7 +18,7 @@ public class MenuVO implements Serializable {
     /**
      * 主键
      */
-    private int id;
+    private String id;
 
     /**
      * 菜单名称
@@ -30,13 +28,13 @@ public class MenuVO implements Serializable {
     /**
      * 服务id
      */
-    private Integer serveId;
+    private String serveId;
 
     /**
      * 上级菜单id 顶级菜单父级id为0
      */
     @ApiModelProperty(notes = "顶级菜单的父级id是0")
-    private int parentId;
+    private String parentId;
 
     /**
      * 所有父级id,用“,”顺序分隔
@@ -71,7 +69,7 @@ public class MenuVO implements Serializable {
     /**
      * 备注信息
      */
-    private String remarks;
+    private String description;
 
     /**
      * 排序
@@ -81,7 +79,7 @@ public class MenuVO implements Serializable {
     /**
      * 创建人id
      */
-    private int createBy;
+    private String createBy;
 
     /**
      * 创建时间
@@ -91,7 +89,7 @@ public class MenuVO implements Serializable {
     /**
      * 更新人id
      */
-    private int updateBy;
+    private String updateBy;
 
     /**
      * 更新时间

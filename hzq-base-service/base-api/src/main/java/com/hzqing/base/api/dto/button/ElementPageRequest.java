@@ -11,6 +11,12 @@ import lombok.ToString;
 @Data
 @ToString(callSuper = true)
 public class ElementPageRequest extends PageRequest {
+
+    /**
+     * 菜单id
+     */
+    private String menuId;
+
     public ElementPageRequest() {
     }
 

@@ -30,8 +30,8 @@ public class Menu extends BaseEntity {
     /**
      * 主键
      */
-    @TableId(type = IdType.AUTO)
-    private Integer id;
+    @TableId(type = IdType.UUID)
+    private String id;
 
     /**
      * 菜单名称
@@ -41,12 +41,12 @@ public class Menu extends BaseEntity {
     /**
      * 服务id
      */
-    private Integer serveId;
+    private String serveId;
 
     /**
      * 上级菜单id 顶级菜单父级id为0
      */
-    private Integer parentId;
+    private String parentId;
 
     /**
      * 所有父级id,用“,”顺序分隔
@@ -81,7 +81,7 @@ public class Menu extends BaseEntity {
     /**
      * 备注信息
      */
-    private String remarks;
+    private String description;
 
     /**
      * 排序
@@ -92,7 +92,7 @@ public class Menu extends BaseEntity {
      * 创建人id
      */
     @TableField("create_by")
-    private Integer createBy;
+    private String createBy;
 
     /**
      * 创建时间
@@ -104,7 +104,7 @@ public class Menu extends BaseEntity {
      * 更新人id
      */
     @TableField("update_by")
-    private Integer updateBy;
+    private String updateBy;
 
     /**
      * 更新时间

@@ -31,7 +31,7 @@ import java.util.List;
 @Service(version = GlobalConstants.VERSION_V1)
 public class MenuServiceImpl  implements IMenuService {
 
-    private final static Integer PARENT_ID = 0;
+    private final static String PARENT_ID = "0";
 
     @Autowired
     private MenuMapper menuMapper;
@@ -41,6 +41,7 @@ public class MenuServiceImpl  implements IMenuService {
 
     @Override
     public CommonResponse save(AddMenuRequest request) {
+        log.info("MenuServiceImpl.save request: " + request);
         CommonResponse response = new CommonResponse();
         try {
             request.checkParams();
@@ -145,7 +146,4 @@ public class MenuServiceImpl  implements IMenuService {
         }
         return response;
     }
-
-
-
 }

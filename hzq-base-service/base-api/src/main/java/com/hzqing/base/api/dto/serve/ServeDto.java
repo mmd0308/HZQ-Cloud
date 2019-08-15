@@ -23,7 +23,7 @@ public class ServeDto extends BaseDto {
     /**
      * 主键
      */
-    private Integer id;
+    private String id;
 
     /**
      * 服务名称

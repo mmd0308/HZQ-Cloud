@@ -15,6 +15,7 @@ import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ import java.util.List;
  * @date 2019-08-11 12:12
  */
 @Api(tags = "菜单管理模块")
+@Slf4j
 @RestController
 @RequestMapping("/base/" + GlobalConstants.VERSION_V1 + "/menus")
 public class MenuController extends BaseController {
@@ -38,7 +40,7 @@ public class MenuController extends BaseController {
 
     @ApiOperation(value = "根据id获取菜单")
     @GetMapping("/{id}")
-    public RestResult<MenuVO> get(@PathVariable int id) {
+    public RestResult<MenuVO> get(@PathVariable String id) {
         CommonResponse<MenuDto> response = menuService.getById(new IDRequest(id));
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             MenuVO res = menuConverter.dto2vo(response.getData());
@@ -61,6 +63,7 @@ public class MenuController extends BaseController {
     @ApiOperation(value = "创建菜单")
     @PostMapping
     public RestResult create(@RequestBody MenuVO menuVO){
+        log.info("MenuController.create request: " + menuVO);
         AddMenuRequest request = menuConverter.vo2Dto(menuVO);
         CommonResponse response = menuService.save(request);
         return result(response);
@@ -69,6 +72,7 @@ public class MenuController extends BaseController {
     @ApiOperation(value = "根据id，更新菜单")
     @PutMapping("/{id}")
     public RestResult update(@PathVariable int id, @RequestBody MenuVO menuVO) {
+        log.info("MenuController.update request: " + menuVO);
         UpdateMenuRequest request = menuConverter.vo2UpdateDto(menuVO);
         CommonResponse response = menuService.updateById(request);
         return result(response);
@@ -76,7 +80,7 @@ public class MenuController extends BaseController {
 
     @ApiOperation(value = "根据id，删除菜单")
     @DeleteMapping("/{id}")
-    public RestResult deleted(@PathVariable int id){
+    public RestResult deleted(@PathVariable String id){
         CommonResponse response = menuService.removeById(new IDRequest(id));
         return result(response);
     }

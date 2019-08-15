@@ -1,5 +1,6 @@
 package com.hzqing.base.provider.converter;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.user.*;
 import com.hzqing.base.provider.dal.entity.User;
@@ -14,7 +15,6 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface UserConverter {
 
-//    @Mappings({})
     User req2User(AddUserRequest request);
 
     User req2User(UserListRequest request);
@@ -28,9 +28,9 @@ public interface UserConverter {
 
     List<UserDto> users2List(List<User> users);
 
-    Page<UserDto> pageUser2PageDto(Page<User> users);
-
     User req2User(UserPageRequest request);
 
     User req2User(UpdateUserRequest request);
+
+    Page<UserDto> pageUser2PageDto(IPage<User> userPage);
 }

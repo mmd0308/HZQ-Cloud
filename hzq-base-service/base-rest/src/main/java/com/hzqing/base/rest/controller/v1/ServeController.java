@@ -41,7 +41,7 @@ public class ServeController extends BaseController {
 
     @ApiOperation(value = "根据id获取菜单")
     @GetMapping("/{id}")
-    public RestResult<ServeVO> get(@PathVariable int id) {
+    public RestResult<ServeVO> get(@PathVariable String id) {
         CommonResponse<ServeDto> response = serveService.getById(new IDRequest(id));
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             ServeVO res = serveConverter.dto2vo(response.getData());
@@ -77,7 +77,7 @@ public class ServeController extends BaseController {
 
     @ApiOperation(value = "根据id，更新服务")
     @PutMapping("/{id}")
-    public RestResult update(@PathVariable int id, @RequestBody ServeVO serveVO) {
+    public RestResult update(@PathVariable String id, @RequestBody ServeVO serveVO) {
         UpdateServeRequest request = serveConverter.vo2UpdateDto(serveVO);
         request.setId(id);
         CommonResponse response = serveService.updateById(request);
@@ -86,7 +86,7 @@ public class ServeController extends BaseController {
 
     @ApiOperation(value = "根据id，删除删除")
     @DeleteMapping("/{id}")
-    public RestResult deleted(@PathVariable int id){
+    public RestResult deleted(@PathVariable String id){
         CommonResponse response = serveService.removeById(new IDRequest(id));
         return result(response);
     }
