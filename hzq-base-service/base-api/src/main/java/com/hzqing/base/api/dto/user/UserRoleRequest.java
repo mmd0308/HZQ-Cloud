@@ -24,7 +24,7 @@ import org.apache.commons.lang3.StringUtils;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-public class UserRoleDto extends AbstractRequest {
+public class UserRoleRequest extends AbstractRequest {
 
     /**
      * 主键

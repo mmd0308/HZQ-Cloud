@@ -1,11 +1,13 @@
 package com.hzqing.base.rest.converter;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hzqing.base.api.dto.role.AddRoleRequest;
-import com.hzqing.base.api.dto.role.RoleDto;
-import com.hzqing.base.api.dto.role.UpdateRoleRequest;
+import com.hzqing.base.api.dto.role.*;
+import com.hzqing.base.rest.vo.ResourceVo;
+import com.hzqing.base.rest.vo.RoleTreeVO;
 import com.hzqing.base.rest.vo.RoleVO;
 import org.mapstruct.Mapper;
+
+import java.util.List;
 
 /**
  * @author hzqing
@@ -21,4 +23,12 @@ public interface RoleConverter {
     UpdateRoleRequest vo2UpdateDto(RoleVO roleVO);
 
     Page<RoleVO> dto2Vo(Page<RoleDto> data);
+
+    RoleTreeRequest vo2TreeDto(RoleVO roleVO);
+
+    List<RoleTreeVO> dto2Treevo(List<RoleTreeDto> data);
+
+    AddRoleResourceRequest resourceVo2Dto(ResourceVo resourceVo);
+
+    UpdateRoleResourceRequest resourceVo2UpdateDto(ResourceVo resourceVo);
 }

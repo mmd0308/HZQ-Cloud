@@ -1,19 +1,21 @@
 package com.hzqing.base.provider.dal.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hzqing.base.provider.dal.entity.UserRole;
+import com.hzqing.base.provider.dal.entity.RoleResource;
 
 import java.util.List;
 
 /**
  * <p>
- * 用户角色关系表 Mapper 接口
+ *  角色和资源 Mapper 接口
  * </p>
  *
  * @author hengzhaoqing
  * @since 2019-08-09
  */
-public interface UserRoleMapper extends BaseMapper<UserRole> {
+public interface RoleResourceMapper extends BaseMapper<RoleResource> {
 
-    int insertBatch(List<UserRole> users);
+    int deleteByRoleIdServeIdMenuId(RoleResource roleResource);
+
+    int insertBatch(List<RoleResource> resources);
 }

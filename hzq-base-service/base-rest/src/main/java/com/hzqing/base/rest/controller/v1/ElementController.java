@@ -1,10 +1,7 @@
 package com.hzqing.base.rest.controller.v1;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hzqing.base.api.dto.button.AddElementRequest;
-import com.hzqing.base.api.dto.button.ElementDto;
-import com.hzqing.base.api.dto.button.ElementPageRequest;
-import com.hzqing.base.api.dto.button.UpdateElementRequest;
+import com.hzqing.base.api.dto.button.*;
 import com.hzqing.base.api.service.IElementService;
 import com.hzqing.base.rest.converter.ElementConverter;
 import com.hzqing.base.rest.vo.ElementVO;
@@ -24,6 +21,8 @@ import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 元素资源模块模块管理，包括按钮，连接等
  * @author hzqing
@@ -42,7 +41,7 @@ public class ElementController extends BaseController {
     @Autowired
     ElementConverter elementConverter;
 
-    @ApiOperation(value = "根据id获取菜单")
+    @ApiOperation(value = "根据id获取资源")
     @GetMapping("/{id}")
     public RestResult<ElementVO> get(@PathVariable String id) {
         CommonResponse<ElementDto> response = elementService.getById(new IDRequest(id));
@@ -79,6 +78,17 @@ public class ElementController extends BaseController {
         AddElementRequest request = elementConverter.vo2Dto(buttonVO);
         CommonResponse response = elementService.save(request);
         return result(response);
+    }
+
+    @ApiOperation(value = "根据条件获取所有的资源")
+    @GetMapping
+    public RestResult list(ElementVO elementVO){
+        log.info("ElementController.list request: " + elementVO);
+        ElementListRequest request = elementConverter.vo2ListDto(elementVO);
+        CommonResponse<List<ElementDto>> response = elementService.list(request);
+        return CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode()) ?
+                RestResultFactory.getInstance().success(response.getData()) :
+                RestResultFactory.getInstance().error();
     }
 
     @ApiOperation(value = "根据id，更新按钮")

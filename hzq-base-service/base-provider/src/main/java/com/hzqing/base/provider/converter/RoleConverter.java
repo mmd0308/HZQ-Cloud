@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.role.*;
 import com.hzqing.base.provider.dal.entity.Role;
+import com.hzqing.base.provider.dal.entity.RoleResource;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -28,4 +29,12 @@ public interface RoleConverter {
     Role req2Role(RolePageRequest request);
 
     Page<RoleDto> pageRole2PageDto(IPage<Role> roleIPage);
+
+    Role req2Role(RoleTreeRequest request);
+
+    List<RoleTreeDto> listRole2ListTreeDto(List<Role> roles);
+
+    List<RoleResourceDto> listRoleResource2Dto(List<RoleResource> resource);
+
+    RoleResource reqRes2RoleResource(UpdateRoleResourceRequest request);
 }

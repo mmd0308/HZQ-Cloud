@@ -1,12 +1,11 @@
 package com.hzqing.base.api.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hzqing.base.api.dto.user.AddUserRequest;
-import com.hzqing.base.api.dto.user.UpdateUserRequest;
-import com.hzqing.base.api.dto.user.UserDto;
-import com.hzqing.base.api.dto.user.UserPageRequest;
+import com.hzqing.base.api.dto.user.*;
 import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
+
+import java.util.List;
 
 /**
  * <p>
@@ -55,4 +54,31 @@ public interface IUserService {
      */
     CommonResponse updateById(UpdateUserRequest request);
 
+    /**
+     * 根据角色id，获取分页用户信息
+     * @param request
+     * @return
+     */
+    CommonResponse<Page<UserDto>> pageByRoleId(UserRelationPageRequest request);
+
+    /**
+     * 根据角色id，获取有所的用户
+     * @param request
+     * @return
+     */
+    CommonResponse<List<UserDto>> listByRoleId(UserListByRoleIdRequest request);
+
+    /**
+     * 获取该角色id下面，不存在的用户分页信息
+     * @param request
+     * @return
+     */
+    CommonResponse<Page<UserDto>> pageNotByRoleId(UserRelationPageRequest request);
+
+    /**
+     * 根绝角色id，批量新增用户
+     * @param request
+     * @return
+     */
+    CommonResponse saveBatchUserRole(UserRoleRequest request);
 }

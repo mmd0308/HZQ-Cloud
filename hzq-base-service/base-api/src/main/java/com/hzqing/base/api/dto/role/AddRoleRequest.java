@@ -16,6 +16,11 @@ public class AddRoleRequest extends AbstractRequest {
 
     private String id;
 
+    private String parentId;
+
+    private String parentIds;
+
+
     /**
      * 数据值
      */

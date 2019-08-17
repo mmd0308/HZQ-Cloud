@@ -1,6 +1,7 @@
 package com.hzqing.base.rest.vo;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

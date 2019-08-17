@@ -59,4 +59,32 @@ public interface IRoleService  {
      * @return
      */
     CommonResponse<Page<RoleDto>> page(RolePageRequest request);
+
+    /**
+     * 根据条件获取所有树行结果
+     * @param request
+     * @return
+     */
+    CommonResponse<List<RoleTreeDto>> tree(RoleTreeRequest request);
+
+    /**
+     * 给角色服务资源权限
+     * @param request
+     * @return
+     */
+    CommonResponse saveResource(AddRoleResourceRequest request);
+
+    /**
+     * 根绝角色id，获取所有的资源id
+     * @param request
+     * @return
+     */
+    CommonResponse<List<RoleResourceDto>> listResource(IDRequest request);
+
+    /**
+     * 根绝角色ID，服务id，菜单id，批量更新菜单
+     * @param request
+     * @return
+     */
+    CommonResponse updateBatchResource(UpdateRoleResourceRequest request);
 }

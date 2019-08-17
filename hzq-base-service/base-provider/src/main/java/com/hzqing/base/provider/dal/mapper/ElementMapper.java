@@ -2,6 +2,9 @@ package com.hzqing.base.provider.dal.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hzqing.base.provider.dal.entity.Element;
+import com.hzqing.base.provider.dal.entity.UserRole;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,6 +15,5 @@ import com.hzqing.base.provider.dal.entity.Element;
  * @since 2019-08-13
  */
 public interface ElementMapper extends BaseMapper<Element> {
-
 
 }

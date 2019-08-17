@@ -11,6 +11,8 @@ import lombok.Data;
 public class ElementListRequest extends AbstractRequest {
 
 
+    private String menuId;
+
     @Override
     public void checkParams() {
 

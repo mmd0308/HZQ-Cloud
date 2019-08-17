@@ -71,7 +71,7 @@ public class MenuController extends BaseController {
 
     @ApiOperation(value = "根据id，更新菜单")
     @PutMapping("/{id}")
-    public RestResult update(@PathVariable int id, @RequestBody MenuVO menuVO) {
+    public RestResult update(@PathVariable String id, @RequestBody MenuVO menuVO) {
         log.info("MenuController.update request: " + menuVO);
         UpdateMenuRequest request = menuConverter.vo2UpdateDto(menuVO);
         CommonResponse response = menuService.updateById(request);

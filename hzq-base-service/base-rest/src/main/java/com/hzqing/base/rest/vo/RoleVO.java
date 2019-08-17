@@ -1,5 +1,6 @@
 package com.hzqing.base.rest.vo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -18,6 +19,9 @@ public class RoleVO implements Serializable {
      */
     private String id;
 
+    private String parentId;
+
+    private String parentIds;
     /**
      * 数据值
      */

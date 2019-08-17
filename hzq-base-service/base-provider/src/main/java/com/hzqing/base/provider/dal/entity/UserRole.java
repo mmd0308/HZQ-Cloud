@@ -23,23 +23,37 @@ import lombok.experimental.Accessors;
 @TableName("base_user_role")
 public class UserRole extends BaseEntity {
 
+    public UserRole() {
+    }
+
+    public UserRole(String userId, String roleId) {
+        this.userId = userId;
+        this.roleId = roleId;
+    }
+
+    public UserRole(String id, String userId, String roleId) {
+        this.id = id;
+        this.userId = userId;
+        this.roleId = roleId;
+    }
+
     /**
      * 主键
      */
-    @TableId(type = IdType.AUTO)
-    private Integer id;
+    @TableId(type = IdType.UUID)
+    private String id;
 
     /**
      * 用户id
      */
     @TableId("user_id")
-    private Integer userId;
+    private String userId;
 
     /**
      * 角色id
      */
     @TableField("role_Id")
-    private Integer roleId;
+    private String roleId;
 
 
 }

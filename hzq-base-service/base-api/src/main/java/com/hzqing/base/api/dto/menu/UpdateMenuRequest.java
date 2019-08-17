@@ -18,7 +18,7 @@ public class UpdateMenuRequest extends IDRequest {
     /**
      * 服务id
      */
-    private Integer serveId;
+    private String serveId;
 
     /**
      * 链接

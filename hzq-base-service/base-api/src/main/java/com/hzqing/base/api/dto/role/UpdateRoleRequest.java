@@ -19,6 +19,10 @@ public class UpdateRoleRequest extends IDRequest {
      */
     private String name;
 
+    private String parentId;
+
+    private String parentIds;
+
     /**
      * 备注信息
      */

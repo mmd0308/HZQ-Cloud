@@ -3,21 +3,26 @@ package com.hzqing.base.provider.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hzqing.base.api.dto.user.AddUserRequest;
-import com.hzqing.base.api.dto.user.UpdateUserRequest;
-import com.hzqing.base.api.dto.user.UserDto;
-import com.hzqing.base.api.dto.user.UserPageRequest;
+import com.hzqing.base.api.dto.user.*;
 import com.hzqing.base.api.service.IUserService;
 import com.hzqing.base.provider.converter.UserConverter;
 import com.hzqing.base.provider.dal.entity.User;
+import com.hzqing.base.provider.dal.entity.UserRole;
 import com.hzqing.base.provider.dal.mapper.UserMapper;
+import com.hzqing.base.provider.dal.mapper.UserRoleMapper;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
 import com.hzqing.common.core.service.request.IDRequest;
+import com.hzqing.common.core.service.request.PageRequest;
+import com.hzqing.common.core.service.response.AbstractResponse;
 import com.hzqing.common.core.service.response.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * @author hzqing
@@ -32,6 +37,9 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private UserConverter userConverter;
+
+    @Autowired
+    private UserRoleMapper userRoleMapper;
 
     @Override
     public CommonResponse save(AddUserRequest request) {
@@ -112,6 +120,83 @@ public class UserServiceImpl implements IUserService {
             log.info("UserServiceImpl.updateUser effec row: " + row);
         }catch (Exception e) {
             log.error("UserServiceImpl.updateUser occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
+        }
+        return response;
+    }
+
+    @Override
+    public CommonResponse<Page<UserDto>> pageByRoleId(UserRelationPageRequest request) {
+        log.info("UserServiceImpl.pageByRoleId request: " + request);
+        CommonResponse<Page<UserDto>>  response = new CommonResponse<>();
+        try {
+            request.checkParams();
+            IPage<User> userIPage = userMapper.selectPageByRoleId(
+                    new Page<User>(request.getPageNum(), request.getPageSize()),
+                    request.getRoleId()
+            );
+            Page<UserDto> userDtoPage = userConverter.pageUser2PageDto(userIPage);
+            response.setData(userDtoPage);
+        }catch (Exception e) {
+            log.error("UserServiceImpl.pageByRoleId occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
+        }
+        return response;
+    }
+
+    @Override
+    public CommonResponse<List<UserDto>> listByRoleId(UserListByRoleIdRequest request) {
+        log.info("UserServiceImpl.listByRoleId request: " + request);
+        CommonResponse<List<UserDto>> response = new CommonResponse<>();
+        try {
+            request.checkParams();
+            List<User> users = userMapper.selectListByRoleId(request.getRoleId());
+            response.setData(userConverter.users2List(users));
+        }catch (Exception e) {
+            log.error("UserServiceImpl.listByRoleId occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
+        }
+        return response;
+    }
+
+    @Override
+    public CommonResponse<Page<UserDto>> pageNotByRoleId(UserRelationPageRequest request) {
+        log.info("UserServiceImpl.pageNotByRoleId request: " +  request);
+        CommonResponse<Page<UserDto>>  response = new CommonResponse<>();
+        try {
+            request.checkParams();
+            IPage<User> userIPage = userMapper.selectPageNotByRoleId(
+                    new Page<User>(request.getPageNum(), request.getPageSize()),
+                    request.getRoleId()
+            );
+            Page<UserDto> userDtoPage = userConverter.pageUser2PageDto(userIPage);
+            response.setData(userDtoPage);
+        }catch (Exception e) {
+            log.error("UserServiceImpl.pageNotByRoleId occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
+        }
+        return response;
+
+    }
+
+    @Override
+    public CommonResponse saveBatchUserRole(UserRoleRequest request) {
+        log.info("UserServiceImpl.saveBatchUserRole request: " + request);
+        CommonResponse response = new CommonResponse();
+        try {
+            String[] userIds = request.getUserId().split(",");
+            log.info("UserServiceImpl.saveBatchUserRole 绑定的用户数量：" + userIds.length);
+            List< UserRole > users = new ArrayList<>(userIds.length);
+            for (String userId : userIds) {
+                users.add(new UserRole(
+                        UUID.randomUUID().toString().replaceAll("-",""),
+                        userId,
+                        request.getRoleId()));
+            }
+            int row = userRoleMapper.insertBatch(users);
+            log.info("UserServiceImpl.saveBatchUserRole 绑定结果，影响行数： " + row);
+        }catch (Exception e) {
+            log.error("UserServiceImpl.saveBatchUserRole occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;

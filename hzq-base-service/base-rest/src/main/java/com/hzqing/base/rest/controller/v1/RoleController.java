@@ -4,12 +4,16 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.role.*;
 import com.hzqing.base.api.service.IRoleService;
 import com.hzqing.base.rest.converter.RoleConverter;
+import com.hzqing.base.rest.vo.MenuTreeVO;
+import com.hzqing.base.rest.vo.ResourceVo;
+import com.hzqing.base.rest.vo.RoleTreeVO;
 import com.hzqing.base.rest.vo.RoleVO;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.rest.controller.BaseController;
 import com.hzqing.common.core.rest.result.RestResult;
 import com.hzqing.common.core.rest.result.RestResultFactory;
 import com.hzqing.common.core.service.constants.CommonRetCodeConstants;
+import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
 import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 import io.swagger.annotations.Api;
@@ -18,7 +22,10 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 角色管理模块
@@ -86,5 +93,44 @@ public class RoleController extends BaseController {
     public RestResult deleted(@PathVariable String id){
         CommonResponse response = roleService.removeById(new IDRequest(id));
         return result(response);
+    }
+
+    @ApiOperation(value = "根据条件获取树型角色结构")
+    @GetMapping("/tree")
+    public RestResult<List<RoleTreeVO>> tree(RoleVO roleVO){
+        RoleTreeRequest request = roleConverter.vo2TreeDto(roleVO);
+        CommonResponse<List<RoleTreeDto>> response = roleService.tree(request);
+        if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
+            List<RoleTreeVO> res = roleConverter.dto2Treevo(response.getData());
+            return RestResultFactory.getInstance().success(res);
+        }
+        return RestResultFactory.getInstance().error();
+    }
+
+    @ApiOperation(value = "角色绑定资源")
+    @PostMapping("/resource")
+    public RestResult createResource(@RequestBody ResourceVo resourceVo){
+        AddRoleResourceRequest request = roleConverter.resourceVo2Dto(resourceVo);
+        CommonResponse response = roleService.saveResource(request);
+        return result(response);
+    }
+
+    @ApiOperation(value = "角色绑定资源")
+    @PutMapping("/resource")
+    public RestResult updateBatchRoleResources(@RequestBody ResourceVo resourceVo){
+        UpdateRoleResourceRequest request = roleConverter.resourceVo2UpdateDto(resourceVo);
+        CommonResponse response = roleService.updateBatchResource(request);
+        return result(response);
+    }
+
+    @ApiOperation(value = "根绝角色id，获取该角色的所有资源薪资")
+    @GetMapping("/resource/{roleId}")
+    public RestResult<List<ResourceVo>> listResource(@PathVariable String roleId){
+        IDRequest request = new IDRequest(roleId);
+        CommonResponse<List<RoleResourceDto>> response = roleService.listResource(request);
+        return CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode()) ?
+                RestResultFactory.getInstance().success(response.getData()) :
+                RestResultFactory.getInstance().error();
+
     }
 }

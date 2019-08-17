@@ -138,7 +138,6 @@ public class MenuServiceImpl  implements IMenuService {
             List<MenuTreeDto> listDtos = menuConverter.listMenu2ListTreeDto(menus);
             log.info("MenuServiceImpl.tree 组装属性结果，查询数据数量是： " + listDtos.size());
             List<MenuTreeDto> treeDtos = TreeUtils.buildTree(PARENT_ID, listDtos);
-
             response.setData(treeDtos);
         } catch (Exception e) {
             log.error("MenuServiceImpl.tree occur Exception: ", e);

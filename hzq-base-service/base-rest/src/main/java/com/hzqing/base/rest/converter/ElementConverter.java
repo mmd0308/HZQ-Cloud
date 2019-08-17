@@ -3,6 +3,7 @@ package com.hzqing.base.rest.converter;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.base.api.dto.button.AddElementRequest;
 import com.hzqing.base.api.dto.button.ElementDto;
+import com.hzqing.base.api.dto.button.ElementListRequest;
 import com.hzqing.base.api.dto.button.UpdateElementRequest;
 import com.hzqing.base.rest.vo.ElementVO;
 import org.mapstruct.Mapper;
@@ -21,4 +22,6 @@ public interface ElementConverter {
     AddElementRequest vo2Dto(ElementVO buttonVO);
 
     UpdateElementRequest vo2UpdateDto(ElementVO buttonVO);
+
+    ElementListRequest vo2ListDto(ElementVO buttonVO);
 }
