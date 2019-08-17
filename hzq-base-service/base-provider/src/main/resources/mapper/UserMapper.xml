@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzqing.base.provider.dal.mapper.UserMapper">
+
+
+    <select id="selectPageByRoleId" parameterType="string" resultType="user">
+        select  *
+        from base_user
+        where find_in_set(id,(
+                        select user_id
+                        from rl_user_role
+                        where role_Id = #{0}));
+    </select>
+
+
+
+    <select id="selectPageByRoleId" parameterType="string" resultType="user">
+        select  *
+        from base_user
+        where find_in_set(id,(
+                        select user_id
+                        from rl_user_role
+                        where role_Id = #{0}));
+    </select>
+
+
+</mapper>
