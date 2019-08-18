@@ -24,3 +24,26 @@ server:
   port: 10680
 
 debug: true
+
+
+
+
+dubbo:
+  registry:
+    address: zookeeper://localhost:2181
+    check: true
+    group: dubbo-dev
+  scan:
+    base-packages: com.hzqing.auth.service
+  protocol:
+    name: dubbo
+    port: 29106
+  application:
+    name: auth-servie
+security:
+  oauth2:
+    client:
+      client-secret: 59242ea4104092c510d24a0882b9669d
+      client-id: hzq-cloud-ui
+      grant-type: password
+      scope: app

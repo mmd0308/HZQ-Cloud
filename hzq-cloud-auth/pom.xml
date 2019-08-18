@@ -9,6 +9,7 @@
         <version>1.0.0.RELEASE</version>
     </parent>
 
+    <packaging>pom</packaging>
     <groupId>com.hzqing.auth</groupId>
     <artifactId>hzq-cloud-auth</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -16,5 +17,9 @@
     <modules>
         <module>auth-service</module>
     </modules>
+
+    <dependencies>
+
+    </dependencies>
 
 </project>
