@@ -28,4 +28,10 @@
             select user_id from rl_user_role where role_Id =#{roleId} )
     </select>
 
+
+    <select id="selectByUserName" parameterType="string" resultType="user">
+        select *
+        from base_user
+        where username = #{username}
+    </select>
 </mapper>

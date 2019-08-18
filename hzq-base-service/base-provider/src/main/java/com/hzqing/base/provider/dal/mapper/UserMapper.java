@@ -35,4 +35,11 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     IPage<User> selectPageNotByRoleId(Page<User> userPage, @Param("roleId") String roleId);
+
+    /**
+     * 根据用户名获取用户信息
+     * @param username
+     * @return
+     */
+    User selectByUserName(@Param("username") String username);
 }

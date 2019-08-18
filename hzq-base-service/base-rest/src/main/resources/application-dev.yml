@@ -24,3 +24,13 @@ spring:
     default-property-inclusion: non_null
 debug: true
 
+security:
+  oauth2:
+    client:
+      client-id: hzq-base-service
+      client-secret: 59242ea4104092c510d24a0882b9669d
+      access-token-uri: http://localhost:10680/oauth/token
+      user-authorization-uri: http://localhost:10680/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:10680/oauth/check_token
+

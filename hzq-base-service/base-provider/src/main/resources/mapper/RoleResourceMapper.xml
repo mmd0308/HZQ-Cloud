@@ -28,4 +28,10 @@
             )
         </foreach>
     </insert>
+
+    <select id="selectBatchByRoleIds" parameterType="string" resultType="roleresource">
+        select *
+        from rl_role_resource
+        where find_in_set(role_id , #{roleIds})
+    </select>
 </mapper>

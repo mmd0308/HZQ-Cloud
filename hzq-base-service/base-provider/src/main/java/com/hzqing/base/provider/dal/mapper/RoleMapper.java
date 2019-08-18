@@ -2,6 +2,9 @@ package com.hzqing.base.provider.dal.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hzqing.base.provider.dal.entity.Role;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,4 +17,5 @@ import com.hzqing.base.provider.dal.entity.Role;
  */
 public interface RoleMapper extends BaseMapper<Role> {
 
+    List<Role> selectListByUserId(@Param("userId") String userId);
 }

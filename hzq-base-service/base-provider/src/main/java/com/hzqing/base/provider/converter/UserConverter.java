@@ -2,6 +2,7 @@ package com.hzqing.base.provider.converter;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hzqing.base.api.dto.permission.GetUserResponse;
 import com.hzqing.base.api.dto.user.*;
 import com.hzqing.base.provider.dal.entity.User;
 import org.mapstruct.Mapper;
@@ -33,4 +34,6 @@ public interface UserConverter {
     User req2User(UpdateUserRequest request);
 
     Page<UserDto> pageUser2PageDto(IPage<User> userPage);
+
+    GetUserResponse user2GetUser(User user);
 }
