@@ -27,7 +27,7 @@
 
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
-        <spring-cloud-alibaba>2.0.0.RELEASE</spring-cloud-alibaba>
+        <spring-cloud-alibaba>2.1.0.RELEASE</spring-cloud-alibaba>
 
         <dubbo-spring-boot-starter.version>2.7.1</dubbo-spring-boot-starter.version>
         <dubbo.version>2.7.3</dubbo.version>
@@ -36,30 +36,29 @@
         <curator-framework.version>4.2.0</curator-framework.version>
         <curator-recipes.version>4.2.0</curator-recipes.version>
 
+        <!--    mybaits-plus     -->
+        <mybatis-plus-boot-starter.version>3.1.2</mybatis-plus-boot-starter.version>
+        <mybatis.version>3.5.2</mybatis.version>
+
+        <!--    数据源    -->
+        <HikariCP.version>3.3.0</HikariCP.version>
+        <!--    jdbc    -->
+        <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
+
+        <!--  common      -->
+        <hzq-common.version>1.0-SNAPSHOT</hzq-common.version>
+
         <!--    hzq-cloud 服务接口    -->
         <system-api.version>0.0.1.RELEASE</system-api.version>
 
+        <!--     日志相关 jar       -->
+        <sl4j-api.version>1.7.26</sl4j-api.version>
+        <log4j-over-slf4j.version>1.7.26</log4j-over-slf4j.version>
+        <logback-classic.version>1.2.3</logback-classic.version>
+        <logback-core.version>1.2.3</logback-core.version>
+        <!--     日志相关 jar       -->
+
     </properties>
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <id>spring</id>-->
-<!--            <url>https://maven.aliyun.com/repository/spring</url>-->
-<!--            <releases>-->
-<!--                <enabled>true</enabled>-->
-<!--            </releases>-->
-<!--            <snapshots>-->
-<!--                <enabled>true</enabled>-->
-<!--            </snapshots>-->
-<!--        </repository>-->
-<!--        <repository>-->
-<!--            <id>spring-releases</id>-->
-<!--            <name>Spring Releases</name>-->
-<!--            <url>https://repo.spring.io/release</url>-->
-<!--            <snapshots>-->
-<!--                <enabled>false</enabled>-->
-<!--            </snapshots>-->
-<!--        </repository>-->
-<!--    </repositories>-->
 
     <dependencyManagement>
         <dependencies>
@@ -86,15 +85,13 @@
                 <version>${curator-recipes.version}</version>
             </dependency>
 
-
-
-            <!--            <dependency>-->
-<!--                <groupId>org.springframework.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
-<!--                <version>${spring-cloud-alibaba}</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -102,15 +99,76 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!--     日志相关 jar       -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${sl4j-api.version}</version>
+            </dependency>
+                <!--     将log4j转成slf4j       -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${log4j-over-slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback-classic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback-core.version}</version>
+            </dependency>
 
-        <!--     hzq-cloud 服务接口       -->
-        <dependency>
-            <groupId>com.hzqing.system</groupId>
-            <artifactId>system-api</artifactId>
-            <version>${system-api.version}</version>
-        </dependency>
+            <!--     日志相关 jar       -->
+
+            <!--      common      -->
+            <dependency>
+                <groupId>com.hzqing.common</groupId>
+                <artifactId>hzq-common</artifactId>
+                <version>${hzq-common.version}</version>
+            </dependency>
+
+            <!--     hzq-cloud 服务接口       -->
+            <dependency>
+                <groupId>com.hzqing.system</groupId>
+                <artifactId>system-api</artifactId>
+                <version>${system-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hzqing.base</groupId>
+                <artifactId>base-api</artifactId>
+                <version>1.0.0.RELEASE</version>
+            </dependency>
 
 
+
+
+            <!--     mybatis-plus       -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <!--数据源-->
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>${HikariCP.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
