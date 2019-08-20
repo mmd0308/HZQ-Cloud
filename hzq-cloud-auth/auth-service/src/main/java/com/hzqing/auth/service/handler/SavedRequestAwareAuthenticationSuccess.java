@@ -1,5 +1,6 @@
-package com.hzqing.auth.service.security;
+package com.hzqing.auth.service.handler;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -13,13 +14,15 @@ import java.io.IOException;
  * @author hzqing
  * @date 2019-08-18 12:00
  */
+@Slf4j
 @Component
 public class SavedRequestAwareAuthenticationSuccess extends SavedRequestAwareAuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
 
-        System.out.println("ff");
+        log.info("SavedRequestAwareAuthenticationSuccess.onAuthenticationSuccess " + request);
+        super.onAuthenticationSuccess(request,response,authentication);
     }
 
 
