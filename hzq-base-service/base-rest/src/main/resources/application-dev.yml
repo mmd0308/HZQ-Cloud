@@ -9,8 +9,6 @@ dubbo:
   protocol:
     name: dubbo
     port: 29106
-  application:
-    name: base-rest
 
 server:
   port: 10600

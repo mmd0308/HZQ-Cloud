@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+debug：当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
+-->
 <configuration debug="true" scan="true" scanPeriod="1 seconds">
 
     <contextName>logback</contextName>
-    <property name="app.name" value="${spring.application.name}"/>
+
+    <property name="app.name" value="base-provider"/>
+    <!--  获取application.yml中的属性  -->
+<!--    <springProperty scope="context" name="app.name" source="spring.application.name"  />-->
+
     <!--ConsoleAppender 用于在屏幕上输出日志-->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -26,6 +33,7 @@
             <maxHistory>60</maxHistory>
             <totalSizeCap>20GB</totalSizeCap>
         </rollingPolicy>
+        <!--   触发滚动策略     -->
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!--每个日志文件最大100MB-->
             <maxFileSize>100MB</maxFileSize>

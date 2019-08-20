@@ -1,6 +1,7 @@
 package com.hzqing.base.rest.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -11,9 +12,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
  * @author hzqing
  * @date 2019-08-17 14:02
  */
-
 @Configuration
 @EnableResourceServer
+@Order(-1)
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true) //全局方法拦截
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
@@ -24,9 +25,12 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
+            .cors()
+            .and()
+            .csrf().disable()
             .authorizeRequests()
             // 以下为配置所需保护的资源路径及权限，需要与认证服务器配置的授权部分对应
-            .antMatchers("/hello").hasAuthority("Hello")
-            .antMatchers("/*").authenticated();
+            //.antMatchers("/hello").hasAuthority("Hello")
+            .antMatchers("/**").authenticated();
     }
 }

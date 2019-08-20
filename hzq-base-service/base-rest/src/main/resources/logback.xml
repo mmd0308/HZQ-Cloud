@@ -6,9 +6,9 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 
     <contextName>logback</contextName>
 
-<!--    <property name="app.name" value="${spring.application.name}"/>-->
+    <property name="app.name" value="base-rest"/>
     <!--  获取application.yml中的属性  -->
-    <springProperty scope="context" name="app.name" source="spring.application.name"  />
+<!--    <springProperty scope="context" name="app.name" source="spring.application.name"  />-->
 
     <!--ConsoleAppender 用于在屏幕上输出日志-->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
