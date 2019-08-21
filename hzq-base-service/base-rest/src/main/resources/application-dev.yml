@@ -1,7 +1,7 @@
 
 dubbo:
   registry:
-    address: zookeeper://localhost:2181
+    address: nacos://localhost:8848
     check: true
     group: dubbo-dev
   scan:
@@ -20,6 +20,10 @@ spring:
   jackson:
 #    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
     default-property-inclusion: non_null
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
 debug: true
 
 security:
@@ -32,3 +36,7 @@ security:
     resource:
       token-info-uri: http://localhost:10680/oauth/check_token
 
+logging:
+  level:
+    root: warn
+    com.hzqing.base.rest: debug

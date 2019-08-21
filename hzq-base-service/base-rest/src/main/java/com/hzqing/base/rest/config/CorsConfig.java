@@ -7,7 +7,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-@Configuration
+/**
+ * gateway中cors进行了处理，所以这里不需要再次处理
+ */
+//@Configuration
 @Slf4j
 public class CorsConfig {
     @Bean

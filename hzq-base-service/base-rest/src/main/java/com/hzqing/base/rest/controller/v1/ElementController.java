@@ -31,7 +31,7 @@ import java.util.List;
 @Api(tags="元素资源模块模块管理，包括按钮，连接等")
 @Slf4j
 @RestController
-@RequestMapping("/base/" + GlobalConstants.VERSION_V1 + "/elements")
+@RequestMapping("/" + GlobalConstants.VERSION_V1 + "/elements")
 public class ElementController extends BaseController {
 
 

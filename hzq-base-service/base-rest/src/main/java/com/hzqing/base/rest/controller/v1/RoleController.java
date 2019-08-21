@@ -34,7 +34,7 @@ import java.util.List;
  */
 @Api(tags = "角色管理模块")
 @RestController
-@RequestMapping("/base/" + GlobalConstants.VERSION_V1 + "/roles")
+@RequestMapping("/" + GlobalConstants.VERSION_V1 + "/roles")
 public class RoleController extends BaseController {
 
 

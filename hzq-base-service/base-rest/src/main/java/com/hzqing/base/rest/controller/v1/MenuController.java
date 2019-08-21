@@ -29,7 +29,7 @@ import java.util.List;
 @Api(tags = "菜单管理模块")
 @Slf4j
 @RestController
-@RequestMapping("/base/" + GlobalConstants.VERSION_V1 + "/menus")
+@RequestMapping("/" + GlobalConstants.VERSION_V1 + "/menus")
 public class MenuController extends BaseController {
 
     @Reference(version = GlobalConstants.VERSION_V1)

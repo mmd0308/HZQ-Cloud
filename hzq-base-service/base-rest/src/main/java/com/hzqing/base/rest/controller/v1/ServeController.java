@@ -29,7 +29,7 @@ import java.util.List;
  */
 @Api(tags = "服务管理模块")
 @RestController
-@RequestMapping("/base/" + GlobalConstants.VERSION_V1 + "/serves")
+@RequestMapping("/" + GlobalConstants.VERSION_V1 + "/serves")
 public class ServeController extends BaseController {
 
 

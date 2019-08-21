@@ -1,3 +1,5 @@
 spring:
+  application:
+    name: base-provider
   profiles:
-      active: dev
+    active: dev

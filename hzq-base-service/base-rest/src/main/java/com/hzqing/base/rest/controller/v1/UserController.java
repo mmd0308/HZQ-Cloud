@@ -30,7 +30,7 @@ import java.util.List;
 @Api(tags = "用户管理模块")
 @Slf4j
 @RestController
-@RequestMapping("/base/"+ GlobalConstants.VERSION_V1 +"/users")
+@RequestMapping("/"+ GlobalConstants.VERSION_V1 +"/users")
 public class UserController extends BaseController {
 
     @Reference(version = GlobalConstants.VERSION_V1)

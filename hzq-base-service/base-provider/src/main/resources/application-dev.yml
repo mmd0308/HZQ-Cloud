@@ -19,6 +19,11 @@ spring:
     filters: stat,config
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
     useGlobalDataSourceStat: true
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: localhost:8848 # 配置nacos服务地址
+
 
 dubbo:
   application:
@@ -27,11 +32,11 @@ dubbo:
   protocol:
     name: dubbo
     port: 29106
-  registry:
-    address: zookeeper://localhost:2181
-    check: true
-    group: dubbo-dev
-    simplified: true
+#  registry:
+#    address: zookeeper://localhost:2181
+#    check: true
+#    group: dubbo-dev
+#    simplified: true
 #  metadata-report:
 #    address: zookeeper://localhost:2181
 #    retry-times: 30
@@ -39,6 +44,9 @@ dubbo:
 #    group: dubbo-dev
   scan:
     base-packages: com.hzqing.base.provider
+  registry:
+    address: nacos://localhost:8848
+    group: dubbo-dev
 
 
 mybatis-plus:
