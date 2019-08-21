@@ -1,5 +1,6 @@
 package com.hzqing.auth.service;
 
+import com.hzqing.common.tools.utils.UUIDUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
@@ -7,7 +8,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  * @date 2019-08-17 14:30
  */
 public class Test {
+
     public static void main(String[] args) {
-        System.out.println(new BCryptPasswordEncoder().encode("admin"));
+        String secret = UUIDUtils.get32UUID();
+        System.out.println(secret);
+        System.out.println(new BCryptPasswordEncoder().encode("swagger"));
     }
 }
