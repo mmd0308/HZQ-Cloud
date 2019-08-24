@@ -31,6 +31,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Reference(version = GlobalConstants.VERSION_V1)
     IPermissionService permissionService;
 
+
+
+
     @Override
     public UserDetails loadUserByUsername(String username) {
         log.info("UserDetailServiceImpl.loadUserByUsername 请求用户名是: " + username);

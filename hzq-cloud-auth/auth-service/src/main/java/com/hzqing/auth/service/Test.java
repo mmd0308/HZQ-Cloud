@@ -12,6 +12,6 @@ public class Test {
     public static void main(String[] args) {
         String secret = UUIDUtils.get32UUID();
         System.out.println(secret);
-        System.out.println(new BCryptPasswordEncoder().encode("swagger"));
+        System.out.println(new BCryptPasswordEncoder().encode("www.hzqing.com"));
     }
 }
