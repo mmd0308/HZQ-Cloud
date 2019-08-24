@@ -3,6 +3,8 @@ package com.hzqing.base.api.dto.user;
 import com.hzqing.common.core.service.request.IDRequest;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * @author hzqing
  * @date 2019-08-12 21:35
@@ -34,6 +36,11 @@ public class UpdateUserRequest extends IDRequest {
      * 0 男 1 女
      */
     private String sex;
+
+    /**
+     * 更新时间
+     */
+    private LocalDateTime updateTime;
 
     @Override
     public void checkParams() {

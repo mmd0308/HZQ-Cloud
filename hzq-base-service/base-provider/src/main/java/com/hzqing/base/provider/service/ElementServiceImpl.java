@@ -12,10 +12,12 @@ import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
 import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
+import javassist.LoaderClassPath;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -45,6 +47,8 @@ public class ElementServiceImpl implements IElementService {
         try {
             request.checkParams();
             Element button = buttonConverter.req2Button(request);
+            button.setCreateTime(LocalDateTime.now());
+            button.setUpdateTime(LocalDateTime.now());
             int row = buttonMapper.insert(button);
             log.info("ElementServiceImpl.createButton effect row: " + row);
         }catch (Exception e){
@@ -107,6 +111,7 @@ public class ElementServiceImpl implements IElementService {
         CommonResponse response = new CommonResponse();
         try {
             Element button = buttonConverter.req2Button(request);
+            button.setUpdateTime(LocalDateTime.now());
             int row = buttonMapper.updateById(button);
             log.info("ElementServiceImpl.updateButton effect row: " + row);
         } catch (Exception e){

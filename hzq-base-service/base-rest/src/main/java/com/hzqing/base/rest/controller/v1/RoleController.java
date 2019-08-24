@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -98,6 +99,7 @@ public class RoleController extends BaseController {
     @ApiOperation(value = "根据条件获取树型角色结构")
     @GetMapping("/tree")
     public RestResult<List<RoleTreeVO>> tree(RoleVO roleVO){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         RoleTreeRequest request = roleConverter.vo2TreeDto(roleVO);
         CommonResponse<List<RoleTreeDto>> response = roleService.tree(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){

@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -46,6 +47,8 @@ public class MenuServiceImpl  implements IMenuService {
         try {
             request.checkParams();
             Menu menu = menuConverter.req2Menu(request);
+            menu.setCreateTime(LocalDateTime.now());
+            menu.setUpdateTime(LocalDateTime.now());
             int row = menuMapper.insert(menu);
             log.info("MenuServiceImpl.createMenu effect row: " + row);
         }catch (Exception e){
@@ -88,7 +91,10 @@ public class MenuServiceImpl  implements IMenuService {
         CommonResponse response = new CommonResponse();
         log.info("MenuServiceImpl.updateMenu request: " + request);
         try{
-            int row = menuMapper.updateById(menuConverter.req2Menu(request));
+            request.checkParams();
+            Menu menu = menuConverter.req2Menu(request);
+            menu.setUpdateTime(LocalDateTime.now());
+            int row = menuMapper.updateById(menu);
         }catch (Exception e) {
             log.error("MenuServiceImpl.updateMenu occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
@@ -101,6 +107,7 @@ public class MenuServiceImpl  implements IMenuService {
         log.info("MenuServiceImpl.menuDetail request: " + request);
         CommonResponse<MenuDto> response = new CommonResponse<>();
         try {
+            request.checkParams();
             Menu menu = menuMapper.selectById(request.getId());
             response.setData(menuConverter.req2Dto(menu));
         } catch (Exception e){
@@ -115,6 +122,7 @@ public class MenuServiceImpl  implements IMenuService {
         log.info("MenuServiceImpl.menuPage request: " + request);
         CommonResponse<Page<MenuDto>> response = new CommonResponse<>();
         try {
+            request.checkParams();
             Menu menu = menuConverter.req2Menu(request);
             IPage<Menu> menuIPage = menuMapper.selectPage(new Page<Menu>(request.getPageNum(),
                     request.getPageSize()), new QueryWrapper<Menu>(menu));

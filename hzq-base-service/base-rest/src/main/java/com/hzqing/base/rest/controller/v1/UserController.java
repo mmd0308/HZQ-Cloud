@@ -19,6 +19,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +33,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/"+ GlobalConstants.VERSION_V1 +"/users")
 public class UserController extends BaseController {
+    
+    
 
     @Reference(version = GlobalConstants.VERSION_V1)
     private IUserService userService;
@@ -66,7 +69,7 @@ public class UserController extends BaseController {
         request.setPageSize(size);
         CommonResponse<Page<UserDto>> response = userService.page(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
-                Page<UserVO> res = userConverter.dto2Vo(response.getData());
+            Page<UserVO> res = userConverter.dto2Vo(response.getData());
             return RestResultFactory.getInstance().success(res);
         }
         return RestResultFactory.getInstance().error();
@@ -114,6 +117,7 @@ public class UserController extends BaseController {
         }
         return RestResultFactory.getInstance().error();
     }
+
     @ApiOperation(value = "根据角色id,分页获取该角色下面不存在的用户")
     @GetMapping("/page/role/not/{num}/{size}/{roleId}")
     public RestResult<Page<UserVO>> pageNotByRoleId(@PathVariable int num,

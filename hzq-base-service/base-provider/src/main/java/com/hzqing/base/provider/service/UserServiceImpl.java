@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -49,6 +50,7 @@ public class UserServiceImpl implements IUserService {
             // 参数校验
             request.checkParams();
             User user = userConverter.req2User(request);
+            user.setCreateTime(LocalDateTime.now());
             int insert = userMapper.insert(user);
             log.info("UserServiceImpl.createUser effect row:  " + insert);
         }catch (Exception e) {
@@ -116,6 +118,7 @@ public class UserServiceImpl implements IUserService {
         try {
             request.checkParams();
             User user = userConverter.req2User(request);
+            user.setUpdateTime(LocalDateTime.now());
             int row = userMapper.updateById(user);
             log.info("UserServiceImpl.updateUser effec row: " + row);
         }catch (Exception e) {

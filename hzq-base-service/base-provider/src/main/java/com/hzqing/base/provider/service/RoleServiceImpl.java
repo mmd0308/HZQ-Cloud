@@ -21,6 +21,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +57,8 @@ public class RoleServiceImpl implements IRoleService {
         try {
             request.checkParams();
             Role role = roleConverter.req2Role(request);
+            role.setCreateTime(LocalDateTime.now());
+            role.setUpdateTime(LocalDateTime.now());
             int row = roleMapper.insert(role);
             log.info("RoleServiceImpl.createRole effect row: " + row);
         }catch (Exception e){
@@ -118,6 +121,7 @@ public class RoleServiceImpl implements IRoleService {
         CommonResponse response = new CommonResponse();
         try {
             Role role = roleConverter.req2Role(request);
+            role.setUpdateTime(LocalDateTime.now());
             int row = roleMapper.updateById(role);
             log.info("RoleServiceImpl.updateRole effect row: " + row);
         } catch (Exception e){
@@ -176,7 +180,6 @@ public class RoleServiceImpl implements IRoleService {
                     request.getMenuId(),
                     request.getElementId()
             );
-
             log.info("RoleServiceImpl.saveResource 角色和资源授权" + resources);
             int row = roleResourceMapper.insert(resources);
             log.info("RoleServiceImpl.saveResource effect row: " + row);

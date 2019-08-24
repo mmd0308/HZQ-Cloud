@@ -35,6 +35,7 @@ security:
       user-authorization-uri: http://localhost:10680/oauth/authorize
     resource:
       token-info-uri: http://localhost:10680/oauth/check_token
+      user-info-uri: http://localhost:10680/v1/auth/user
 
 logging:
   level:
