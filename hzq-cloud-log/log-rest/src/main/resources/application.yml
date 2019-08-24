@@ -1,1 +1,40 @@
 
+dubbo:
+  registry:
+    address: nacos://localhost:8848
+    check: true
+    group: dubbo-dev
+  scan:
+    base-packages: com.hzqing.cloud.log.rest
+  protocol:
+    name: dubbo
+    port: 29116
+
+server:
+  port: 10610
+
+
+spring:
+  application:
+    name: log-rest
+  jackson:
+    default-property-inclusion: non_null
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+security:
+  oauth2:
+    client:
+      client-id: hzq-cloud-log
+      client-secret: 22f8e40e10264fcf90939444804a1597
+      access-token-uri: http://localhost:10680/oauth/token
+      user-authorization-uri: http://localhost:10680/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:10680/oauth/check_token
+
+logging:
+  level:
+    root: warn
+    com.hzqing.cloud.log.rest: debug

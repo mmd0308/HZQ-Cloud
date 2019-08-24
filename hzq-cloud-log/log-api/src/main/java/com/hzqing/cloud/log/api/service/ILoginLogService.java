@@ -6,6 +6,8 @@ import com.hzqing.cloud.log.api.dto.LoginLogDto;
 import com.hzqing.common.core.service.request.PageRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 用户登陆日志
  * @author hzqing
@@ -27,4 +29,11 @@ public interface ILoginLogService {
      */
     CommonResponse<Page<LoginLogDto>> page(PageRequest request);
 
+
+    /**
+     *  新增登陆日志
+     * @param request
+     * @return›
+     */
+    CommonResponse save(HttpServletRequest request);
 }

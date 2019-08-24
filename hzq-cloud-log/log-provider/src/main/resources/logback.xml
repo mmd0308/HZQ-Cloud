@@ -2,7 +2,7 @@
 <!--
 debug：当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
 -->
-<configuration debug="true" scan="true" scanPeriod="1 seconds">
+<configuration debug="false" scan="false" scanPeriod="1 seconds">
 
     <contextName>logback</contextName>
 
@@ -12,9 +12,6 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 
     <!--ConsoleAppender 用于在屏幕上输出日志-->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>INFO</level>
-        </filter>
         <!--定义控制台输出格式-->
         <encoder>
             <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
