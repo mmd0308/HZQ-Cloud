@@ -1,0 +1,54 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: hzq-cloud-gateway
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      default-filters:
+        - StripPrefix=2
+      routes:
+        - id: route-base-rest
+          uri: lb://base-rest
+          predicates:
+            - Path=/api/base/**
+        - id: route-cloud-log
+          uri: lb://log-rest
+          predicates:
+            - Path=/api/log/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  main:
+    allow-bean-definition-overriding: true # 相同bean注册，进行覆盖
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+
+dubbo:
+  registry:
+    address: nacos://localhost:8848
+    check: true
+    group: dubbo-dev
+  scan:
+    base-packages: com.hzqing.cloud.log.rest
+  protocol:
+    name: dubbo
+    port: 29116
