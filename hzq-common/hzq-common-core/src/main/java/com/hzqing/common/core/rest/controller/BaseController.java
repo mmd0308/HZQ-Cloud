@@ -12,6 +12,8 @@ import com.hzqing.common.core.service.response.CommonResponse;
  */
 public class BaseController {
 
+
+
     /**
      *  用与只返回成功和失败
      *  没有data数据信息的返回
