@@ -17,6 +17,10 @@ spring:
       default-filters:
         - StripPrefix=2
       routes:
+        - id: route-auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/auth/**
         - id: route-base-rest
           uri: lb://base-rest
           predicates:
