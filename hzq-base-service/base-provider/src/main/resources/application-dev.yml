@@ -31,7 +31,7 @@ dubbo:
     owner: hengzhaoqing
   protocol:
     name: dubbo
-    port: 29106
+    port: 20881
 #  registry:
 #    address: zookeeper://localhost:2181
 #    check: true
