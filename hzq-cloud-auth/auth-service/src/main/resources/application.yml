@@ -19,13 +19,16 @@ spring:
     filters: stat,config
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
     useGlobalDataSourceStat: true
-
+  application:
+    name: auth-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
 server:
   port: 10680
 
 debug: true
-
-
 
 
 dubbo:
@@ -34,19 +37,9 @@ dubbo:
     group: dubbo-dev
   scan:
     base-packages: com.hzqing.auth.service
-  protocol:
-    name: dubbo
-    port: 29106
   application:
     name: auth-servie
 
-#security:
-#  oauth2:
-#    client:
-#      client-secret: 59242ea4104092c510d24a0882b9669d
-#      client-id: hzq-cloud-ui
-#      grant-type: password
 logging:
   level:
     root: info
-#      scope: app
