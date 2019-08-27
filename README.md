@@ -2,6 +2,10 @@
 
 微服务开源项目架构
 
+
+## 项目演示地址: [http://hcloud.hn3.mofasuidao.cn](http://hcloud.hn3.mofasuidao.cn)
+
+
 ## 平台服务结构
 
 - `hzq-cloud-dependencies` 
