@@ -22,7 +22,6 @@
         <dependency>
             <groupId>com.hzqing.cloud.log.api</groupId>
             <artifactId>log-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -84,7 +83,6 @@
         <dependency>
             <groupId>com.hzqing.cloud.log.api</groupId>
             <artifactId>log-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
 
 

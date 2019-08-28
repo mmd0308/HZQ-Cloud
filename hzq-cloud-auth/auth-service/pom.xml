@@ -5,14 +5,14 @@
     <parent>
         <groupId>com.hzqing.auth</groupId>
         <artifactId>hzq-cloud-auth</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0.RELEASE</version>
     </parent>
 
     <packaging>jar</packaging>
 
     <groupId>com.hzqing.auth</groupId>
     <artifactId>auth-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0.RELEASE</version>
     <name>auth-service</name>
     <description>服务认证中心</description>
 
@@ -20,17 +20,14 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>com.hzqing.base</groupId>
             <artifactId>base-api</artifactId>
-            <version>1.0.0.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>com.hzqing.cloud.log.api</groupId>
             <artifactId>log-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -41,15 +38,12 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo-registry-nacos</artifactId>
-            <version>2.6.7</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>0.2.2.RELEASE</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.apache.dubbo</groupId>
@@ -68,7 +62,6 @@
             <artifactId>curator-framework</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -76,12 +69,10 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>1.2.3</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -90,7 +81,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
-            <version>2.1.3.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -104,7 +94,6 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>3.2.0</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

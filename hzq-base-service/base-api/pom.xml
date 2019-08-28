@@ -2,15 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<!--    <parent>-->
-<!--        <artifactId>hzq-base-service</artifactId>-->
-<!--        <groupId>com.hzqing.base</groupId>-->
-<!--        <version>1.0-SNAPSHOT</version>-->
-<!--    </parent>-->
 
     <parent>
-        <groupId>com.hzqing.cloud</groupId>
-        <artifactId>hzq-cloud-dependencies</artifactId>
+        <groupId>com.hzqing.base</groupId>
+        <artifactId>hzq-base-service</artifactId>
         <version>1.0.0.RELEASE</version>
     </parent>
 
@@ -29,28 +24,23 @@
         <dependency>
             <groupId>com.hzqing.common</groupId>
             <artifactId>hzq-common-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.hzqing.common</groupId>
             <artifactId>hzq-common-tools</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-core</artifactId>
-            <version>3.1.2</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-extension</artifactId>
-            <version>3.1.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
         </dependency>
     </dependencies>
 

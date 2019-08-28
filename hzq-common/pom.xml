@@ -12,14 +12,13 @@
 
     <groupId>com.hzqing.common</groupId>
     <artifactId>hzq-common</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0.RELEASE</version>
 
     <modules>
         <module>hzq-common-core</module>
         <module>hzq-common-tools</module>
     </modules>
     <packaging>pom</packaging>
-
 
     <build>
         <plugins>

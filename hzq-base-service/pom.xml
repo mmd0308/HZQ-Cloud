@@ -16,12 +16,10 @@
         <module>base-rest</module>
     </modules>
 
-
-
     <groupId>com.hzqing.base</groupId>
     <artifactId>hzq-base-service</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <name>hzq-base-service</name>
+    <version>1.0.0.RELEASE</version>
 
     <description>基础服务，包括用户管理，角色管理，资源管理</description>
 
@@ -34,6 +32,4 @@
             </roles>
         </developer>
     </developers>
-
-
 </project>

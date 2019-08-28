@@ -16,7 +16,7 @@
 
     <groupId>com.hzqing.cloud.log</groupId>
     <artifactId>hzq-cloud-log</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0.RELEASE</version>
 
 
 </project>

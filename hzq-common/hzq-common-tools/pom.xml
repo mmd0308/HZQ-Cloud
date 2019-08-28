@@ -5,12 +5,12 @@
     <parent>
         <artifactId>hzq-common</artifactId>
         <groupId>com.hzqing.common</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0.RELEASE</version>
     </parent>
 
     <groupId>com.hzqing.common</groupId>
     <artifactId>hzq-common-tools</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0.RELEASE</version>
     <name>hzq-common-tools</name>
     <description>工具类</description>
 
@@ -18,7 +18,6 @@
         <dependency>
             <groupId>com.hzqing.common</groupId>
             <artifactId>hzq-common-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

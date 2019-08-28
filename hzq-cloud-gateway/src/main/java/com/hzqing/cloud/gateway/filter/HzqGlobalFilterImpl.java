@@ -20,11 +20,11 @@ public class HzqGlobalFilterImpl implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        log.info("HzqGlobalFilterImpl.filter " );
-        log.info("HzqGlobalFilterImpl.filter 进入过滤器");
+        log.info("HzqGlobalFilterImpl.interceptor " );
+        log.info("HzqGlobalFilterImpl.interceptor 进入过滤器");
 
         ServerHttpResponse response = exchange.getResponse();
-        log.info("HzqGlobalFilterImpl.filter " + response);
+        log.info("HzqGlobalFilterImpl.interceptor " + response);
         return chain.filter(exchange);
     }
 
