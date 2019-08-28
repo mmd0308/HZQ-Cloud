@@ -29,12 +29,4 @@ public interface IOperationLogService {
     CommonResponse<Page<OperationLogDto>> page(PageRequest request);
 
 
-    /**
-     *  新增操作日志
-     * @param request
-     * @Param basePath 请求路径的基础路径 /api/base，/api/log,/api/auth ...
-     * @return
-     */
-    CommonResponse save(HttpServletRequest request,String basePath);
-
 }

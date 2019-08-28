@@ -1,5 +1,6 @@
 package com.hzqing.cloud.log.provider.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.cloud.log.api.dto.AddOperationLogRequest;
@@ -60,7 +61,10 @@ public class OperationLogServiceImpl implements IOperationLogService {
         log.info("OperationLogServiceImpl.page request: " + request);
         CommonResponse<Page<OperationLogDto>> response = new CommonResponse<>();
         try {
-            IPage<OperationLog> logIPage = operationLogMapper.selectPage(new Page<OperationLog>(request.getPageNum(), request.getPageSize()), null);
+            request.checkParams();
+            IPage<OperationLog> logIPage = operationLogMapper.selectPage(
+                    new Page<OperationLog>(request.getPageNum(), request.getPageSize()),
+                    new QueryWrapper<>(new OperationLog()));
             Page<OperationLogDto> logDtoPage = operationLogConverter.page2pageDto(logIPage);
             response.setData(logDtoPage);
         } catch (Exception e) {
@@ -70,25 +74,4 @@ public class OperationLogServiceImpl implements IOperationLogService {
         return response;
     }
 
-    @Override
-    public CommonResponse save(HttpServletRequest request, String basePath) {
-        log.info("OperationLogServiceImpl.save request: " + request + " basePath: " + basePath);
-        CommonResponse response = new CommonResponse();
-        try {
-            String ip = request.getRemoteAddr();
-            OperationLog operationLog = new OperationLog();
-            operationLog.setLoginName("待开发...");
-            operationLog.setUrl(basePath+ request.getServletPath());
-            operationLog.setParams(request.getParameterMap().toString());
-            operationLog.setIp(ip);
-            operationLog.setCreateTime(LocalDateTime.now());
-            int row = operationLogMapper.insert(operationLog);
-            log.info("OperationLogServiceImpl.save effect row" + row);
-
-        }catch (Exception e){
-            log.error("OperationLogServiceImpl.save occur Exception: ", e);
-            ExceptionProcessUtils.wrapperHandlerException(response,e);
-        }
-        return response;
-    }
 }
