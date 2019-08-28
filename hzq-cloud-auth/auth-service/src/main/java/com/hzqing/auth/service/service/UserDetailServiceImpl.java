@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 实现 UserDetailsService
  * @author hzqing
  * @date 2019-08-17 14:44
  */
@@ -30,9 +31,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Reference(version = GlobalConstants.VERSION_V1)
     IPermissionService permissionService;
-
-
-
 
     @Override
     public UserDetails loadUserByUsername(String username) {

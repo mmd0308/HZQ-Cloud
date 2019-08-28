@@ -6,9 +6,6 @@ dubbo:
     group: dubbo-dev
   scan:
     base-packages: com.hzqing.cloud.log.rest
-  protocol:
-    name: dubbo
-    port: 29116
 
 server:
   port: 10610

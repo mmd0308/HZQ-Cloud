@@ -6,15 +6,23 @@ import com.hzqing.cloud.log.api.dto.AddOperationLogRequest;
 import com.hzqing.cloud.log.api.dto.OperationLogDto;
 import com.hzqing.cloud.log.api.service.IOperationLogService;
 import com.hzqing.cloud.log.provider.converter.OperationLogConverter;
+import com.hzqing.cloud.log.provider.dal.entity.LoginLog;
 import com.hzqing.cloud.log.provider.dal.entity.OperationLog;
 import com.hzqing.cloud.log.provider.dal.mapper.OperationLogMapper;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
 import com.hzqing.common.core.service.request.PageRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
+import eu.bitwalker.useragentutils.Browser;
+import eu.bitwalker.useragentutils.OperatingSystem;
+import eu.bitwalker.useragentutils.UserAgent;
+import eu.bitwalker.useragentutils.Version;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 
 /**
  * 日志操作实现类
@@ -57,6 +65,28 @@ public class OperationLogServiceImpl implements IOperationLogService {
             response.setData(logDtoPage);
         } catch (Exception e) {
             log.error("OperationLogServiceImpl.page occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response,e);
+        }
+        return response;
+    }
+
+    @Override
+    public CommonResponse save(HttpServletRequest request, String basePath) {
+        log.info("OperationLogServiceImpl.save request: " + request + " basePath: " + basePath);
+        CommonResponse response = new CommonResponse();
+        try {
+            String ip = request.getRemoteAddr();
+            OperationLog operationLog = new OperationLog();
+            operationLog.setLoginName("待开发...");
+            operationLog.setUrl(basePath+ request.getServletPath());
+            operationLog.setParams(request.getParameterMap().toString());
+            operationLog.setIp(ip);
+            operationLog.setCreateTime(LocalDateTime.now());
+            int row = operationLogMapper.insert(operationLog);
+            log.info("OperationLogServiceImpl.save effect row" + row);
+
+        }catch (Exception e){
+            log.error("OperationLogServiceImpl.save occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
         }
         return response;
