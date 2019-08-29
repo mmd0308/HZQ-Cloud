@@ -1,5 +1,6 @@
 package com.hzqing.auth.service.config;
 
+import com.hzqing.auth.service.filter.LoginFilter;
 import com.hzqing.auth.service.service.UserDetailServiceImpl;
 import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -53,11 +55,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers().antMatchers(HttpMethod.OPTIONS, "/oauth/**")
+        http
+                .requestMatchers().antMatchers(HttpMethod.OPTIONS, "/oauth/**")
                 .and()
                 .cors()
                 .and()
                 .csrf().disable()
+        .addFilterBefore(new LoginFilter(),BasicAuthenticationFilter.class)
         ;
     }
 

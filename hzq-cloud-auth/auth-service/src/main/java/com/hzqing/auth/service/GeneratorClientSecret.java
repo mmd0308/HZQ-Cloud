@@ -7,7 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  * @author hzqing
  * @date 2019-08-17 14:30
  */
-public class Test {
+public class GeneratorClientSecret {
 
     public static void main(String[] args) {
         String secret = UUIDUtils.get32UUID();
