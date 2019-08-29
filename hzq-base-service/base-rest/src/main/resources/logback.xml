@@ -12,9 +12,9 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 
     <!--ConsoleAppender 用于在屏幕上输出日志-->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
-<!--        <interceptor class="ch.qos.logback.classic.interceptor.ThresholdFilter">-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
 <!--            <level>INFO</level>-->
-<!--        </interceptor>-->
+<!--        </filter>-->
         <!--定义控制台输出格式-->
         <encoder>
             <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>

@@ -31,7 +31,7 @@ dubbo:
     name: dubbo
     port: 29116
   scan:
-    base-packages: com.hzqing.cloud.log.provider
+    base-packages: com.hzqing.log.provider
   registry:
     address: nacos://localhost:8848
     group: dubbo-dev

@@ -45,14 +45,12 @@ logging:
   level:
     org.springframework.cloud.gateway: debug
 
+hzqing:
+  cloud:
+    show: false # 是否是演示系统
 
 dubbo:
   registry:
     address: nacos://localhost:8848
     check: true
     group: dubbo-dev
-  scan:
-    base-packages: com.hzqing.cloud.log.rest
-  protocol:
-    name: dubbo
-    port: 29116

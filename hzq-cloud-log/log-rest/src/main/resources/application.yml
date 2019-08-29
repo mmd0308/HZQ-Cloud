@@ -5,7 +5,7 @@ dubbo:
     check: true
     group: dubbo-dev
   scan:
-    base-packages: com.hzqing.cloud.log.rest
+    base-packages: com.hzqing.log.rest
 
 server:
   port: 10610

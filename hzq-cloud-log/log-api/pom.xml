@@ -3,40 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>hzq-cloud-log</artifactId>
-        <groupId>com.hzqing.cloud.log</groupId>
+        <groupId>com.hzqing.cloud</groupId>
+        <artifactId>hzq-cloud-dependencies</artifactId>
         <version>1.0.0.RELEASE</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.hzqing.cloud.log.api</groupId>
+    <groupId>com.hzqing.log</groupId>
     <artifactId>log-api</artifactId>
     <version>1.0.0.RELEASE</version>
 
 
     <dependencies>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-extension</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.hzqing.common</groupId>
-            <artifactId>hzq-common-core</artifactId>
+            <artifactId>hzq-common-api</artifactId>
         </dependency>
-        <!-- Commons Begin -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-        </dependency>
-        <!-- Commons Begin -->
     </dependencies>
 
 

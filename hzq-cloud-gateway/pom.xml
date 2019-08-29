@@ -20,11 +20,6 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.hzqing.cloud.log.api</groupId>
-            <artifactId>log-api</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
@@ -35,12 +30,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>0.2.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.9</version>
         </dependency>
 
         <dependency>
@@ -54,7 +47,6 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo-registry-nacos</artifactId>
-            <version>2.6.7</version>
         </dependency>
 
 
@@ -79,13 +71,6 @@
             <artifactId>logback-core</artifactId>
         </dependency>
 
-
-        <dependency>
-            <groupId>com.hzqing.cloud.log.api</groupId>
-            <artifactId>log-api</artifactId>
-        </dependency>
-
-
         <!-- Commons Begin -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -93,11 +78,6 @@
         </dependency>
         <!-- Commons Begin -->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>

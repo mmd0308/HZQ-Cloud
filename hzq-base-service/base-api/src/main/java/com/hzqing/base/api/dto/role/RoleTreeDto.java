@@ -1,6 +1,6 @@
 package com.hzqing.base.api.dto.role;
 
-import com.hzqing.common.tools.tree.TreeNode;
+import com.hzqing.common.core.tree.TreeNode;
 import lombok.Data;
 import lombok.ToString;
 
