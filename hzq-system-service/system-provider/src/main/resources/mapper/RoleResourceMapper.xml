@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzqing.system.provider.dal.mapper.RoleResourceMapper">
+
+
+    <delete id="deleteByRoleIdServeIdMenuId" parameterType="roleresource">
+        delete  from
+            rl_role_resource
+        where
+            role_id = #{roleId}
+        and
+            serve_id = #{serveId}
+        and
+            menu_id = #{menuId}
+    </delete>
+
+    <insert id="insertBatch" parameterType="list">
+        insert into rl_role_resource
+            (id,role_id,serve_id,menu_id,element_id)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.id},
+            #{item.roleId},
+            #{item.serveId},
+            #{item.menuId},
+            #{item.elementId}
+            )
+        </foreach>
+    </insert>
+
+    <select id="selectBatchByRoleIds" parameterType="string" resultType="roleresource">
+        select *
+        from rl_role_resource
+        where find_in_set(role_id , #{roleIds})
+    </select>
+</mapper>
