@@ -18,11 +18,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.hzqing.base</groupId>
-            <artifactId>base-api</artifactId>
+            <groupId>com.hzqing.system</groupId>
+            <artifactId>system-api</artifactId>
         </dependency>
-
-
         <dependency>
             <groupId>com.hzqing.log</groupId>
             <artifactId>log-api</artifactId>

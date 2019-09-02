@@ -21,10 +21,10 @@ spring:
           uri: lb://auth-service
           predicates:
             - Path=/api/auth/**
-        - id: route-base-rest
-          uri: lb://base-rest
+        - id: route-system-rest
+          uri: lb://system-rest
           predicates:
-            - Path=/api/base/**
+            - Path=/api/system/**
         - id: route-cloud-log
           uri: lb://log-rest
           predicates:

@@ -1,9 +1,9 @@
 package com.hzqing.auth.service.service;
 
-import com.hzqing.base.api.dto.permission.GetUserRequest;
-import com.hzqing.base.api.dto.permission.GetUserResponse;
-import com.hzqing.base.api.dto.permission.PermissionDto;
-import com.hzqing.base.api.service.IPermissionService;
+import com.hzqing.system.api.dto.permission.GetUserRequest;
+import com.hzqing.system.api.dto.permission.GetUserResponse;
+import com.hzqing.system.api.dto.permission.PermissionDto;
+import com.hzqing.system.api.service.IPermissionService;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.service.constants.CommonRetCodeConstants;
 import com.hzqing.common.core.service.request.IDRequest;
