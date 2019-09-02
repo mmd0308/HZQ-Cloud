@@ -54,9 +54,11 @@ public class OperationLogServiceImpl implements IOperationLogService {
         CommonResponse<Page<OperationLogDto>> response = new CommonResponse<>();
         try {
             request.checkParams();
+            log.info("OperationLogServiceImpl.page 根据创建时间，降序排序");
             IPage<OperationLog> logIPage = operationLogMapper.selectPage(
                     new Page<OperationLog>(request.getPageNum(), request.getPageSize()),
-                    new QueryWrapper<>(new OperationLog()));
+                    // 根据创建时间，降序排列
+                    new QueryWrapper<>(new OperationLog()).orderByDesc("create_time"));
             Page<OperationLogDto> logDtoPage = operationLogConverter.page2pageDto(logIPage);
             response.setData(logDtoPage);
         } catch (Exception e) {

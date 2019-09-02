@@ -54,9 +54,11 @@ public class LoginLogServiceImpl implements ILoginLogService {
         log.info("LoginLogServiceImpl.page request: " + request);
         CommonResponse<Page<LoginLogDto>> response = new CommonResponse<>();
         try {
+            request.checkParams();
+            log.info("LoginLogServiceImpl.page 根据创建时间，降序排序");
             IPage<LoginLog> logIPage = loginLogMapper.selectPage(
                     new Page<>(request.getPageNum(), request.getPageSize()),
-                    new QueryWrapper<>(new LoginLog()));
+                    new QueryWrapper<>(new LoginLog()).orderByDesc("create_time"));
             Page<LoginLogDto> logDtoPage = loginLogConverter.page2pageDto(logIPage);
             response.setData(logDtoPage);
         } catch (Exception e) {
