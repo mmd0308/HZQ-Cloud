@@ -10,8 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class GeneratorClientSecret {
 
     public static void main(String[] args) {
-        String secret = UUIDUtils.get32UUID();
-        System.out.println(secret);
         System.out.println(new BCryptPasswordEncoder().encode("www.hzqing.com"));
     }
 }

@@ -29,7 +29,10 @@ import java.time.LocalDateTime;
 public class LoginFilter extends OncePerRequestFilter {
 
 
-    @Reference(version = GlobalConstants.VERSION_V1)
+    @Reference(
+            version = GlobalConstants.VERSION_V1,
+            async = true // 异步调用
+    )
     private ILoginLogService loginLogService;
 
 

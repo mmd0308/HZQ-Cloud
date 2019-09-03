@@ -51,7 +51,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             log.info("UserDetailServiceImpl.loadUserByUsername 该用户： " + user.getUsername() + " 拥有的权限： " + grantedAuthorities);
             return new User(user.getUsername(),user.getPassword(),grantedAuthorities);
         }
-        log.error("UserDetailServiceImpl.loadUserByUsername 获取数据失败，返回null");
+        log.error("UserDetailServiceImpl.loadUserByUsername 根据用户获取用户信息失败，返回null");
         return null;
     }
 }
