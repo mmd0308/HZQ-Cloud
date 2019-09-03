@@ -19,6 +19,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -66,6 +67,8 @@ public class UserController extends BaseController {
         UserPageRequest request = new UserPageRequest();
         request.setPageNum(num);
         request.setPageSize(size);
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        log.info("UserController.page " + principal);
         CommonResponse<Page<UserDto>> response = userService.page(request);
         if (CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode())){
             Page<UserVO> res = userConverter.dto2Vo(response.getData());

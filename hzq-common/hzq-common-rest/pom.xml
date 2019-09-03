@@ -74,9 +74,13 @@
         </dependency>
 
         <!--  转换器    -->
+<!--        <dependency>-->
+<!--            <groupId>org.mapstruct</groupId>-->
+<!--            <artifactId>mapstruct-jdk8</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-jdk8</artifactId>
+            <artifactId>mapstruct</artifactId>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>

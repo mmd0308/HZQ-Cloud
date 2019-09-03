@@ -2,6 +2,7 @@ package com.hzqing.system.api.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hzqing.common.core.service.request.IDRequest;
+import com.hzqing.common.core.service.request.PermissionRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 import com.hzqing.system.api.dto.menu.*;
 
@@ -66,4 +67,10 @@ public interface IMenuService  {
      */
     CommonResponse<List<MenuTreeDto>> tree(MenuTreeRequest request);
 
+    /**
+     * 检查权限编码是否可用
+     * @param request
+     * @return
+     */
+    CommonResponse<Boolean> checkPermission(PermissionRequest request);
 }

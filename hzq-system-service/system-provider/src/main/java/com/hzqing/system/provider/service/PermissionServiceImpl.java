@@ -66,9 +66,10 @@ public class PermissionServiceImpl implements IPermissionService {
     private ElementMapper elementMapper;
     @Override
     public CommonResponse<List<PermissionDto>> listPermissionByUserId(IDRequest request) {
-        log.info("PermissionServiceImpl.listPermissionByUserId request: " + request);
+        log.info("PermissionServiceImpl.listPermissionByUserId 根据用户id，获取用户的权限 request: " + request);
         CommonResponse<List<PermissionDto>> response = new CommonResponse<>();
         try {
+            request.checkParams();
             List<PermissionDto> permissionDtoList = new ArrayList<>();
 
             // 根据用户id，获取角色
@@ -99,6 +100,9 @@ public class PermissionServiceImpl implements IPermissionService {
             log.info("PermissionServiceImpl.listPermissionByUserId 根据服务id，获取服务：服务id是：" + serveIds);
             if (serveIds.size() != 0){
                 List<Serve> serves = serveMapper.selectBatchIds(serveIds);
+                serves.forEach(serve -> {
+                    permissionDtoList.add(new PermissionDto(serve.getPermission()));
+                });
             }
 
             // 根据id，获取所有的菜单

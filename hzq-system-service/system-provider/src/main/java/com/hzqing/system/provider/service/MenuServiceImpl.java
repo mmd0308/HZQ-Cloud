@@ -3,10 +3,12 @@ package com.hzqing.system.provider.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hzqing.common.core.service.request.PermissionRequest;
 import com.hzqing.system.api.dto.menu.*;
 import com.hzqing.system.api.service.IMenuService;
 import com.hzqing.system.provider.converter.MenuConverter;
 import com.hzqing.system.provider.dal.entity.Menu;
+import com.hzqing.system.provider.dal.entity.Serve;
 import com.hzqing.system.provider.dal.mapper.MenuMapper;
 import com.hzqing.common.core.constants.GlobalConstants;
 import com.hzqing.common.core.service.exception.ExceptionProcessUtils;
@@ -14,6 +16,7 @@ import com.hzqing.common.core.service.request.IDRequest;
 import com.hzqing.common.core.service.response.CommonResponse;
 import com.hzqing.common.core.tree.TreeUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -150,6 +153,33 @@ public class MenuServiceImpl  implements IMenuService {
         } catch (Exception e) {
             log.error("MenuServiceImpl.tree occur Exception: ", e);
             ExceptionProcessUtils.wrapperHandlerException(response,e);
+        }
+        return response;
+    }
+
+    @Override
+    public CommonResponse<Boolean> checkPermission(PermissionRequest request) {
+        log.info("MenuServiceImpl.checkPermission request: " + request);
+        CommonResponse<Boolean> response = new CommonResponse<>();
+        boolean res = false;
+        try {
+            request.checkParams();
+            Menu menu = new Menu();
+            menu.setPermission(request.getPermission());
+            List<Menu> menus = menuMapper.selectList(new QueryWrapper<>(menu));
+            log.info("MenuServiceImpl.checkPermission 查询结果集：" + menus);
+            res = menus.size() == 0;
+            if (menus.size() == 1) {
+                Menu ser = menus.get(0);
+                if (StringUtils.isNotEmpty(request.getId())) {
+                    // 表示修改，权限编码是自己
+                    res = ser.getId().equals(request.getId());
+                }
+            }
+            response.setData(res);
+        } catch (Exception e) {
+            log.error("MenuServiceImpl.checkPermission occur Exception: ", e);
+            ExceptionProcessUtils.wrapperHandlerException(response, e);
         }
         return response;
     }

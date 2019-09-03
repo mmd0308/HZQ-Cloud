@@ -22,8 +22,8 @@ spring:
 security:
   oauth2:
     client:
-      client-id: hzq-base-service
-      client-secret: 59242ea4104092c510d24a0882b9669d
+      client-id: hzq-cloud-system
+      client-secret: www.hzqing.com
       access-token-uri: http://localhost:10680/oauth/token
       user-authorization-uri: http://localhost:10680/oauth/authorize
     resource:
@@ -32,6 +32,5 @@ security:
 
 logging:
   level:
-    root: warn
+    root: info
     com.hzqing.system.rest: debug
-debug: true

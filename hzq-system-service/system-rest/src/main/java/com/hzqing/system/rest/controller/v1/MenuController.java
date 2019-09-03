@@ -1,6 +1,7 @@
 package com.hzqing.system.rest.controller.v1;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hzqing.common.core.service.request.PermissionRequest;
 import com.hzqing.system.api.dto.menu.*;
 import com.hzqing.system.api.service.IMenuService;
 import com.hzqing.system.rest.converter.MenuConverter;
@@ -106,5 +107,14 @@ public class MenuController extends BaseController {
             return RestResultFactory.getInstance().success(res);
         }
         return RestResultFactory.getInstance().error();
+    }
+
+    @ApiOperation(value = "检查权限编码是否可用，true表示可用，false表示不可用")
+    @GetMapping("/permission/{permission}")
+    public RestResult<Boolean> checkPermission(@PathVariable String permission,String id){
+        CommonResponse<Boolean> response = menuService.checkPermission(new PermissionRequest(permission, id));
+        return CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode()) ?
+                RestResultFactory.getInstance().success(response.getData()) :
+                RestResultFactory.getInstance().error();
     }
 }

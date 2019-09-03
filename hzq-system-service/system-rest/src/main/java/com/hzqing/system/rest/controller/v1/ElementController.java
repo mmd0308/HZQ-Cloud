@@ -1,6 +1,7 @@
 package com.hzqing.system.rest.controller.v1;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hzqing.common.core.service.request.PermissionRequest;
 import com.hzqing.system.api.dto.button.*;
 import com.hzqing.system.api.service.IElementService;
 import com.hzqing.system.rest.converter.ElementConverter;
@@ -105,5 +106,14 @@ public class ElementController extends BaseController {
     public RestResult deleted(@PathVariable String id){
         CommonResponse response = elementService.removeById(new IDRequest(id));
         return result(response);
+    }
+
+    @ApiOperation(value = "检查权限编码是否可用，true表示可用，false表示不可用")
+    @GetMapping("/permission/{permission}")
+    public RestResult<Boolean> checkPermission(@PathVariable String permission,String id){
+        CommonResponse<Boolean> response = elementService.checkPermission(new PermissionRequest(permission, id));
+        return CommonRetCodeConstants.SUCCESS.getCode().equals(response.getCode()) ?
+                RestResultFactory.getInstance().success(response.getData()) :
+                RestResultFactory.getInstance().error();
     }
 }

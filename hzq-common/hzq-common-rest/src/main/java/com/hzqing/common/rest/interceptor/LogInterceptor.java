@@ -22,7 +22,10 @@ public class LogInterceptor implements HandlerInterceptor {
 
     public final static String BASE_PAHT =  "/api/base";
 
-    @Reference(version = GlobalConstants.VERSION_V1)
+    @Reference(
+            version = GlobalConstants.VERSION_V1,
+            async = true // 异步调用
+    )
     private IOperationLogService operationLogService;
 
     @Override
