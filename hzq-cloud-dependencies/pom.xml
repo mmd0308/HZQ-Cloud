@@ -41,7 +41,7 @@
         <!--    mybaits-plus     -->
         <mybatis-plus-boot-starter.version>3.1.2</mybatis-plus-boot-starter.version>
         <mybatis-plus.version>3.1.2</mybatis-plus.version>
-        <mybatis.version>3.5.2</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
 
         <!--    数据源    -->
         <HikariCP.version>3.3.0</HikariCP.version>
