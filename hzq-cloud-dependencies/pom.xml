@@ -28,7 +28,7 @@
         <spring-cloud-alibaba>2.1.0.RELEASE</spring-cloud-alibaba>
 
         <dubbo-spring-boot-starter.version>2.7.1</dubbo-spring-boot-starter.version>
-        <dubbo.version>2.7.3</dubbo.version>
+        <dubbo.version>2.7.15</dubbo.version>
 
         <!--      zk      -->
         <curator-framework.version>4.2.0</curator-framework.version>
