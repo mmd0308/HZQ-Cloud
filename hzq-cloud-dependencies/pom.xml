@@ -68,7 +68,7 @@
         <!--     日志相关 jar       -->
 
 
-        <jackson-databind.version>2.9.9</jackson-databind.version>
+        <jackson-databind.version>2.12.6.1</jackson-databind.version>
 
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
 
